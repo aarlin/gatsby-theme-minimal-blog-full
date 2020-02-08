@@ -1,30 +1,15 @@
-<p align="center">
-  <a href="https://www.lekoarts.de/en">
-    <img alt="LekoArts" src="https://img.lekoarts.de/gatsby/lekoarts-monogram.svg" width="80" />
-  </a>
-</p>
 <h1 align="center">
-  Free & Open Source Gatsby Themes by LekoArts
+  aarlin.netlify.com
 </h1>
 
 <p align="center">
   <a href="https://github.com/LekoArts/gatsby-themes/blob/master/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="@lekoarts/gatsby-themes is released under the MIT license." />
   </a>
-  <a href="https://circleci.com/gh/LekoArts/gatsby-themes">
-    <img src="https://circleci.com/gh/LekoArts/gatsby-themes.svg?style=svg" alt="CircleCI Status" />
-  </a>
-  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" />
-  <a href="https://twitter.com/intent/follow?screen_name=lekoarts_de">
-    <img src="https://img.shields.io/twitter/follow/lekoarts_de.svg?label=Follow%20@lekoarts_de" alt="Follow @lekoarts_de" />
+  <a href="https://app.netlify.com/sites/aarlin/deploys">
+    <img src="https://api.netlify.com/api/v1/badges/93e34e34-ba26-496d-a3a2-7a8b24db693a/deploy-status" alt="Netlify Deployment">
   </a>
 </p>
-
-Get **high-quality** and **customizable** Gatsby themes to quickly bootstrap your website! Choose from many professionally created and impressive designs with a wide variety of features and customization options. Use Gatsby Themes to take your project to the next level and let you and your customers take advantage of the many benefits Gatsby has to offer.
-
-## 🎨 Themes Overview
-
-[![Themes Preview Banner](https://img.lekoarts.de/gatsby/thin_banner.jpg)](https://themes.lekoarts.de)
 
 ## 💼 Contents
 
@@ -39,32 +24,6 @@ This repository is a collection of my Gatsby themes, managed as a [monorepo](htt
 - `scripts`: In order to run the tests on CircleCI some utility bash scripts are needed which are located here
 - `themes`: Contains the themes themselves. They should only have the bare minimum of plugins installed (as `examples` can expand them) and also use `Theme UI` for styling. The naming of the folders must be `gatsby-theme-[name-with-dashes]` and the package name under the scope of `@lekoarts`
 - `www`: Contains the source code for [themes.lekoarts.de](http://themes.lekoarts.de)
-
-## 🤝 How to Contribute
-
-Make sure that you have `yarn` installed on your machine (as it's mandatory for `yarn workspaces`). Fork this repository, clone it and run `yarn` in the root directory.
-
-To launch the development server of an example site, use:
-
-```sh
-yarn workspace [examples/name] develop
-```
-
-Or for a build:
-
-```sh
-yarn workspace [examples/name] build
-```
-
-In the case of `examples/emma` this command would be `yarn workspace emma develop`. Now you can make changes to the respective theme and see them via Hot-Reloading.
-
-Commit your changes to a feature branch of your fork and open up a PR against this repository. The PR will have checks in place (unit and end-to-end tests) which you can also run on your machine in preparation for the PR.
-
-Have a look at the [contributing guide](CONTRIBUTING.md) to learn more.
-
-## 🤩 Newsletter
-
-If you want to receive monthly updates on my themes and all things related to Gatsby themes (relevant blog posts from me and other people, articles about Theme UI) you can [subscribe to my newsletter](https://leko.io/newsletter-themes).
 
 ## 🎓 Learning Gatsby Themes
 
@@ -81,40 +40,6 @@ If you want to receive monthly updates on my themes and all things related to Ga
 - [Building a Theme](https://www.gatsbyjs.org/tutorial/building-a-theme)
 - [Free egghead.io "Gatsby Theme Authoring" course](https://egghead.io/courses/gatsby-theme-authoring)
 
-### Paid resources
-
-- [Composable Gatsby Themes](https://egghead.io/courses/composable-gatsby-themes)
-
-
-<p align="center">
-  <a href="https://themes.lekoarts.de">
-    <img alt="Gatsby Theme" src="https://img.lekoarts.de/gatsby/gatsby-themes-illustration.png" />
-  </a>
-</p>
-<h1 align="center">
-  @lekoarts/gatsby-theme-minimal-blog
-</h1>
-
-<p align="center">
-  <a href="https://github.com/LekoArts/gatsby-themes/blob/master/LICENSE">
-    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="@lekoarts/gatsby-theme-minimal-blog is released under the MIT license." />
-  </a>
-  <a href="https://www.npmjs.org/package/@lekoarts/gatsby-theme-minimal-blog">
-    <img src="https://img.shields.io/npm/v/@lekoarts/gatsby-theme-minimal-blog.svg" alt="Current npm package version." />
-  </a>
-  <a href="https://npmcharts.com/compare/@lekoarts/gatsby-theme-minimal-blog?minimal=true">
-    <img src="https://img.shields.io/npm/dm/@lekoarts/gatsby-theme-minimal-blog.svg" alt="Downloads per month on npm." />
-  </a>
-  <a href="https://npmcharts.com/compare/@lekoarts/gatsby-theme-minimal-blog?minimal=true">
-    <img src="https://img.shields.io/npm/dt/@lekoarts/gatsby-theme-minimal-blog.svg" alt="Total downloads on npm." />
-  </a>
-  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" />
-  <a href="https://twitter.com/intent/follow?screen_name=lekoarts_de">
-      <img src="https://img.shields.io/twitter/follow/lekoarts_de.svg?label=Follow%20@lekoarts_de" alt="Follow @lekoarts_de" />
-    </a>
-</p>
-
-Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and line highlighting.
 
 [![Live Preview](https://img.lekoarts.de/gatsby/preview.svg)](https://minimal-blog.lekoarts.de) [![View Design on Figma](https://img.lekoarts.de/gatsby/view_design.svg)](https://www.figma.com/file/sq2VwMy8579ioDTXjUdlYr/gatsby-theme-minimal-blog?node-id=0%3A1)
 
@@ -131,24 +56,6 @@ Also be sure to checkout other [Free & Open Source Gatsby Themes](https://themes
 - Tags/Categories support
 - Code highlighting with [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer) and [react-live](https://github.com/FormidableLabs/react-live) support. Also allows adding line numbers, line highlighting, language tabs, and file titles.
 - RSS Feed for blog posts
-
-## Installation
-
-```sh
-npm install @lekoarts/gatsby-theme-minimal-blog
-```
-
-### Install as a starter
-
-This will generate a new site that pre-configures use of the theme.
-
-```sh
-gatsby new minimal-blog LekoArts/gatsby-starter-minimal-blog
-```
-
-[**View the starter's code**](https://github.com/LekoArts/gatsby-starter-minimal-blog)
-
-## Usage
 
 ### Theme options
 
@@ -370,14 +277,6 @@ slug: "/about"
 ---
 ```
 
-#### Changing the "Hero" text
-
-To edit the hero text ("Hi, I'm Lupin...), create a file at `src/@lekoarts/gatsby-theme-minimal-blog/texts/hero.mdx` to edit the text.
-
-#### Changing the "Projects" part
-
-To edit the projects part below "Latest posts", create a file at `src/@lekoarts/gatsby-theme-minimal-blog/texts/bottom.mdx` to edit the contents.
-
 ## 🌟 Supporting me
 
 Thanks for using this project! I'm always interested in seeing what people do with my projects, so don't hesitate to tag me on [Twitter](https://twitter.com/lekoarts_de) and share the project with me.
@@ -578,40 +477,6 @@ slug: "/about"
 ---
 ```
 
-#### Changing the "Hero" text
-
-To edit the hero text ("Hi, I'm Lupin...), create a file at `src/@lekoarts/gatsby-theme-minimal-blog/texts/hero.mdx` to edit the text.
-
-#### Changing the "Projects" part
-
-To edit the projects part below "Latest posts", create a file at `src/@lekoarts/gatsby-theme-minimal-blog/texts/bottom.mdx` to edit the contents.
-
 ### Change your `static` folder
 
 The `static` folder contains the icons, social media images and robots.txt. Don't forget to change these files, too!
-
-## 🤔 Questions or problems?
-
-Please open up an issue on the main repository: [LekoArts/gatsby-themes](https://github.com/LekoArts/gatsby-themes). Thanks!
-
-## 🎓 Learning Gatsby
-
-Looking for more guidance? Full documentation for Gatsby lives [on Gatsby's website](https://www.gatsbyjs.org/).
-
-### Themes
-
-- To learn more about Gatsby themes specifically, we recommend checking out the [theme docs](https://www.gatsbyjs.org/docs/themes/).
-
-### General
-
-- **For most developers, I recommend starting with the [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
-- **To dive straight into code samples, head [to Gatsby's documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Reference Guides_ and _Gatsby API_ sections in the sidebar.
-
-## 🌟 Supporting me
-
-Thanks for using this project! I'm always interested in seeing what people do with my projects, so don't hesitate to tag me on [Twitter](https://twitter.com/lekoarts_de) and share the project with me.
-
-Please star this project, share it on Social Media or consider supporting me on [Patreon](https://www.patreon.com/lekoarts)!
-
-If you want to hire me for **contract/freelance work**, you can do so! [Get in touch with me!](https://www.lekoarts.de/en/contact)
