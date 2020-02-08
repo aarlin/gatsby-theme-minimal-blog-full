@@ -1,5 +1,5 @@
 [build]
-  base = "www/"
+  base = ""
   publish = "public/"
   command = "gatsby build"
 [context.deploy-preview.processing]
