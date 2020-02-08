@@ -1,53 +1,49 @@
 const withDefaults = require(`./utils/default-options`)
 
-module.exports = themeOptions => {
-  const options = withDefaults(themeOptions)
-  const { mdx = true } = themeOptions
-
-  return {
-    plugins: [
-      {
-        resolve: `gatsby-source-filesystem`,
-        options: {
-          name: options.postsPath,
-          path: options.postsPath,
-        },
+module.exports = {
+  plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: withDefaults.postsPath,
+        path: withDefaults.postsPath,
       },
-      {
-        resolve: `gatsby-source-filesystem`,
-        options: {
-          name: options.pagesPath,
-          path: options.pagesPath,
-        },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: withDefaults.pagesPath,
+        path: withDefaults.pagesPath,
       },
-      mdx && {
-        resolve: `gatsby-plugin-mdx`,
-        options: {
-          gatsbyRemarkPlugins: [
-            {
-              resolve: `gatsby-remark-images`,
-              options: {
-                maxWidth: 960,
-                quality: 90,
-                linkImagesToOriginal: false,
-              },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 960,
+              quality: 90,
+              linkImagesToOriginal: false,
             },
-          ],
-          plugins: [
-            {
-              resolve: `gatsby-remark-images`,
-              options: {
-                maxWidth: 960,
-                quality: 90,
-                linkImagesToOriginal: false,
-              },
+          },
+        ],
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 960,
+              quality: 90,
+              linkImagesToOriginal: false,
             },
-          ],
-        },
+          },
+        ],
       },
-      `gatsby-transformer-sharp`,
-      `gatsby-plugin-sharp`,
-      `gatsby-plugin-typescript`,
-    ].filter(Boolean),
-  }
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-typescript`,
+  ]
 }
+

@@ -1,6 +1,6 @@
 const newsletterFeed = require(`./src/utils/newsletterFeed`)
 
-module.exports = options => ({
+module.exports = {
   siteMetadata: {
     siteTitle: `Lupin`,
     siteTitleAlt: `Minimal Blog - @lekoarts/gatsby-theme-minimal-blog`,
@@ -13,8 +13,7 @@ module.exports = options => ({
   },
   plugins: [
     {
-      resolve: `@lekoarts/gatsby-theme-minimal-blog-core`,
-      options,
+      resolve: `@lekoarts/gatsby-theme-minimal-blog-core`
     },
     {
       resolve: `gatsby-plugin-feed`,
@@ -25,4 +24,4 @@ module.exports = options => ({
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-theme-ui`,
   ],
-})
+}
