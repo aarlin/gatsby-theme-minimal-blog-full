@@ -11,6 +11,10 @@
     "start": "gatsby develop",
     "clean": "gatsby clean"
   },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.8"
+  },
   "dependencies": {
     "gatsby": "^2.13.3",
     "gatsby-plugin-google-analytics": "^2.1.4",
@@ -43,16 +47,12 @@
   "keywords": [
     "gatsby",
     "gatsby-theme",
-    "gatsby-plugin",
-    "lekoarts"
+    "gatsby-plugin"
   ],
-  "bugs": {
-    "url": "https://github.com/LekoArts/gatsby-themes/issues"
-  },
-  "homepage": "https://themes.lekoarts.de",
+  "homepage": "https://aarlin.netlify.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/LekoArts/gatsby-themes.git",
+    "url": "https://github.com/aarlin/personal-blog.git",
     "directory": "themes/gatsby-theme-minimal-blog"
   }
 }
