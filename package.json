@@ -1,7 +1,7 @@
 {
-  "name": "@lekoarts/gatsby-theme-minimal-blog",
+  "name": "aarlin.netlfy.com",
   "version": "2.0.1",
-  "author": "LekoArts <hello@lekoarts.de>",
+  "author": "Aaron Lin",
   "description": "Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and line highlighting.",
   "license": "MIT",
   "main": "index.js",

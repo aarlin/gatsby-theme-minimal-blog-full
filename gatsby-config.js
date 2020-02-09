@@ -17,7 +17,29 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `@lekoarts/gatsby-theme-minimal-blog-core`
+      resolve: `gatsby-theme-minimal-blog-core`,
+      options: {
+        navigation: [
+          {
+            title: `Blog`,
+            slug: `/blog`,
+          },
+          {
+            title: `Projects`,
+            slug: `/projects`,
+          },
+          {
+            title: `About`,
+            slug: `/about`,
+          },
+        ],
+        externalLinks: [
+          {
+            name: "Github",
+            url: "https://github.com/aarlin",
+          },
+        ],
+      }
     },
     {
       resolve: `gatsby-plugin-feed`,
