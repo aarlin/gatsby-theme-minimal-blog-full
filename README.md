@@ -11,15 +11,23 @@
   </a>
 </p>
 
+## ✨ Features
+
+- MDX
+- Theme UI-based theming
+- Light Mode / Dark Mode
+- Typography driven, minimal style
+- Tags/Categories support
+- Code highlighting with [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer) and [react-live](https://github.com/FormidableLabs/react-live) support. Also allows adding line numbers, line highlighting, language tabs, and file titles.
+- RSS Feed for blog posts
+- Fully customizable through the usage of Gatsby Themes (and Theme UI)
+- Google Analytics Support
+- SEO (Sitemap, OpenGraph tags, Twitter tags)
+- Offline Support & WebApp Manifest
+
+
 ## 💼 Contents
 
-This repository is a collection of my Gatsby themes, managed as a [monorepo](https://trunkbaseddevelopment.com/monorepos/) with [Lerna](https://github.com/lerna/lerna) and [yarn workspaces](https://yarnpkg.com/lang/en/docs/workspaces/).
-
-- `.circleci`: Contains the configuration file for CircleCI
-- `.github`: GitHub actions, templates for issues, and FUNDING file
-- `cypress`: Contains the Cypress tests for `examples`
-- `examples`: Contains the corresponding example sites for the `themes`. These projects can and should be used as a starter and will be copied over to their own repository. Hence they contain example data and additional Gatsby plugins (e.g. `gatsby-plugin-manifest` and `gatsby-plugin-offline`). The folder names are the contents after `gatsby-theme-*`
-- `jest`: Primarily files for mocking functions/files in Jest tests
 - `plop-templates`: Template for [plop.js](https://plopjs.com/)
 - `scripts`: In order to run the tests on CircleCI some utility bash scripts are needed which are located here
 - `themes`: Contains the themes themselves. They should only have the bare minimum of plugins installed (as `examples` can expand them) and also use `Theme UI` for styling. The naming of the folders must be `gatsby-theme-[name-with-dashes]` and the package name under the scope of `@lekoarts`
@@ -46,16 +54,6 @@ This repository is a collection of my Gatsby themes, managed as a [monorepo](htt
 Read the [Source Code](https://github.com/LekoArts/gatsby-starter-minimal-blog).
 
 Also be sure to checkout other [Free & Open Source Gatsby Themes](https://themes.lekoarts.de)
-
-## Features
-
-- MDX
-- Theme UI-based theming
-- Light Mode / Dark Mode
-- Typography driven, minimal style
-- Tags/Categories support
-- Code highlighting with [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer) and [react-live](https://github.com/FormidableLabs/react-live) support. Also allows adding line numbers, line highlighting, language tabs, and file titles.
-- RSS Feed for blog posts
 
 ### Theme options
 
@@ -277,55 +275,9 @@ slug: "/about"
 ---
 ```
 
-## 🌟 Supporting me
-
-Thanks for using this project! I'm always interested in seeing what people do with my projects, so don't hesitate to tag me on [Twitter](https://twitter.com/lekoarts_de) and share the project with me.
-
-Please star this project, share it on Social Media or consider supporting me on [Patreon](https://www.patreon.com/lekoarts)!
-
-If you want to hire me for **contract/freelance work**, you can do so! [Get in touch with me!](https://www.lekoarts.de/en/contact)
-
-
-<p align="center">
-  <a href="https://minimal-blog.lekoarts.de">
-    <img alt="LekoArts" src="https://img.lekoarts.de/gatsby/gatsby-site-illustration.png" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby Starter: Minimal Blog
-</h1>
-
-<p align="center">
-  <a href="https://github.com/LekoArts/gatsby-starter-minimal-blog/blob/master/LICENSE">
-    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Minimal Blog is released under the MIT license." />
-  </a>
-  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" />
-  <a href="https://twitter.com/intent/follow?screen_name=lekoarts_de">
-    <img src="https://img.shields.io/twitter/follow/lekoarts_de.svg?label=Follow%20@lekoarts_de" alt="Follow @lekoarts_de" />
-  </a>
-  <a href="https://app.netlify.com/sites/minimal-blog/deploys">
-    <img src="https://api.netlify.com/api/v1/badges/f466015c-14f4-440d-a92b-0b0e30de609a/deploy-status" alt="Netlify Status" />
-  </a>
-</p>
-
-Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and line highlighting. Using the Gatsby Theme [`@lekoarts/gatsby-theme-minimal-blog`](https://github.com/LekoArts/gatsby-themes/tree/master/themes/gatsby-theme-minimal-blog).
-
 [**Demo Website**](https://minimal-blog.lekoarts.de)
 
 Also be sure to checkout other [Free & Open Source Gatsby Themes](https://themes.lekoarts.de)
-
-## ✨ Features
-
-- MDX
-- Fully customizable through the usage of Gatsby Themes (and Theme UI)
-- Light Mode / Dark Mode
-- Typography driven, minimal style
-- Tags/Categories support
-- Code highlighting with [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer) and [react-live](https://github.com/FormidableLabs/react-live) support. Also allows adding line numbers, line highlighting, language tabs, and file titles.
-- RSS Feed for blog posts
-- Google Analytics Support
-- SEO (Sitemap, OpenGraph tags, Twitter tags)
-- Offline Support & WebApp Manifest
 
 ## 🚀 Getting Started
 
