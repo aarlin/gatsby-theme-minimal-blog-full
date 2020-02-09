@@ -24,20 +24,16 @@ module.exports = {
             title: `Blog`,
             slug: `/blog`,
           },
-          {
-            title: `Projects`,
-            slug: `/projects`,
-          },
-          {
-            title: `About`,
-            slug: `/about`,
-          },
         ],
         externalLinks: [
           {
+            name: `About`,
+            url: "https://aarlin.github.io",
+          },
+          {
             name: "Github",
             url: "https://github.com/aarlin",
-          },
+          }
         ],
       }
     },

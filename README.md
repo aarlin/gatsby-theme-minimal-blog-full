@@ -28,27 +28,6 @@
 
 ## 💼 Contents
 
-- `plop-templates`: Template for [plop.js](https://plopjs.com/)
-- `scripts`: In order to run the tests on CircleCI some utility bash scripts are needed which are located here
-- `themes`: Contains the themes themselves. They should only have the bare minimum of plugins installed (as `examples` can expand them) and also use `Theme UI` for styling. The naming of the folders must be `gatsby-theme-[name-with-dashes]` and the package name under the scope of `@lekoarts`
-- `www`: Contains the source code for [themes.lekoarts.de](http://themes.lekoarts.de)
-
-## 🎓 Learning Gatsby Themes
-
-### Articles from lekoarts.de
-
-- [How I used Theme UI to build my Gatsby Themes library](https://www.lekoarts.de/en/blog/how-i-used-theme-ui-to-build-my-gatsby-themes-library)
-- [Setting up a Gatsby Themes workspace with TypeScript, ESLint & Cypress](https://www.lekoarts.de/en/blog/setting-up-a-gatsby-themes-workspace-with-typescript-eslint-and-cypress)
-- [Specimens for Gatsby powered Design Systems](https://www.lekoarts.de/en/blog/specimens-for-gatsby-powered-design-systems)
-- [Creating your own Status Dashboard with Gatsby](https://www.lekoarts.de/en/blog/creating-your-own-status-dashboard-with-gatsby)
-
-### Official resources
-
-- [Gatsbyjs.org - Gatsby Themes](https://www.gatsbyjs.org/docs/themes/)
-- [Building a Theme](https://www.gatsbyjs.org/tutorial/building-a-theme)
-- [Free egghead.io "Gatsby Theme Authoring" course](https://egghead.io/courses/gatsby-theme-authoring)
-
-
 [![Live Preview](https://img.lekoarts.de/gatsby/preview.svg)](https://minimal-blog.lekoarts.de) [![View Design on Figma](https://img.lekoarts.de/gatsby/view_design.svg)](https://www.figma.com/file/sq2VwMy8579ioDTXjUdlYr/gatsby-theme-minimal-blog?node-id=0%3A1)
 
 Read the [Source Code](https://github.com/LekoArts/gatsby-starter-minimal-blog).
@@ -76,7 +55,7 @@ Also be sure to checkout other [Free & Open Source Gatsby Themes](https://themes
 module.exports = {
   plugins: [
     {
-      resolve: `@lekoarts/gatsby-theme-minimal-blog`,
+      resolve: `gatsby-theme-minimal-blog`,
       options: {
         showLineNumbers: false,
         navigation: [
@@ -432,3 +411,18 @@ slug: "/about"
 ### Change your `static` folder
 
 The `static` folder contains the icons, social media images and robots.txt. Don't forget to change these files, too!
+
+## 🎓 Learning Gatsby Themes
+
+### Articles from lekoarts.de
+
+- [How I used Theme UI to build my Gatsby Themes library](https://www.lekoarts.de/en/blog/how-i-used-theme-ui-to-build-my-gatsby-themes-library)
+- [Setting up a Gatsby Themes workspace with TypeScript, ESLint & Cypress](https://www.lekoarts.de/en/blog/setting-up-a-gatsby-themes-workspace-with-typescript-eslint-and-cypress)
+- [Specimens for Gatsby powered Design Systems](https://www.lekoarts.de/en/blog/specimens-for-gatsby-powered-design-systems)
+- [Creating your own Status Dashboard with Gatsby](https://www.lekoarts.de/en/blog/creating-your-own-status-dashboard-with-gatsby)
+
+### Official resources
+
+- [Gatsbyjs.org - Gatsby Themes](https://www.gatsbyjs.org/docs/themes/)
+- [Building a Theme](https://www.gatsbyjs.org/tutorial/building-a-theme)
+- [Free egghead.io "Gatsby Theme Authoring" course](https://egghead.io/courses/gatsby-theme-authoring)
