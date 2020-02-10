@@ -9,8 +9,7 @@ tags:
 banner: ./fiddler.png
 ---
 
-This is my first guide on setting up Fiddler.  
-Bear with me in my journey making meaningful blog posts and tutorials  
+This is my first guide on setting up Fiddler. I do like the guides on the main site but they're missing a little something.
 There will be some blog posts where I use Fiddler so I think it's a good start for anyone who wants to try it themselves  
 
 Why should you use Fiddler? Well it's a good way to look at your mobile phone's traffic
@@ -27,6 +26,8 @@ plus Charles proxy has a 30 day trial period while Fiddler is entirely free.
     iPhone 8 on iOS 13.3
 
 The documentation on Fiddler site is pretty good but this guide is focused on getting a Windows machines looking at iPhone's mobile traffic.
+
+## **Windows PC configuration** 
 
 1. Start by downloading Fiddler from this [site](https://www.telerik.com/download/fiddler)  
 Enter how you're planning to use Fiddler, your email, and country and accept the Fiddler End User Agreement
@@ -70,29 +71,59 @@ Enter how you're planning to use Fiddler, your email, and country and accept the
 
 12. Ensure your firewall allows incoming connections to the Fiddler process, and that it's not blocking all incoming connections, including those in the list of allowed apps.
 
-13. Hover over the Online indicator at the far right of the Fiddler toolbar to display the IP addresses assigned to Fiddler's machine. Usually this is the bottommost IP address  
+13. Hover over the Online indicator at the far right of the Fiddler toolbar to display the IP addresses assigned to Fiddler's machine. Note this down for step 17. Usually this is the bottommost IP address if you have multiple IP addresses
 ![](./online_ip.png)
 
-14. Now moving onto the iPhone device
+## **iPhone device configuration**
 
-15. Go to **Settings > Wi-Fi**
+14. Go to **Settings > Wi-Fi**
 
-16. Find your current network and click the (I) icon
+15. Find your current network and click the (i) icon
+![](./wifi_info.png)
 
-17. Scroll to bottom and choose **Manual** on the **HTTP Proxy** choice
+16. Scroll to the bottom and open up **HTTP Proxy**
 
-18. Type your IP address in the **Server** field
+17. Choose **Manual**, type your IP address in the **Server** field and type the Fiddler listening port (8888 by default) in the **Port** field. Keep authentication off
+![](./sample_proxy.png)
 
-Settings > Wi-Fi > Click the Information icon > HTTP Proxy > Configure Proxy > 
+18. Hit **Save**
 
-19. Type the Fiddler listening port (8888 by default) in the **Port** field
+19. Go to Safari. It has to be Safari, not Chrome! Open up http://ipv4.fiddler:8888
+![](./ipv4fiddler.png)
 
-Configure the device where Fiddler is installed to trust Fiddler root certificate
+20. Click FiddlerRoot certificate. Click **Allow**
+![](./fiddler_root.png)
 
-20. Go to Safari. It has to be Safari, not Chrome! Open up http://ipv4.fiddler:8888
+21. If there is a prompt, choose **iPhone** for device to download this certificate to
+![](./install_device.png)
 
+22. Click **Close** for Profile Downloaded
+![](./profile_downloaded.png)
 
-Accept
+23. Click on **Profile Downloaded** under **Settings** in your iPhone
+![](./settings.png)
 
-Configure iPhone WiFI manual proxy to be your IP and port 8888
+24. Click **Install** for the DO_NOT_TRUST_FiddlerRoot profile
+![](./install_profile.png)
 
+25. Enter your passcode if you have one
+![](./passcode.png)
+
+26. Hit **Install** when warning message comes up and click **Install** again
+![](./install_warning.png)
+
+27. Click **Done** afterwards for Profile Installed
+
+28. Go to **Settings > About > Certificate Trust Settings**. It should be located at the bottom
+
+29. Turn on the Certificate you downloaded. Click **Continue** for Root Certificate warning
+![](./root_certificate.png)
+
+30. You're done! When you go to any site or app, you should now see traffic being logged into the Fiddler app on your desktop
+
+31. You can turn this off by going to the **HTTP Proxy** in the Wi-Fi and configure the proxy to **Off**
+
+Hopefully this guide has helped you out. I wanted to make this guide as a way to guide others and remind if I need to re-install Fiddler
+The guides online are good but they don't show all the screenshots
+
+Let me know what you think!
