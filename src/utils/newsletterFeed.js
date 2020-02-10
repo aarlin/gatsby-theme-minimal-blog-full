@@ -31,7 +31,7 @@ module.exports = {
           allPost(sort: { fields: date, order: DESC }) {
             nodes {
               title
-              date(formatString: "MMMM D, YYYY")
+              date(formatString: "MMMM Do, YYYY")
               excerpt
               slug
               html

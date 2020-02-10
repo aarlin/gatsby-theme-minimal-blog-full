@@ -9,7 +9,7 @@ export const query = graphql`
       nodes {
         slug
         title
-        date(formatString: "DD.MM.YYYY")
+        date(formatString: "MMMM Do, YYYY")
         tags {
           name
           slug

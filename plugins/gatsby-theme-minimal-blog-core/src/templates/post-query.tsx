@@ -8,7 +8,7 @@ export const query = graphql`
     post(slug: { eq: $slug }) {
       slug
       title
-      date(formatString: "DD.MM.YYYY")
+      date(formatString: "MMMM Do, YYYY")
       tags {
         name
         slug
