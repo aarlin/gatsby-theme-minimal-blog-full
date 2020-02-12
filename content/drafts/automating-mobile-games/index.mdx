@@ -17,6 +17,12 @@ https://github.com/AirtestProject/Airtest
 
 Wowee!
 
+Wanted to reduce time spent on phone..
+statistics
+
+okay, look at automating FEH
+
+
 I wanted to code on iOS ... boy what a challenge this was
 here were my steps
 START here:
@@ -51,4 +57,67 @@ settle for second monitor display, trackpad on big monitor isnt great
 
 setup new environment 
 
+ok new environment is pretty shitty. need to learn hotkeys since mouse sucks
+
+
+
+--
+
+Meat of the blog post
+
+AirTest!! Open source IDE for testing and automating things. I was looking around for an automation framework for
+mobile devices and I came across this. Since I'm not as experienced with mobile programming & seemed interesting
+Picked this open source project up
+
+How to get started
+
+`git clone git@github.com:AirtestProject/iOS-Tagent.git`
+
+XCode > Open.. > WebDriverAgentRunner.xcodeproj
+
+product > Scheeme > WebDriverAgentRunner
+product > Destination
+
+Signing for "WebDriverAgentRunner" requires a development team. Select a development team in the Signing & Capabilities editor.
+
+Click on the base project itself 
+Signing & Capabilities > Team > Add Account...
+
+![](./signing_certificates.png)
+
+![](development_login.png)
+
+Choose your team
+![](./choose_team.png)
+
+If you encounter this following issue with unique build identifier
+![](./bundle_identifier.png)
+
+Go to Project > Build Settings > Packaging > Product Bundler Identifier > Change this
+
+Go under Product > Test again and rebuild
+
+If you encounter this error: 
+
+Then you need to Settings > General > Profiles & Device Management > Developer App > Apple Development Profile >
+
+![](profile_device_management.png)
+
+![](developer_app.png)
+
+![](trust_developer.png)
+
+![](trust_developer_prompt.png)
+
+install brew
+
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+install libimobile device
+`brew install libimobiledevice`
+
+install airtestide 
+http://airtest.netease.com/changelog.html
+
+accept user agreement and install
 
