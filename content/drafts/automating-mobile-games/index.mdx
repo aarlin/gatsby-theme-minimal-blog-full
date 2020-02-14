@@ -1,0 +1,157 @@
+---
+title: Automating Mobile Games
+date: 2020-02-10
+description: Automating mobile games so I spend less time on my phone
+tags:
+  - Tutorial
+  - Automation
+  - Mobile
+  - Python
+banner: ./photos/airtest.png
+---
+
+https://github.com/aarlin/automate-feh
+
+
+https://github.com/AirtestProject/Airtest
+
+Wowee!
+
+Wanted to reduce time spent on phone..
+statistics
+
+okay, look at automating FEH
+
+
+I wanted to code on iOS ... boy what a challenge this was
+here were my steps
+START here:
+code in iOS
+do you have a mac?
+no,
+do you have a laptop?
+yes
+do you want to use a VM? NO!!
+
+ok, make a hackintosh JUMBLED MESS trying to setup hackintosh
+install hackintosh into hard drive partition
+install ubuntu
+make bootloading work for all my operating systems
+
+wifi card
+
+ok cool. does your usb support display.. no
+does your usb c support display no, couldnt get it working
+does your hdmi support display. no, tied to nvidia gpu.
+
+MESS AROUND WITH USB MAPPING AND KEXTS AND ALL THIS OTHER JUNKED INSIDE SIMPLE NOTE
+
+return all these docks
+
+DOES AIRPLAY WORK?
+
+yes!!
+
+get an apple tv
+
+does clamshell mode work. no...
+settle for second monitor display, trackpad on big monitor isnt great
+
+setup new environment 
+
+ok new environment is pretty shitty. need to learn hotkeys since mouse sucks
+
+
+
+--
+
+Meat of the blog post
+
+AirTest!! Open source IDE for testing and automating things. I was looking around for an automation framework for
+mobile devices and I came across this. Since I'm not as experienced with mobile programming & seemed interesting
+Picked this open source project up
+
+How to get started
+
+`git clone git@github.com:AirtestProject/iOS-Tagent.git`
+
+XCode > Open.. > WebDriverAgentRunner.xcodeproj
+
+product > Scheeme > WebDriverAgentRunner
+product > Destination
+
+Signing for "WebDriverAgentRunner" requires a development team. Select a development team in the Signing & Capabilities editor.
+
+Click on the base project itself 
+Signing & Capabilities > Team > Add Account...
+
+![](./signing_certificates.png)
+
+![](development_login.png)
+
+Choose your team
+![](./choose_team.png)
+
+If you encounter this following issue with unique build identifier
+![](./bundle_identifier.png)
+
+I suggest going to settings > display & brightness > auto-Lock > never
+
+Go to Project > Build Settings > Packaging > Product Bundler Identifier > Change this 
+append something to the end
+
+Go under Product > Test again and rebuild
+
+if this error pops up
+
+go to General > 
+
+If you encounter this error: 
+
+Then you need to Settings > General > Profiles & Device Management > Developer App > Apple Development Profile >
+
+![](profile_device_management.png)
+
+![](developer_app.png)
+
+![](trust_developer.png)
+
+![](trust_developer_prompt.png)
+
+install brew
+
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+install libimobile device
+`brew install libimobiledevice`
+
+install airtestide 
+http://airtest.netease.com/changelog.html
+
+accept user agreement and install
+
+iproxy 8100 8100
+
+From the Wi-Fi Status icon in the menu bar, choose Create Network. 
+If the icon is missing from the menu bar, go to System Preferences > Network. 
+Click Wi-Fi and select the Show Wi-Fi status in menu bar checkbox.
+
+view > debug area > show debug Area  COmmand shift Y
+
+The bundle “WebDriverAgentRunner” couldn’t be loaded because it is damaged or missing necessary resources. Try reinstalling the bundle.
+
+You need to enroll as an Apple Developer!!
+
+2020-02-12 22:50:05.074564-0500 WebDriverAgentRunner-Runner[3583:796654] Running tests...
+2020-02-12 22:50:05.161263-0500 WebDriverAgentRunner-Runner[3583:796654] The bundle “WebDriverAgentRunner” couldn’t be loaded because it is damaged or missing necessary resources. Try reinstalling the bundle.
+2020-02-12 22:50:05.161323-0500 WebDriverAgentRunner-Runner[3583:796654] (dlopen_preflight(/var/containers/Bundle/Application/B459A319-CA21-4EAF-AA88-2F029EDC070C/WebDriverAgentRunner-Runner.app/PlugIns/WebDriverAgentRunner.xctest/WebDriverAgentRunner): no suitable image found.  Did find:
+	/var/containers/Bundle/Application/B459A319-CA21-4EAF-AA88-2F029EDC070C/WebDriverAgentRunner-Runner.app/PlugIns/WebDriverAgentRunner.xctest/WebDriverAgentRunner: code signature invalid for '/var/containers/Bundle/Application/B459A319-CA21-4EAF-AA88-2F029EDC070C/WebDriverAgentRunner-Runner.app/PlugIns/WebDriverAgentRunner.xctest/WebDriverAgentRunner'
+)
+
+http://appium.io/docs/en/drivers/ios-xcuitest-real-devices/
+
+looks like you need an apple developer id -.-
+
+nvm
+
+works on ipad mini gen 2 - 9.3.5 
