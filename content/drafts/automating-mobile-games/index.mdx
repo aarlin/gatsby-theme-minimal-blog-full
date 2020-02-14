@@ -38,6 +38,8 @@ install hackintosh into hard drive partition
 install ubuntu
 make bootloading work for all my operating systems
 
+wifi card
+
 ok cool. does your usb support display.. no
 does your usb c support display no, couldnt get it working
 does your hdmi support display. no, tied to nvidia gpu.
@@ -93,9 +95,16 @@ Choose your team
 If you encounter this following issue with unique build identifier
 ![](./bundle_identifier.png)
 
-Go to Project > Build Settings > Packaging > Product Bundler Identifier > Change this
+I suggest going to settings > display & brightness > auto-Lock > never
+
+Go to Project > Build Settings > Packaging > Product Bundler Identifier > Change this 
+append something to the end
 
 Go under Product > Test again and rebuild
+
+if this error pops up
+
+go to General > 
 
 If you encounter this error: 
 
@@ -121,3 +130,28 @@ http://airtest.netease.com/changelog.html
 
 accept user agreement and install
 
+iproxy 8100 8100
+
+From the Wi-Fi Status icon in the menu bar, choose Create Network. 
+If the icon is missing from the menu bar, go to System Preferences > Network. 
+Click Wi-Fi and select the Show Wi-Fi status in menu bar checkbox.
+
+view > debug area > show debug Area  COmmand shift Y
+
+The bundle “WebDriverAgentRunner” couldn’t be loaded because it is damaged or missing necessary resources. Try reinstalling the bundle.
+
+You need to enroll as an Apple Developer!!
+
+2020-02-12 22:50:05.074564-0500 WebDriverAgentRunner-Runner[3583:796654] Running tests...
+2020-02-12 22:50:05.161263-0500 WebDriverAgentRunner-Runner[3583:796654] The bundle “WebDriverAgentRunner” couldn’t be loaded because it is damaged or missing necessary resources. Try reinstalling the bundle.
+2020-02-12 22:50:05.161323-0500 WebDriverAgentRunner-Runner[3583:796654] (dlopen_preflight(/var/containers/Bundle/Application/B459A319-CA21-4EAF-AA88-2F029EDC070C/WebDriverAgentRunner-Runner.app/PlugIns/WebDriverAgentRunner.xctest/WebDriverAgentRunner): no suitable image found.  Did find:
+	/var/containers/Bundle/Application/B459A319-CA21-4EAF-AA88-2F029EDC070C/WebDriverAgentRunner-Runner.app/PlugIns/WebDriverAgentRunner.xctest/WebDriverAgentRunner: code signature invalid for '/var/containers/Bundle/Application/B459A319-CA21-4EAF-AA88-2F029EDC070C/WebDriverAgentRunner-Runner.app/PlugIns/WebDriverAgentRunner.xctest/WebDriverAgentRunner'
+)
+
+http://appium.io/docs/en/drivers/ios-xcuitest-real-devices/
+
+looks like you need an apple developer id -.-
+
+nvm
+
+works on ipad mini gen 2 - 9.3.5 
