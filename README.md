@@ -334,3 +334,4 @@ The `static` folder contains the icons, social media images and robots.txt. Don'
 - [Gatsbyjs.org - Gatsby Themes](https://www.gatsbyjs.org/docs/themes/)
 - [Building a Theme](https://www.gatsbyjs.org/tutorial/building-a-theme)
 - [Free egghead.io "Gatsby Theme Authoring" course](https://egghead.io/courses/gatsby-theme-authoring)
+- [Hyvor](https://groups.hyvor.com/HyvorTalk/460/how-to-add-comments-gatsby-blog)
