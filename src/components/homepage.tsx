@@ -1,12 +1,12 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { jsx, Styled } from "theme-ui"
 import { Link } from "gatsby"
+import { Flex } from "@theme-ui/components"
 import Layout from "./layout"
-import Title from "./title"
 import Listing from "./listing"
-import List from "./list"
 import useMinimalBlogConfig from "../hooks/use-minimal-blog-config"
 import replaceSlashes from "../utils/replaceSlashes"
+import SEO from "./seo"
 
 type PostsProps = {
   posts: {
@@ -21,14 +21,17 @@ type PostsProps = {
 }
 
 const Homepage = ({ posts }: PostsProps) => {
-  const { basePath, blogPath } = useMinimalBlogConfig()
+  const { tagsPath, basePath } = useMinimalBlogConfig()
 
   return (
     <Layout>
-      <Title text="Latest Posts">
-        <Link to={replaceSlashes(`/${basePath}/${blogPath}`)}>Read all posts</Link>
-      </Title>
-      <Listing posts={posts} showTags={false} />
+      <SEO title="Blog" />
+      <Flex sx={{ alignItems: `center` }}>
+        <Styled.a as={Link} sx={{ variant: `links.secondary` }} to={replaceSlashes(`/${basePath}/${tagsPath}`)}>
+          View all tags
+        </Styled.a>
+      </Flex>
+      <Listing posts={posts} sx={{ mt: [4, 5] }} />
     </Layout>
   )
 }

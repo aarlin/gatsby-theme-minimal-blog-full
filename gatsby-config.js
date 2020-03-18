@@ -19,12 +19,7 @@ module.exports = {
     {
       resolve: `gatsby-theme-minimal-blog-core`,
       options: {
-        navigation: [
-          {
-            title: `Blog`,
-            slug: `/blog`,
-          },
-        ],
+        navigation: [],
         externalLinks: [
           {
             name: `About`,
