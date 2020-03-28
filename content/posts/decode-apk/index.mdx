@@ -1,0 +1,47 @@
+---
+title: Decoding APK for Source Code and Assets
+date: 2020-03-28
+description: Using apktool to grab assets from an apk file
+tags:
+  - Tutorial
+  - Reverse Engineering
+  - Mobile
+  - Android
+banner: ./photos/apktool-logo.png
+---
+
+**Prequisites**
+
+* Java - should be able to run `java -version` in your terminal
+* Apktool
+* Android device 
+* Cloud based storage - OneDrive, Dropbox, Google Drive
+
+I'll be using a physical Android device for this guide
+This a quick guide on how to grab assets from an APK folder
+For my personal use case, this will be for Fire Emblem Heroes
+
+1. Follow the steps for this [page](https://ibotpeaches.github.io/Apktool/install/) to get Apktool downloaded. 
+   Keep this jar file and bat file if you're using Windows in a folder. We'll get back to this later.
+
+2. Download the app from Google Playstore you want to decode assets from
+
+3. Go search under your apps - **Files**
+  ![](./photos/files-app.png)
+
+4. Under **Installed apps**, click on the arrow button next to the app you want to export the APK file
+and select **Share**
+  ![](./photos/installed-apps.png)
+5. In my case, transfer the file over to Dropbox
+  ![](./photos/share-to-dropbox.png)
+
+6. Once the file transfer is complete, move the file to the folder where you downloaded the apktool 
+
+7. Run the command `apktool d <apk_name>`. In this case, it would be `apktool d feh.apk`
+
+8. The outputted folder should have the assets you want but under **.bin.lz** format
+
+9. The following steps are specific for this apk. 
+**.bin.lz** are xor encrytpted lz77 files. 
+We can use [FEHDataExtractor](https://github.com/Lorenzooone/FEHDataExtractor/releases) to grab the internal data
+
