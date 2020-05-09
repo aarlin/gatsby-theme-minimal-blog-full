@@ -19,15 +19,24 @@ module.exports = {
     {
       resolve: `gatsby-theme-minimal-blog-core`,
       options: {
-        navigation: [],
-        externalLinks: [
+        navigation: [
           {
-            name: `About`,
-            url: "https://aarlin.github.io",
+            title: `About`,
+            slug: `/about`,
           },
+          {
+            title: `Blog`,
+            slug: '/'
+          },
+        ],
+        externalLinks: [
           {
             name: "Github",
             url: "https://github.com/aarlin",
+          },
+          {
+            name: "LinkedIn",
+            url: "https://www.linkedin.com/in/aaron-lin-44123a15a/"
           }
         ],
       }
