@@ -34,7 +34,7 @@
     "gatsby-plugin-sitemap": "^2.4.11",
     "gatsby-plugin-theme-ui": "^0.2.53",
     "gatsby-plugin-typescript": "^2.4.16",
-    "hyvor-talk-react": "^1.0.2",
+    "hyvor-talk-react": "^1.0.3",
     "lodash.kebabcase": "^4.1.1",
     "mdx-utils": "^0.2.0",
     "prism-react-renderer": "^1.1.1",
