@@ -16,7 +16,7 @@
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.11"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.28",
+    "@emotion/core": "^10.0.34",
     "@lekoarts/gatsby-theme-minimal-blog-core": "^2.3.10",
     "@loadable/component": "^5.13.1",
     "@mdx-js/react": "^1.6.16",
