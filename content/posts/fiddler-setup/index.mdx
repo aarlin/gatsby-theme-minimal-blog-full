@@ -6,7 +6,7 @@ tags:
   - Tutorial
   - Reverse Engineering
   - Mobile
-banner: ./photos/fiddler.png
+banner: ./images/fiddler.png
 ---
 
 This is my first guide on setting up Fiddler.  
@@ -29,42 +29,42 @@ plus Charles proxy has a 30 day trial period while Fiddler is entirely free.
 
 1. Start by downloading Fiddler from this [site](https://www.telerik.com/download/fiddler)  
    Enter how you're planning to use Fiddler, your email, and country and accept the Fiddler End User Agreement
-   ![](./photos/download.png)
+   ![](./images/download.png)
 
 2. Open **FiddlerSetup.exe** and click **Yes**
-   ![](./photos/fiddler_uac.png)
+   ![](./images/fiddler_uac.png)
 
 3. Accept license with **I agree**  
-   ![](./photos/license_agreement.png)
+   ![](./images/license_agreement.png)
 
 4. Install location folder location and click **Install**  
-   ![](./photos/installation_folder.png)
+   ![](./images/installation_folder.png)
 
 5. Download the [Certificate Maker plugin](https://telerik-fiddler.s3.amazonaws.com/fiddler/addons/fiddlercertmaker.exe) for Fiddler
 
 6. Open **fiddlercertmaker.exe** and click **Yes**
-   ![](./photos/cert_maker_uac.png)
+   ![](./images/cert_maker_uac.png)
 
 7. Installation complete message, hit **OK**
-   ![](./photos/cert_maker_setup_complete.png)
+   ![](./images/cert_maker_setup_complete.png)
 
 8. Open Fiddler, press **Cancel** for AppContainer message  
-   ![](./photos/appcontainer.png)
+   ![](./images/appcontainer.png)
 
 9. Enable HTTPS traffic decryption
 
    - Go to **Tools > Options... > HTTPS**
    - Click checkbox **Decrypt HTTPS traffic**
    - Hit **OK** on the **Options** window
-     ![](./photos/decrypt_https.png)
+     ![](./images/decrypt_https.png)
 
 10. Allow remote computers to connect
 
     - Go to **Tools > Options... > Connections**
     - Click checkbox **Allow remote computers to connect**
-      ![](./photos/allow_remote.png)
+      ![](./images/allow_remote.png)
     - Hit **OK** from popup window
-      ![](./photos/enabling_remote_access.png)
+      ![](./images/enabling_remote_access.png)
     - Hit **OK** on the **Options** window
 
 11. Restart Fiddler
@@ -72,52 +72,52 @@ plus Charles proxy has a 30 day trial period while Fiddler is entirely free.
 12. Ensure your firewall allows incoming connections to the Fiddler process, and that it's not blocking all incoming connections, including those in the list of allowed apps.
 
 13. Hover over the Online indicator at the far right of the Fiddler toolbar to display the IP addresses assigned to Fiddler's machine. Note this down for step 17. Usually this is the bottommost IP address if you have multiple IP addresses
-    ![](./photos/online_ip.png)
+    ![](./images/online_ip.png)
 
 ## **iPhone device configuration**
 
 14. Go to **Settings > Wi-Fi**
 
 15. Find your current network and click the (i) icon
-    ![](./photos/wifi_info.png)
+    ![](./images/wifi_info.png)
 
 16. Scroll to the bottom and open up **HTTP Proxy**
 
 17. Choose **Manual**, type your IP address in the **Server** field and type the Fiddler listening port (8888 by default) in the **Port** field. Keep **Authentication** off
-    ![](./photos/sample_proxy.png)
+    ![](./images/sample_proxy.png)
 
 18. Hit **Save**
 
 19. Go to Safari. It has to be Safari, not Chrome! Open up http://ipv4.fiddler:8888
-    ![](./photos/ipv4fiddler.png)
+    ![](./images/ipv4fiddler.png)
 
 20. Click FiddlerRoot certificate. Click **Allow**
-    ![](./photos/fiddler_root.png)
+    ![](./images/fiddler_root.png)
 
 21. If there is a prompt, choose **iPhone** for device to download this certificate to
-    ![](./photos/install_device.png)
+    ![](./images/install_device.png)
 
 22. Click **Close** for Profile Downloaded
-    ![](./photos/profile_downloaded.png)
+    ![](./images/profile_downloaded.png)
 
 23. Click on **Profile Downloaded** under **Settings** in your iPhone
-    ![](./photos/settings.png)
+    ![](./images/settings.png)
 
 24. Click **Install** for the DO_NOT_TRUST_FiddlerRoot profile
-    ![](./photos/install_profile.png)
+    ![](./images/install_profile.png)
 
 25. Enter your passcode if you have one
-    ![](./photos/passcode.png)
+    ![](./images/passcode.png)
 
 26. Hit **Install** when warning message comes up and click **Install** again
-    ![](./photos/install_warning.png)
+    ![](./images/install_warning.png)
 
 27. Click **Done** afterwards for Profile Installed
 
 28. Go to **Settings > About > Certificate Trust Settings**. It should be located at the bottom
 
 29. Turn on the Certificate you downloaded. Click **Continue** for Root Certificate warning
-    ![](./photos/root_certificate.png)
+    ![](./images/root_certificate.png)
 
 30. You're done! When you go to any site or app, you should now see traffic being logged into the Fiddler app on your desktop
 
