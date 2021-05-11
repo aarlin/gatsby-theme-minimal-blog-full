@@ -1,0 +1,71 @@
+---
+title: Setting up Mail Server On EC2
+date: 2021-05-10
+description: Creating your own mail server for generating emails
+tags:
+  - Tutorial
+  - Mailcow
+  - AWS
+---
+
+Recently looked into setting up my own mail server and the documentation was horrible for my use case.
+
+I started looking around the web and found some information about hMailServer & Postfix Mail Server through 5 year old videos.
+This brought me to learn about AWS Marketplace which allows products to be readily deployed prebuilt onto EC2 instances.
+Ultimately, these were not that great due to bad documentation.
+
+There was also Postal and CyberPanel but I ultimately went with Mailcow because of the videoes available for setting it up
+
+Alright, so what do we need?
+
+* Route 53 domain name
+* EC2 instance
+
+1. Start with Route 53 on AWS by searching for a domain name.
+I personally just chose the cheapest option from the dropdown selection which came to be $5
+
+![](./images/1.png)
+
+2. Enter your contact information
+
+![](./images/2.png)
+
+3. Verify and accept if you want to renew domain automatically, accept terms & conditions, and complete order
+![](./images/3.png)
+
+4. It'll take a few minutes for domain registration to take place. 
+Once you see domain registration succesful under [Route 53 Dashboard](https://console.aws.amazon.com/route53/v2/home#Dashboard), you can continue
+
+![](./images/4.png)
+
+5. In the meantime, go to [EC2](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Instances:)
+and launch an Ubuntu instance. Personally I went with 20.04 and t2.small 
+![](./images/6.png)
+
+6. Under [Security Groups](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#SecurityGroups:),
+you'll want to create a new security group for Mailcow. Follow this screenshot for inbound rules
+![](./images/8.png)
+
+Click this [link](https://mailcow.github.io/mailcow-dockerized-docs/prerequisite-system/#default-ports) to double check which ports need to be enabled
+
+7. Attach this security group to your EC2 instance by right clicking your instance, choosing Security and Change security group
+Search for your security group you made, add, and save
+![](./images/9.png)
+![](./images/10.png)
+
+6. Go to [Elastic IPs](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Addresses:) and allocate an elastic IP address
+Under actions, click Associate Elastic IP Address and point it to your EC2 instance you launched
+![](./images/7.png)
+
+5. Under [hosted zones](https://console.aws.amazon.com/route53/v2/hostedzones#), 
+click your domain name and click View details. You'll want your domain to have these records.
+Follow this [guide](https://mailcow.github.io/mailcow-dockerized-docs/prerequisite-dns/#the-minimal-dns-configuration) to double check
+
+**Note**: the A record should be pointed to your elastic IP address as value
+
+![](./images/5.png)
+![](./images/11.png)
+
+6. The rest is super simple. SSH into the EC2 instance and follow this [guide](https://mailcow.github.io/mailcow-dockerized-docs/i_u_m_install/)
+
+7. If you set everything up, you should be able to access your mailcow server using: https://${MAILCOW_HOSTNAME} with the default credentials admin + password moohoo.
