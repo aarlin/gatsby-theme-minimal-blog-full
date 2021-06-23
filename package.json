@@ -43,7 +43,7 @@
     "react-helmet": "^5.2.1",
     "react-live": "^2.2.3",
     "theme-ui": "^0.9.1",
-    "typeface-ibm-plex-sans": "^0.0.75"
+    "typeface-ibm-plex-sans": "^1.1.13"
   },
   "keywords": [
     "gatsby",
