@@ -40,7 +40,7 @@
     "prism-react-renderer": "^1.2.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-helmet": "^5.2.1",
+    "react-helmet": "^6.1.0",
     "react-live": "^2.2.3",
     "theme-ui": "^0.9.1",
     "typeface-ibm-plex-sans": "^0.0.75"
