@@ -41,7 +41,7 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-helmet": "^5.2.1",
-    "react-live": "^2.2.3",
+    "react-live": "^2.3.0",
     "theme-ui": "^0.9.1",
     "typeface-ibm-plex-sans": "^0.0.75"
   },
