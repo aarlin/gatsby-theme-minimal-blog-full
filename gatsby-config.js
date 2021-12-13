@@ -7,9 +7,9 @@ module.exports = {
     // You can overwrite values here that are used for the SEO component
     // You can also add new values here to query them like usual
     // See all options: https://github.com/LekoArts/gatsby-themes/blob/main/themes/gatsby-theme-minimal-blog/gatsby-config.js
-    siteTitle: `Aaron's Minimal Blog`,
-    siteTitleAlt: `Aaron's Minimal Blog - Gatsby Theme`,
-    siteHeadline: `Aaron's Minimal Blog - Gatsby Theme from @lekoarts`,
+    siteTitle: `Aaron's Blog`,
+    siteTitleAlt: `Aaron's Blog - Gatsby Theme`,
+    siteHeadline: `Aaron's Blog - Gatsby Theme from @lekoarts`,
     siteUrl: `https://aarlin.netlify.com`,
     siteDescription: `Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and line highlighting.`,
     siteLanguage: `en`,
