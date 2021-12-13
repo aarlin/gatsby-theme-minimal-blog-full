@@ -1,4 +1,4 @@
-import React from "react"
+import * as React from "react"
 import Post from "../../../components/post"
 
 type Props = {
@@ -6,10 +6,9 @@ type Props = {
     post: any
     [key: string]: any
   }
+  [key: string]: any
 }
 
-export default ({ data }: Props) => {
-  const { post } = data
-
-  return <Post data={{ ...data, post }} />
+export default function MinimalBlogCorePost({ ...props }: Props) {
+  return <Post {...props} />
 }

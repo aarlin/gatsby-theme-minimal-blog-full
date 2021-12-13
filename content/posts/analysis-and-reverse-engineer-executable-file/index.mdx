@@ -7,7 +7,6 @@ tags:
   - Reverse Engineering
   - Java
 banner: ./images/winhex-logo.jpg
-canonicalUrl: https://aarlin.netlify.app/analysis-and-reverse-engineer-executable-file
 ---
 
 **Prequisites**
@@ -33,9 +32,9 @@ In this case, I found code that could be an indication that it is java code bund
 
 4. Doing some research, we can see that if we can extract the hex starting from **PK** to the end of the hex, we can turn it back into a .jar file
 
-For reference: 
-http://reverseengineeringtips.blogspot.com/2014/12/unpacking-launch4j-35-extracting-jar.html
-https://reverseengineering.stackexchange.com/questions/3532/get-jar-back-from-wrappedinto-exe-jar
+For reference:  
+http://reverseengineeringtips.blogspot.com/2014/12/unpacking-launch4j-35-extracting-jar.html  
+https://reverseengineering.stackexchange.com/questions/3532/get-jar-back-from-wrappedinto-exe-jar  
 
 6. Search for "META-INF" for the starting block. Right click the hex block starting with PK and select **Beginning of block**
 ![](./images/4.png)

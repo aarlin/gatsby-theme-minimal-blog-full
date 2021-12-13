@@ -11,141 +11,46 @@
   </a>
 </p>
 
+Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and line highlighting. Using the Gatsby Theme [`@lekoarts/gatsby-theme-minimal-blog`](https://github.com/LekoArts/gatsby-themes/tree/main/themes/gatsby-theme-minimal-blog).
+
+[**Demo Website**](https://minimal-blog.lekoarts.de)
+
+Also be sure to check out other [Free & Open Source Gatsby Themes](https://themes.lekoarts.de) and my [Personal Website](https://www.lekoarts.de?utm_source=minimal-blog&utm_medium=Starter).
+
 ## ✨ Features
 
 - MDX
-- Theme UI-based theming
+- Fully customizable through the usage of Gatsby Themes (and Theme UI)
 - Light Mode / Dark Mode
 - Typography driven, minimal style
 - Tags/Categories support
 - Code highlighting with [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer) and [react-live](https://github.com/FormidableLabs/react-live) support. Also allows adding line numbers, line highlighting, language tabs, and file titles.
 - RSS Feed for blog posts
-- Fully customizable through the usage of Gatsby Themes (and Theme UI)
-- Google Analytics Support
 - SEO (Sitemap, OpenGraph tags, Twitter tags)
-- Offline Support & WebApp Manifest
+- WebApp Manifest
 
-## 🚀 Getting Started
 
-1. **Start developing.**
+### 3. **Open the code and start customizing!**
 
-Navigate into your new site's directory and start it up.
+Install by running `yarn install`
 
-```sh
-cd project-name
-gatsby develop
-```
-
-2. **Open the code and start customizing!**
+Start the site by running `yarn develop`.
 
 Your site is now running at `http://localhost:8000`!
 
-If you want to learn more about how you can use a Gatsby starter that is configured with a Gatsby theme, you can checkout this [shorter](https://www.gatsbyjs.org/docs/themes/using-a-gatsby-theme/) or [longer](https://www.gatsbyjs.org/tutorial/using-a-theme/) tutorial. The tutorials don't exactly apply to this starter however the concepts are the same.
+If you want to learn more about how you can use a Gatsby starter that is configured with a Gatsby theme, you can check out this [shorter](https://www.gatsbyjs.com/docs/how-to/plugins-and-themes/using-a-gatsby-theme/) or [longer](https://www.gatsbyjs.com/tutorial/using-a-theme/) tutorial. The tutorials don't exactly apply to this starter however the concepts are the same.
 
+## 📝 Using and modifying this starter
 
-## 💼 Contents
+**Important Note:** Please read the guide [Shadowing in Gatsby Themes](https://www.gatsbyjs.com/docs/how-to/plugins-and-themes/shadowing/) to understand how to customize the underlying theme!
 
-### Theme options
+This starter creates a new Gatsby site that installs and configures the theme [`@lekoarts/gatsby-theme-minimal-blog`](https://github.com/LekoArts/gatsby-themes/tree/main/themes/gatsby-theme-minimal-blog).
 
-| Key               | Default Value   | Description                                                                                               |
-| ----------------- | --------------- | --------------------------------------------------------------------------------------------------------- |
-| `basePath`        | `/`             | Root url for the theme                                                                                    |
-| `blogPath`        | `/blog`         | url for the blog post overview page                                                                       |
-| `tagsPath`        | `/tags`         | url for the tags overview page and prefix for tags (e.g. `/tags/my-tag`)                                  |
-| `postsPath`       | `content/posts` | Location of posts                                                                                         |
-| `pagesPath`       | `content/pages` | Location of additional pages (optional)                                                                   |
-| `mdx`             | `true`          | Configure `gatsby-plugin-mdx` (if your website already is using the plugin pass `false` to turn this off) |
-| `showLineNumbers` | `true`          | Show line numbers in code blocks                                                                          |
-| `navigation`      | `[]`            | Add links to your internal sites to the left part of the header                                           |
-| `externalLinks`   | `[]`            | Add links to your external sites to the right part of the header                                          |
-
-#### Example usage
-
-```js
-// gatsby-config.js
-module.exports = {
-  plugins: [
-    {
-      resolve: `gatsby-theme-minimal-blog`,
-      options: {
-        showLineNumbers: false,
-        navigation: [
-          {
-            title: `Blog`,
-            slug: `/blog`
-          },
-          {
-            title: `About`,
-            slug: `/about`
-          }
-        ],
-        externalLinks: [
-          {
-            name: `Twitter`,
-            url: `https://twitter.com/lekoarts_de`
-          },
-          {
-            name: `Instagram`,
-            url: `https://www.instagram.com/lekoarts.de/`
-          }
-        ]
-      }
-    }
-  ]
-};
-```
-
-#### Additional configuration
-
-In addition to the theme options, there are a handful of items you can customize via the `siteMetadata` object in your site's `gatsby-config.js`
-
-```js
-// gatsby-config.js
-module.exports = {
-  siteMetadata: {
-    // Used for the title template on pages other than the index site
-    siteTitle: `Lupin`,
-    // Default title of the page
-    siteTitleAlt: `Minimal Blog - @lekoarts/gatsby-theme-minimal-blog`,
-    // Can be used for e.g. JSONLD
-    siteHeadline: `Minimal Blog - Gatsby Theme from @lekoarts`,
-    // Will be used to generate absolute URLs for og:image etc.
-    siteUrl: `https://minimal-blog.lekoarts.de`,
-    // Used for SEO
-    siteDescription: `Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and line highlighting.`,
-    // Will be set on the <html /> tag
-    siteLanguage: `en`,
-    // Used for og:image and must be placed inside the `static` folder
-    siteImage: `/banner.jpg`,
-    // Twitter Handle
-    author: `@lekoarts_de`,
-    // Links displayed in the header on the right side
-    externalLinks: [
-      {
-        name: `Twitter`,
-        url: `https://twitter.com/lekoarts_de`
-      },
-      {
-        name: `Instagram`,
-        url: `https://www.instagram.com/lekoarts.de/`
-      }
-    ],
-    // Navigation links
-    navigation: [
-      {
-        title: `Blog`,
-        slug: `/blog`
-      }
-    ]
-  }
-};
-```
-
-If you want to add additional items to the navigation or external links (left and right side of header), add objects in the shape shown above to the arrays.
+Have a look at the theme's README and files to see what options are available and how you can shadow the various components including Theme UI. Generally speaking you will want to place your files into `src/@lekoarts/gatsby-theme-minimal-blog/` to shadow/override files. The Theme UI config can be configured by shadowing its files in `src/gatsby-plugin-theme-ui/`.
 
 ### Code Highlighting
 
-Since this theme ships with [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer) and [react-live](https://github.com/FormidableLabs/react-live) certain additional features were added to code blocks. You can find an overview / usage example in the [example repository](https://github.com/LekoArts/gatsby-themes/tree/master/examples/minimal-blog/content/posts/fantastic-beasts-and-where-to-find-them/index.mdx)! If you want to change certain code styles or add additional language tabs, you need to shadow the file `src/@lekoarts/gatsby-theme-minimal-blog/styles/code.js`.
+Since the underlying theme ships with [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer) and [react-live](https://github.com/FormidableLabs/react-live) certain additional features were added to code blocks. You can find an overview / usage example in the [example repository](https://github.com/LekoArts/gatsby-themes/tree/main/examples/minimal-blog/content/posts/fantastic-beasts-and-where-to-find-them/index.mdx)! If you want to change certain code styles or add additional language tabs, you need to shadow the file `src/@lekoarts/gatsby-theme-minimal-blog/styles/code.js`.
 
 **Language tabs:**
 
@@ -212,10 +117,6 @@ render(<button onClick={onClick}>Alohomora!</button>);
 ```
 ````
 
-### Shadowing
-
-Please read the guide [Shadowing in Gatsby Themes](https://www.gatsbyjs.org/docs/themes/shadowing/) to understand how to customize the this theme! Generally speaking you will want to place your files into `src/@lekoarts/gatsby-theme-minimal-blog/` to shadow/override files.
-
 ### Adding content
 
 #### Adding a new blog post
@@ -228,6 +129,7 @@ New blog posts will be shown on the index page (the three most recent ones) of t
 1. Reference an image as your `banner` in the frontmatter
 1. Write your content below the frontmatter
 1. Add a `slug` to the frontmatter to use a custom slug, e.g. `slug: "/my-slug"` (Optional)
+1. Use `defer` to opt-in into Deferred Static Generation (DSG) (optional)
 
 **Frontmatter reference:**
 
@@ -236,14 +138,16 @@ New blog posts will be shown on the index page (the three most recent ones) of t
 title: Introduction to "Defence against the Dark Arts"
 date: 2019-11-07
 description: Defence Against the Dark Arts (abbreviated as DADA) is a subject taught at Hogwarts School of Witchcraft and Wizardry and Ilvermorny School of Witchcraft and Wizardry.
+defer: false
 tags:
   - Tutorial
   - Dark Arts
 banner: ./defence-against-the-dark-arts.jpg
+canonicalUrl: https://random-blog-about-curses.com/curses-counter-curses-and-more
 ---
 ```
 
-**The fields `description` and `banner` are optional!** If no description is provided, an excerpt of the blog post will be used. If no banner is provided, the default `siteImage` (from `siteMetadata`) is used.
+**The fields `description`, `banner`, `defer` and `canonicalUrl` are optional!** If no description is provided, an excerpt of the blog post will be used. If no banner is provided, the default `siteImage` (from `siteMetadata`) is used. If no `canonicalUrl` is provided, it will not be included in the header.
 
 The `date` field has to be written in the format `YYYY-MM-DD`!
 
@@ -255,6 +159,7 @@ Additional pages can be created by placing MDX files inside `contents/pages`, e.
 1. Create a new `index.mdx` file, and add the frontmatter
 1. Write your content below the frontmatter
 1. Optionally add files/images to the folder you want to reference from the page
+1. Use `defer` to opt-in into Deferred Static Generation (DSG) (optional)
 
 **Frontmatter reference:**
 
@@ -262,76 +167,67 @@ Additional pages can be created by placing MDX files inside `contents/pages`, e.
 ---
 title: About
 slug: "/about"
+defer: false
 ---
 ```
 
-[**Demo Website**](https://minimal-blog.lekoarts.de)
+### Changing the "Hero" text
 
-Also be sure to checkout other [Free & Open Source Gatsby Themes](https://themes.lekoarts.de)
+To edit the hero text ("Hi, I'm Lupin...), create a file at `src/@lekoarts/gatsby-theme-minimal-blog/texts/hero.mdx` to edit the text.
 
-## 📝 Using and modifying this starter
+### Changing the "Projects" part
 
-**Important Note:** Please read the guide [Shadowing in Gatsby Themes](https://www.gatsbyjs.org/docs/themes/shadowing/) to understand how to customize the underlying theme!
+To edit the projects part below "Latest posts", create a file at `src/@lekoarts/gatsby-theme-minimal-blog/texts/bottom.mdx` to edit the contents.
 
-This starter creates a new Gatsby site that installs and configures the theme [`@lekoarts/gatsby-theme-minimal-blog`](https://github.com/LekoArts/gatsby-themes/tree/master/themes/gatsby-theme-minimal-blog).
+### Extending the footer of the post
 
-Have a look at the theme's README and files to see what options are available and how you can shadow the various components including Theme UI. Generally speaking you will want to place your files into `src/@lekoarts/gatsby-theme-minimal-blog/` to shadow/override files. The Theme UI config can be configured by shadowing its files in `src/gatsby-plugin-theme-ui/`.
+Inside the [`<Post />` component](https://github.com/LekoArts/gatsby-themes/blob/main/themes/gatsby-theme-minimal-blog/src/components/post.tsx) there's also a `<PostFooter />` component that you can shadow to display elements between the end of the post and the global footer. By default it returns `null`. Create a file at `src/@lekoarts/gatsby-theme-minimal-blog/components/post-footer.jsx` to edit this section. The `<PostFooter />` component receives the complete `post` prop that `<Post />` also receives.
 
-### Adding content
+### Changing your fonts
 
-#### Adding a new blog post
+By default, the underlying theme and thus this starter uses "IBM Plex Sans" as its font. It's used throughout the site and set as a `font-family` on the `html` element.
 
-New blog posts will be shown on the index page (the three most recent ones) of this theme and on the blog overview page. They can be added by creating MDX files inside `content/posts`. General setup:
+If you want to change your default font or add any additional fonts, you'll need to change two things:
 
-1. Create a new folder inside `content/posts`
-1. Create a new `index.mdx` file, and add the frontmatter
-1. Add images to the created folder (from step 1) you want to reference in your blog post
-1. Reference an image as your `banner` in the frontmatter
-1. Write your content below the frontmatter
+1. The configuration for `gatsby-omni-font-loader` => Responsible for loading the font CSS files
+1. The Theme UI config and its `fonts` key (see [Theme UI Typography Docs](https://theme-ui.com/theming#typography)) => Responsible for setting the `font-family` in the example
 
-**Frontmatter reference:**
+After adjusting the configuration for `gatsby-omni-font-loader` you'll need to shadow the theme's Theme UI config and overwrite the `fonts` key. For the sake of this explanation it's assumed that you replaced "IBM Plex Sans" with "Roboto Mono".
 
-```md
----
-title: Introduction to "Defence against the Dark Arts"
-date: 2019-11-07
-description: Defence Against the Dark Arts (abbreviated as DADA) is a subject taught at Hogwarts School of Witchcraft and Wizardry and Ilvermorny School of Witchcraft and Wizardry.
-tags:
-  - Tutorial
-  - Dark Arts
-banner: ./defence-against-the-dark-arts.jpg
----
+Create a file at `src/gatsby-plugin-theme-ui/index.js` with the following contents:
+
+```js
+import { merge } from "theme-ui";
+import originalTheme from "@lekoarts/gatsby-theme-minimal-blog/src/gatsby-plugin-theme-ui/index";
+
+const theme = merge(originalTheme, {
+  fonts: {
+    body: `"Roboto Mono", monospace`,
+  },
+});
+
+export default theme;
 ```
 
-**The fields `description` and `banner` are optional!** If no description is provided, an excerpt of the blog post will be used. If no banner is provided, the default `siteImage` (from `siteMetadata`) is used.
+As defined in the [Theme Specification](https://theme-ui.com/theme-spec#typography) `body` is the default body font family.
 
-The `date` field has to be written in the format `YYYY-MM-DD`!
+**Another example:** You didn't replace "IBM Plex Sans" but added "Roboto Mono" additionally since you want to use it for your headings.
 
-**Frontmatter reference:**
+Then you'd not overwrite `body` but add a `heading` key:
 
-```md
----
-title: About
-slug: "/about"
----
+```js
+import { merge } from "theme-ui";
+import originalTheme from "@lekoarts/gatsby-theme-minimal-blog/src/gatsby-plugin-theme-ui/index";
+
+const theme = merge(originalTheme, {
+  fonts: {
+    heading: `"Roboto Mono", monospace`,
+  },
+});
+
+export default theme;
 ```
 
 ### Change your `static` folder
 
-The `static` folder contains the icons, social media images and robots.txt. Don't forget to change these files, too!
-
-## 🎓 Learning Gatsby Themes
-
-### Articles from lekoarts.de
-
-- [How I used Theme UI to build my Gatsby Themes library](https://www.lekoarts.de/en/blog/how-i-used-theme-ui-to-build-my-gatsby-themes-library)
-- [Setting up a Gatsby Themes workspace with TypeScript, ESLint & Cypress](https://www.lekoarts.de/en/blog/setting-up-a-gatsby-themes-workspace-with-typescript-eslint-and-cypress)
-- [Specimens for Gatsby powered Design Systems](https://www.lekoarts.de/en/blog/specimens-for-gatsby-powered-design-systems)
-- [Creating your own Status Dashboard with Gatsby](https://www.lekoarts.de/en/blog/creating-your-own-status-dashboard-with-gatsby)
-
-### Official resources
-
-- [Gatsbyjs.org - Gatsby Themes](https://www.gatsbyjs.org/docs/themes/)
-- [Building a Theme](https://www.gatsbyjs.org/tutorial/building-a-theme)
-- [Free egghead.io "Gatsby Theme Authoring" course](https://egghead.io/courses/gatsby-theme-authoring)
-- [Hyvor](https://groups.hyvor.com/HyvorTalk/460/how-to-add-comments-gatsby-blog)
+The `static` folder contains the icons, social media images and `robots.txt`. Don't forget to change these files, too! You can use [Real Favicon Generator](https://realfavicongenerator.net/) to generate the image files inside `static`.

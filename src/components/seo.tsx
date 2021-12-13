@@ -1,24 +1,25 @@
-import React from "react"
-import Helmet from "react-helmet"
+import * as React from "react"
+import { Helmet } from "react-helmet"
+import { withPrefix } from "gatsby"
 import useSiteMetadata from "../hooks/use-site-metadata"
 
-const defaultProps = {
-  title: ``,
-  description: false,
-  pathname: false,
-  image: false,
-  children: null,
-}
-
-type Props = {
+type SEOProps = {
   title?: string
   description?: string
   pathname?: string
   image?: string
   children?: React.ReactNode
+  canonicalUrl?: string
 }
 
-const SEO = ({ title, description, pathname, image, children }: Props) => {
+const Seo = ({
+  title = ``,
+  description = ``,
+  pathname = ``,
+  image = ``,
+  children = null,
+  canonicalUrl = ``,
+}: SEOProps) => {
   const site = useSiteMetadata()
 
   const {
@@ -56,14 +57,13 @@ const SEO = ({ title, description, pathname, image, children }: Props) => {
       <meta name="twitter:image:alt" content={seo.description} />
       <meta name="twitter:creator" content={author} />
       <meta name="gatsby-theme" content="@lekoarts/gatsby-theme-minimal-blog" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+      <link rel="icon" type="image/png" sizes="32x32" href={withPrefix(`/favicon-32x32.png`)} />
+      <link rel="icon" type="image/png" sizes="16x16" href={withPrefix(`/favicon-16x16.png`)} />
+      <link rel="apple-touch-icon" sizes="180x180" href={withPrefix(`/apple-touch-icon.png`)} />
+      {canonicalUrl ? <link rel="canonical" href={canonicalUrl} /> : null}
       {children}
     </Helmet>
   )
 }
 
-export default SEO
-
-SEO.defaultProps = defaultProps
+export default Seo
