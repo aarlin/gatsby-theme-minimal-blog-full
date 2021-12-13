@@ -1,4 +1,4 @@
-import React from "react"
+import * as React from "react"
 import Page from "../../../components/page"
 
 type Props = {
@@ -6,10 +6,9 @@ type Props = {
     page: any
     [key: string]: any
   }
+  [key: string]: any
 }
 
-export default ({ data }: Props) => {
-  const { page } = data
-
-  return <Page data={{ ...data, page }} />
+export default function MinimalBlogCorePage({ ...props }: Props) {
+  return <Page {...props} />
 }

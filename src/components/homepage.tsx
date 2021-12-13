@@ -1,37 +1,52 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import { jsx } from "theme-ui"
 import { Link } from "gatsby"
-import { Flex } from "@theme-ui/components"
 import Layout from "./layout"
+import Title from "./title"
 import Listing from "./listing"
+import List from "./list"
 import useMinimalBlogConfig from "../hooks/use-minimal-blog-config"
+import useSiteMetadata from "../hooks/use-site-metadata"
 import replaceSlashes from "../utils/replaceSlashes"
-import SEO from "./seo"
+import { visuallyHidden } from "../styles/utils"
+// @ts-ignore
+import Hero from "../texts/hero"
+// @ts-ignore
+import Bottom from "../texts/bottom"
 
 type PostsProps = {
   posts: {
     slug: string
     title: string
     date: string
+    excerpt: string
+    description: string
+    timeToRead?: number
     tags?: {
       name: string
       slug: string
     }[]
   }[]
+  [key: string]: any
 }
 
 const Homepage = ({ posts }: PostsProps) => {
-  const { tagsPath, basePath } = useMinimalBlogConfig()
+  const { basePath, blogPath } = useMinimalBlogConfig()
+  const { siteTitle } = useSiteMetadata()
 
   return (
     <Layout>
-      <SEO title="Blog" />
-      <Flex sx={{ alignItems: `center` }}>
-        <Styled.a as={Link} sx={{ variant: `links.secondary` }} to={replaceSlashes(`/${basePath}/${tagsPath}`)}>
-          View all tags
-        </Styled.a>
-      </Flex>
-      <Listing posts={posts} sx={{ mt: [4, 5] }} />
+      <h1 sx={visuallyHidden}>{siteTitle}</h1>
+      <section sx={{ mb: [5, 6, 7], p: { fontSize: [1, 2, 3], mt: 2 }, variant: `section_hero` }}>
+        <Hero />
+      </section>
+      <Title text="Latest Posts">
+        <Link to={replaceSlashes(`/${basePath}/${blogPath}`)}>Read all posts</Link>
+      </Title>
+      <Listing posts={posts} showTags={false} />
+      <List>
+        <Bottom />
+      </List>
     </Layout>
   )
 }

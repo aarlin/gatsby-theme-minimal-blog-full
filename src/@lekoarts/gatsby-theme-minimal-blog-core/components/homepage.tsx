@@ -1,4 +1,4 @@
-import React from "react"
+import * as React from "react"
 import Homepage from "../../../components/homepage"
 
 type Props = {
@@ -6,10 +6,13 @@ type Props = {
     allPost: any
     [key: string]: string
   }
+  [key: string]: any
 }
 
-export default ({ data }: Props) => {
-  const { allPost } = data
+export default function MinimalBlogCoreHomepage({ ...props }: Props) {
+  const {
+    data: { allPost },
+  } = props
 
-  return <Homepage posts={allPost.nodes} />
+  return <Homepage posts={allPost.nodes} {...props} />
 }

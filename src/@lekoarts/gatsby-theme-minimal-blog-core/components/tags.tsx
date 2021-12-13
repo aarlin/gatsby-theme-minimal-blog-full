@@ -1,4 +1,4 @@
-import React from "react"
+import * as React from "react"
 import Tags from "../../../components/tags"
 
 type Props = {
@@ -10,10 +10,13 @@ type Props = {
       }[]
     }
   }
+  [key: string]: any
 }
 
-export default ({ data }: Props) => {
-  const { allPost } = data
+export default function MinimalBlogCoreTags({ ...props }: Props) {
+  const {
+    data: { allPost },
+  } = props
 
-  return <Tags list={allPost.group} />
+  return <Tags list={allPost.group} {...props} />
 }
