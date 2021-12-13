@@ -36,7 +36,7 @@ module.exports = {
           },
           {
             name: "LinkedIn",
-            url: "https://www.linkedin.com/in/aaron-lin-44123a15a/"
+            url: "https://www.linkedin.com/in/aaronlin256"
           }
         ],
       }
