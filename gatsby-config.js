@@ -41,6 +41,7 @@ module.exports = {
             url: `https://www.linkedin.com/aarlin256`,
           },
         ],
+        formatString: 'MM/DD/YYYY'
       },
     },
     {
