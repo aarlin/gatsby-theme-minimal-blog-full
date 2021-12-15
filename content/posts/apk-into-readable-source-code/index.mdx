@@ -16,7 +16,7 @@ tags:
 
 1. Download the jar for Bytecode Viewer located at this link: [page](https://github.com/Konloch/bytecode-viewer/releases)
 
-2. Download the app from Google Playstore you want to decode assets from.
+2. Use a site like apkpure.com to download the apk you want to look into  
 For this guide, we'll be this [apk](https://m.apkpure.com/eme-hive-meet-chat-go-live/com.eastmeeteast.eme_android)
 
 3. Open Bytecode Viewer using the following command
@@ -32,11 +32,11 @@ java -jar jda-1.2.0-with-deps
 6. You should see the source code after the application has processed the apk 
   ![](./images/2.png)
 
-7. Looking through we can see several things about this application
+7. Looking through we can see several things about this application  
 
-a. The usage of Firebase
-b. Kotlin based application
-c. Source code under `com.eastmeeteast`
+a. The usage of Firebase  
+b. Kotlin based application  
+c. Source code under `com.eastmeeteast`  
 
 8. Looking at one .class file, we can see the implementation. Example shown below is for `com.eastmeeteast.api.servicemodule.CommunitiesModule.class`
  ![](./images/3.png)
