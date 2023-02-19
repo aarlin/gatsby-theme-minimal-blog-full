@@ -1,5 +1,5 @@
 ---
-title: Analyzing SSL Pinned Android Apps Using Frida, HttpToolkit and LDPlayer
+title: Setup HTTP Toolkit, Frida, and LDPlayer to Monitor SSL Pinned Android Apps
 date: 2023-02-19
 description: A guide on how to setup reversing APIs on ssl pinned android apps
 tags:
@@ -11,15 +11,12 @@ banner: ./images/winhex-logo.jpg
 
 ## **Prequisites**
 
-* Cmder
 * Python
 * 7zip
-* Apktools
 
-For more context, this tutorial is following similar steps to this post originally from HttpToolkit's blogspot, however under Windows
+For more context, this tutorial is following similar steps to this post originally from HttpToolkit's [blogspot](https://httptoolkit.com/blog/frida-certificate-pinning/), however under Windows
 
 The endgoal of this tutorial is to be able to look into HTTPS requests for an Android app that has been SSL pinned.
-
 
 ## **LDPlayer9 Installation**
 
@@ -95,17 +92,26 @@ Make sure `frida-tools` was installed by running `frida-ps`
 frida-ps
 ```
 
+## ADB Tools
+
+Install the `SDK Platform-Tools for Windows` from this [link](https://developer.android.com/studio/releases/platform-tools#downloads)
+
+Double check that installed and is working properly
+
+```bash
+adb
+```
+
 ## Frida Server
 
-Install Frida Android server from [here](https://github.com/frida/frida/releases/download/16.0.10/frida-server-16.0.10-android-x86_64.xz)
+Install Frida Android server from [here](https://github.com/frida/frida/releases/download/16.0.10/frida-server-16.0.10-android-x86_64.xz) or check the most up-to-date version from https://github.com/frida/frida/releases
 
-**Note**: We're using `x86_64` version because we're going to be using `LDPlayer9` 
+The current version as of this tutorial is `16.0.10`.  
+We're using `x86_64` version because we're going to be using `LDPlayer9` on Windows  
 
-The current version as of this tutorial is `16.0.10`. Check for the most up-to-date version from https://github.com/frida/frida/releases
 
-Unzip the `.xz` file using `7zip`
-
-Drop the unzipped file into `frida-android-unpinning` folder
+Unzip the `.xz` file using `7zip`  
+Drop the unzipped file into `frida-android-unpinning` folder  
 
 It should look like the following after everything
 
@@ -191,11 +197,62 @@ Finally, you should the requests populate on HTTP HttpToolkit
 
 ![](./images/19.png)
 
+## Shortened Steps After Installation
 
+Open LDPlayer9 and start the app you want to monitor
 
+![](./images/20.png)
 
+Open up a terminal and start the emulator as root
+```bash
+adb root
+```
 
+![](./images/9.png)
 
+Start the Frida server
 
+```bash
+adb shell "/data/local/tmp/frida-server &"
+```
+
+![](./images/12.png)
+
+Open up another terminal
+
+```bash
+cd frida-android-unpinning
+```
+
+Activate the virtual environment
+
+```bash
+frida\Scripts\activate.bat
+```
+
+Find the app identifier after opening the app
+```bash
+frida-ps -U -a
+```
+
+![](./images/13.png)
+
+```bash
+frida -U -l ./frida-script.js -f com.p1.mobile.putong
+```
+
+![](./images/14.png)
+
+Open HTTP Toolkit
+
+![](./images/15.png)
+
+Click `Android device via ADB`
+
+![](./images/16.png)
+
+Monitor traffic
+
+![](./images/19.png)
 
 
