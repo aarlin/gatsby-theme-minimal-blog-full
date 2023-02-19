@@ -25,16 +25,13 @@ The endgoal of this tutorial is to be able to look into HTTPS requests for an An
 
 First we're going to need an Android emulator
 
-Download and install [LDPlayer9](https://www.ldplayer.net/)
+Download and install [LDPlayer9](https://www.ldplayer.net/) OR use the [direct download link](https://ldcdn.ldmnq.com/download/ldad/LDPlayer9.exe?n=LDPlayer9_ens_1001_ld.exe)
 
 ![](./images/1.jpg)
 
-OR use the direct link: https://ldcdn.ldmnq.com/download/ldad/LDPlayer9.exe?n=LDPlayer9_ens_1001_ld.exe
-
 ![](./images/2.png)
 
-Open the emulator, and it should look like this when started, minus the apps I have already installed  
-You should drag and drop your `.apk` file into anywhere on the emulator screen. It should appear on the home screen.
+Open the emulator, and it should look like this when started, minus the apps I have already installed 
 
 ![](./images/3.png)
 
@@ -55,7 +52,8 @@ ADB debugging: `Open local connection`
 
 Click `Save settings` and it'll ask you to restart the emulator
 
-Finally, reopen you want to monitor HTTPS traffic for
+Finally, you should drag and drop your `.apk` file into anywhere on the emulator screen.  
+Once it appears on your home screen, open up the application.
 
 ## **Frida** 
 
@@ -81,25 +79,31 @@ python -m venv frida
 
 Activate the virtual environment
 
-```
+```bash
 frida\Scripts\activate.bat
 ```
 
 Install frida-tools
 
-```
+```bash
 pip install frida-tools
 ```
 
-Make sure `frida-tools` was installed by testing `frida-ps`
+Make sure `frida-tools` was installed by running `frida-ps`
 
-Install Frida Android server from here: https://github.com/frida/frida/releases/download/16.0.10/frida-server-16.0.10-android-x86_64.xz
+```bash
+frida-ps
+```
 
-This is the most up-to-date version from https://github.com/frida/frida/releases
+## Frida Server
 
-Unzip the `.xz` file using `7zip`
+Install Frida Android server from [here](https://github.com/frida/frida/releases/download/16.0.10/frida-server-16.0.10-android-x86_64.xz)
 
 **Note**: We're using `x86_64` version because we're going to be using `LDPlayer9` 
+
+The current version as of this tutorial is `16.0.10`. Check for the most up-to-date version from https://github.com/frida/frida/releases
+
+Unzip the `.xz` file using `7zip`
 
 Drop the unzipped file into `frida-android-unpinning` folder
 
