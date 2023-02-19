@@ -10,11 +10,6 @@ const moduleExports = {
   },
   async redirects() {
     return [
-      ...oldBlogPosts.map((post) => ({
-        source: post,
-        destination: `${OLD_BLOG_URL}${post}`,
-        permanent: true,
-      })),
       {
         source: '/twitch',
         destination: 'https://twitch.tv/',

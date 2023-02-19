@@ -9,7 +9,7 @@ tags:
 banner: ./images/winhex-logo.jpg
 ---
 
-## **Prequisites**
+## Prequisites
 
 * Python
 * 7zip
@@ -18,7 +18,7 @@ For more context, this tutorial is following similar steps to this post original
 
 The endgoal of this tutorial is to be able to look into HTTPS requests for an Android app that has been SSL certificate pinned.
 
-## **LDPlayer9 Installation**
+## LDPlayer9 Installation
 
 First we're going to need an Android emulator
 
@@ -32,11 +32,7 @@ Open the emulator, and it should look like this when started, minus the apps I h
 
 ![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/3.png)
 
-Once you have it installed, go to the `Settings` page under the gear icon on the right side menu
-
-![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/4.png)
-
-It should open up to a screen like this
+Once you have it installed, go to the `Settings` page under the gear icon on the right side menu. It should open up to a screen like this
 
 ![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/5.png)
 
@@ -52,7 +48,7 @@ Click `Save settings` and it'll ask you to restart the emulator
 Finally, you should drag and drop your `.apk` file into anywhere on the emulator screen.  
 Once it appears on your home screen, open up the application.
 
-## **Frida** 
+## Frida
 
 **TL;DR**: Frida allows us to bypass SSL certificate pinning
 

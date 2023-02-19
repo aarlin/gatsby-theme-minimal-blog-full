@@ -11,16 +11,8 @@
   </a>
 </p>
 
-Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and line highlighting. Using the Gatsby Theme [`@lekoarts/gatsby-theme-minimal-blog`](https://github.com/LekoArts/gatsby-themes/tree/main/themes/gatsby-theme-minimal-blog).
-
-[**Demo Website**](https://minimal-blog.lekoarts.de)
-
-Also be sure to check out other [Free & Open Source Gatsby Themes](https://themes.lekoarts.de) and my [Personal Website](https://www.lekoarts.de?utm_source=minimal-blog&utm_medium=Starter).
-
 ## ✨ Features
 
-- MDX
-- Fully customizable through the usage of Gatsby Themes (and Theme UI)
 - Light Mode / Dark Mode
 - Typography driven, minimal style
 - Tags/Categories support
@@ -29,24 +21,19 @@ Also be sure to check out other [Free & Open Source Gatsby Themes](https://theme
 - SEO (Sitemap, OpenGraph tags, Twitter tags)
 - WebApp Manifest
 
+- **Framework**: [Next.js](https://nextjs.org/)
+- **Deployment**: [Netlify](https://netlify.com)
+- **Content**: [MDX](https://github.com/mdx-js/mdx)
+- **Styling**: [Chakra UI](https://chakra-ui.com/)
 
-### 3. **Open the code and start customizing!**
+## Running Locally
 
-Install by running `yarn install`
-
-Start the site by running `yarn develop`.
-
-Your site is now running at `http://localhost:8000`!
-
-If you want to learn more about how you can use a Gatsby starter that is configured with a Gatsby theme, you can check out this [shorter](https://www.gatsbyjs.com/docs/how-to/plugins-and-themes/using-a-gatsby-theme/) or [longer](https://www.gatsbyjs.com/tutorial/using-a-theme/) tutorial. The tutorials don't exactly apply to this starter however the concepts are the same.
-
-## 📝 Using and modifying this starter
-
-**Important Note:** Please read the guide [Shadowing in Gatsby Themes](https://www.gatsbyjs.com/docs/how-to/plugins-and-themes/shadowing/) to understand how to customize the underlying theme!
-
-This starter creates a new Gatsby site that installs and configures the theme [`@lekoarts/gatsby-theme-minimal-blog`](https://github.com/LekoArts/gatsby-themes/tree/main/themes/gatsby-theme-minimal-blog).
-
-Have a look at the theme's README and files to see what options are available and how you can shadow the various components including Theme UI. Generally speaking you will want to place your files into `src/@lekoarts/gatsby-theme-minimal-blog/` to shadow/override files. The Theme UI config can be configured by shadowing its files in `src/gatsby-plugin-theme-ui/`.
+```bash
+$ git clone https://github.com/aarlin/aarlin.netlify.com.git
+$ cd aarlin.netlify.com
+$ npm
+$ npm run dev
+```
 
 ### Code Highlighting
 
@@ -231,31 +218,3 @@ export default theme;
 ### Change your `static` folder
 
 The `static` folder contains the icons, social media images and `robots.txt`. Don't forget to change these files, too! You can use [Real Favicon Generator](https://realfavicongenerator.net/) to generate the image files inside `static`.
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/nikolovlazar/nikolovlazar.com)
-
-# nikolovlazar.com
-
-- **Framework**: [Next.js](https://nextjs.org/)
-- **Database**: [PlanetScale](https://planetscale.com)
-- **ORM**: [Prisma](https://prisma.io/)
-- **Deployment**: [Vercel](https://vercel.com)
-- **Content**: [MDX](https://github.com/mdx-js/mdx)
-- **Styling**: [Chakra UI](https://chakra-ui.com/)
-- **Services**:
-  - [Raindrop](https://raindrop.io/) for Bookmarks
-  - [ConvertKit](https://convertkit.com/) for Course Subscriptions
-  - [Revue](https://www.getrevue.co/) for Newsletter
-  - [AirTable](https://airtable.com/) for Books
-  - [Plausible](https://plausible.io/) for Analytics
-
-## Running Locally
-
-```bash
-$ git clone https://github.com/nikolovlazar/nikolovlazar.com.git
-$ cd nikolovlazar.com
-$ yarn
-$ yarn dev
-```
-
-Create a `.env` file similar to [`.env.example`](https://github.com/nikolovlazar/nikolovlazar.com/blob/main/.env.example).

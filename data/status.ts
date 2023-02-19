@@ -1,6 +1,6 @@
 const status = {
-  emoji: '🤓',
-  text: 'Reading Docs for Developers',
+  emoji: '🤯',
+  text: 'Having an existential crisis',
 };
 
 export default status;

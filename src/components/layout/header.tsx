@@ -114,7 +114,7 @@ const Header = () => {
               onClick={openCommandPalette}
               size='sm'
               variant='ghost'
-            />
+            />  
           </Tooltip>
         </HStack>
       </Container>

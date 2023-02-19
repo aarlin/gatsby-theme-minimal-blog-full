@@ -1,7 +1,6 @@
 import { GetStaticProps } from 'next';
 import { VStack, Heading, Text, List, ListItem } from '@chakra-ui/react';
 
-import Link from '@/components/link';
 import { Tool } from '@/types/tool';
 import ToolCard from '@/components/tool-card';
 import { readData } from '@/utils/read-data';
@@ -15,11 +14,10 @@ const Uses = ({ tools, categories }: Props) => {
   return (
     <>
       <VStack as="section" alignItems="flex-start" w="full" spacing={3}>
-        <Heading size="md">Software tools.</Heading>
+        <Heading size="md">Software Tools</Heading>
         <Text>
           This is my list of software tools that I use frequently. I do my best
-          at updating it whenever a change occurs. To see my hardware, check out
-          the <Link href="/gear">Gear</Link> page.
+          at updating it whenever a change occurs.
         </Text>
       </VStack>
       <List alignItems="stretch" w="full" spacing={12}>

@@ -1,6 +1,6 @@
 [build]
   base = ""
   publish = "public/"
-  command = "next"
+  command = "next build"
 [context.deploy-preview.processing]
   skip_processing = true

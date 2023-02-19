@@ -7,13 +7,13 @@ const HeroImage = () => {
   return (
     <Flex position='relative' justify='center' pb={4}>
       <AspectRatio as='figure' flexShrink={0} w={56} h={56} ratio={1}>
-        <Box overflow='hidden' rounded='full'>
+        <Box overflow='hidden'>
           <Image
-            alt='A photo of Aaron Lin'
+            alt='Aaron Lin'
             src='/assets/images/aaron.jpeg'
             width={224}
             height={224}
-            objectFit='contain'
+            borderRadius='10px'
           />
         </Box>
       </AspectRatio>

@@ -57,12 +57,12 @@ const BlogPostPage = ({
   return (
     <>
       <NextSeo
-        title={`${title} - Lazar Nikolov`}
+        title={`${title} - Aaron Lin`}
         description={description}
         openGraph={{
           description,
-          title: `${title} - Lazar Nikolov`,
-          url: `https://nikolovlazar.com/blog/${slug}`,
+          title: `${title} - Aaron Lin`,
+          url: `https://aarlin.netlify.com/blog/${slug}`,
           images: [
             {
               url: `https://res.cloudinary.com/nikolovlazar/image/upload/${encodeURIComponent(
