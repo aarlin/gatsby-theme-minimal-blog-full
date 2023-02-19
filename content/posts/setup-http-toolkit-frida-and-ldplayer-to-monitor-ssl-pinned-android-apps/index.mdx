@@ -96,11 +96,13 @@ frida-ps
 
 Install the `SDK Platform-Tools for Windows` from this [link](https://developer.android.com/studio/releases/platform-tools#downloads)
 
-Double check that installed and is working properly
+Double check that it installed and is working properly
 
 ```bash
 adb
 ```
+
+![](./images/7a.png)
 
 ## Frida Server
 
@@ -163,7 +165,7 @@ frida-ps -U -a
 
 ![](./images/13.png)
 
-In my case, it is `com.p1.mobile.putong`
+In my case, it is `com.p1.mobile.putong`. Now run the following command
 
 ```bash
 frida -U -l ./frida-script.js -f com.p1.mobile.putong
