@@ -1,5 +1,3 @@
-/** @jsx jsx */
-import { jsx } from "theme-ui"
 import BlogListItem from "./blog-list-item"
 
 type ListingProps = {

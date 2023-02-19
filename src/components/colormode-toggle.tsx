@@ -1,6 +1,3 @@
-/** @jsx jsx */
-import { jsx } from "theme-ui"
-
 type Props = {
   isDark: boolean
   toggle: (e: any) => void

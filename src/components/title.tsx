@@ -1,6 +1,4 @@
-/** @jsx jsx */
 import * as React from "react"
-import { jsx, Box } from "theme-ui"
 
 type TitleProps = {
   children: React.ReactNode

@@ -5,9 +5,10 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:import/typescript",
     "plugin:prettier/recommended",
-    "prettier/@typescript-eslint"
+    "prettier/@typescript-eslint",
+    "next/core-web-vitals"
   ],
-  plugins: ["@typescript-eslint", "prettier", "react-hooks"],
+  plugins: ["@typescript-eslint", "prettier", "react-hooks", "chakra-ui"],
   parserOptions: {
     ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
     sourceType: 'module', // Allows for the use of imports

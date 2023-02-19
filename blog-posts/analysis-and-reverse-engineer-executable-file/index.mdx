@@ -1,0 +1,55 @@
+---
+title: Analysis and Reverse Engineering Executable File
+date: December 12, 2021
+description: Looking into an executable and how to reverse engineer
+tags:
+  - Tutorial
+  - Reverse Engineering
+  - Java
+banner: ./images/winhex-logo.jpg
+---
+
+**Prequisites**
+
+* WinHex
+* 7zip
+
+Today we'll look into how to reverse engineer an executable file with unknown programming language origin
+
+1. Download WinHex as a prequisite for the following steps. You can find one with a license on a torrent site.
+
+2. Open WinHex and drag in your .exe file
+  ![](/assets/images/blog-posts/analysis-and-reverse-engineer-executable-file/1.png)
+
+3. Start scrolling the hex of the .exe until you find something recognizable.  
+In this case, I found code that could be an indication that it is Java code bundled into an .exe
+  ![](/assets/images/blog-posts/analysis-and-reverse-engineer-executable-file/2.png)
+
+> We can also know this is a launch4j jar bundled inside an exe if we open the .exe with 7zip. It should be the following content structure
+
+ ![](/assets/images/blog-posts/analysis-and-reverse-engineer-executable-file/3.png)
+
+
+4. Doing some research, we can see that if we can extract the hex starting from **PK** to the end of the hex, we can turn it back into a .jar file
+
+For reference:  
+http://reverseengineeringtips.blogspot.com/2014/12/unpacking-launch4j-35-extracting-jar.html  
+https://reverseengineering.stackexchange.com/questions/3532/get-jar-back-from-wrappedinto-exe-jar  
+
+6. Search for "META-INF" for the starting block. Right click the hex block starting with PK and select **Beginning of block**
+![](/assets/images/blog-posts/analysis-and-reverse-engineer-executable-file/4.png)
+
+7. Scroll down to the bottom and right click and set the last hex block as **End of block**
+![](/assets/images/blog-posts/analysis-and-reverse-engineer-executable-file/5.png)
+
+8. Right click the highlighted block and click **Edit**
+![](/assets/images/blog-posts/analysis-and-reverse-engineer-executable-file/6.png)
+
+9. Then click **Copy Block** followed by **Into New file** and name the file appended with .jar
+![](/assets/images/blog-posts/analysis-and-reverse-engineer-executable-file/7.png)
+
+10. Right click the .jar file and click **7-Zip** followed by **Open archive**
+
+11. If done correctly, the jar should open as java class files
+![](/assets/images/blog-posts/analysis-and-reverse-engineer-executable-file/8.png)
+

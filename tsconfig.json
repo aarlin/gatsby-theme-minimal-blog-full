@@ -1,20 +1,28 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "commonjs",
-    "jsx": "react",
-    "lib": ["dom", "es2015", "es2017"],
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "noEmit": true,
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
     "skipLibCheck": true,
-    "esModuleInterop": true
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": ["src/components/*"],
+      "@/types/*": ["src/types/*"],
+      "@/utils/*": ["src/utils/*"],
+      "@/db": ["db/index.ts"],
+      "@/data/*": ["data/*"]
+    },
+    "incremental": true
   },
-  "include": [
-    "./themes/**/src/**/*",
-    "./www/src/**/*",
-    "./examples/**/src/**/*"
-  ],
-  "exclude": ["node_modules", "themes/**/node_modules"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_error.js"],
+  "exclude": ["node_modules"]
 }

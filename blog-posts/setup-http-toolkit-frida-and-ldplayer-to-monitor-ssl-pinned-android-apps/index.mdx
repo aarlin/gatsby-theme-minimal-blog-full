@@ -1,0 +1,262 @@
+---
+title: Setup HTTP Toolkit, Frida, and LDPlayer to Monitor SSL Certificate Pinned Android Apps
+date: February 19, 2023
+description: A guide on how to setup reversing APIs on ssl certificate pinned android apps
+tags:
+  - Tutorial
+  - Reverse Engineering
+  - Android
+banner: ./images/winhex-logo.jpg
+---
+
+## **Prequisites**
+
+* Python
+* 7zip
+
+For more context, this tutorial is following similar steps to this post originally from [HttpToolkit blogspot](https://httptoolkit.com/blog/frida-certificate-pinning/), however under Windows
+
+The endgoal of this tutorial is to be able to look into HTTPS requests for an Android app that has been SSL certificate pinned.
+
+## **LDPlayer9 Installation**
+
+First we're going to need an Android emulator
+
+Download and install [LDPlayer9](https://www.ldplayer.net/) OR use the [direct download link](https://ldcdn.ldmnq.com/download/ldad/LDPlayer9.exe?n=LDPlayer9_ens_1001_ld.exe)
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/1.jpg)
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/2.png)
+
+Open the emulator, and it should look like this when started, minus the apps I have already installed 
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/3.png)
+
+Once you have it installed, go to the `Settings` page under the gear icon on the right side menu
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/4.png)
+
+It should open up to a screen like this
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/5.png)
+
+Under `Other settings`, set the following options:
+
+Root permission: `Enable`  
+ADB debugging: `Open local connection`
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/6.png)
+
+Click `Save settings` and it'll ask you to restart the emulator
+
+Finally, you should drag and drop your `.apk` file into anywhere on the emulator screen.  
+Once it appears on your home screen, open up the application.
+
+## **Frida** 
+
+**TL;DR**: Frida allows us to bypass SSL certificate pinning
+
+Clone this repository: https://github.com/httptoolkit/frida-android-unpinning
+
+```bash
+git clone git@github.com:httptoolkit/frida-android-unpinning.git
+```
+
+Change directory into the cloned repository
+
+```bash
+cd frida-android-unpinning
+```
+
+Create a virtual environment
+
+```bash
+python -m venv frida
+```
+
+Activate the virtual environment
+
+```bash
+frida\Scripts\activate.bat
+```
+
+Install frida-tools
+
+```bash
+pip install frida-tools
+```
+
+Make sure `frida-tools` was installed by running `frida-ps`
+
+```bash
+frida-ps
+```
+
+## ADB Tools
+
+Install the `SDK Platform-Tools for Windows` from this [link](https://developer.android.com/studio/releases/platform-tools#downloads)
+
+Double check that it installed and is working properly
+
+```bash
+adb
+```
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/7a.png)
+
+## Frida Server
+
+Install Frida Android server from [here](https://github.com/frida/frida/releases/download/16.0.10/frida-server-16.0.10-android-x86_64.xz) or check the most up-to-date version from https://github.com/frida/frida/releases
+
+The current version as of this tutorial is `16.0.10`.  
+We're using `x86_64` version because we're going to be using `LDPlayer9` on Windows  
+
+
+Unzip the `.xz` file using `7zip`  
+Drop the unzipped file into `frida-android-unpinning` folder  
+
+It should look like the following after everything
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/7.png)
+
+Make sure your emulator is visible 
+
+```bash
+adb devices -l
+```
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/8.png)
+
+Start the emulator as root
+```bash
+adb root
+```
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/9.png)
+
+```bash
+adb push frida-server-16.0.10-android-x86_64 /data/local/tmp/frida-server
+```
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/10.png)
+
+
+```bash
+adb shell "chmod 755 /data/local/tmp/frida-server"
+```
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/11.png)
+
+
+Start the frida server. You shouldn't see any errors if it started correctly
+
+```bash
+adb shell "/data/local/tmp/frida-server &"
+```
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/12.png)
+
+Open up another terminal
+
+Find the app identifier after opening the app
+```bash
+frida-ps -U -a
+```
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/13.png)
+
+In my case, it is `com.p1.mobile.putong`. Now run the following command
+
+```bash
+frida -U -l ./frida-script.js -f com.p1.mobile.putong
+```
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/14.png)
+
+**HTTPToolkit**
+
+Install the community edition of HTTPToolkit: https://httptoolkit.com/download/win-exe/
+
+It should automatically start downloading
+
+Once installed it should look like this
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/15.png)
+
+Click `Android device via ADB`
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/16.png)
+
+Go to LDPlayer9, and allow the connection to be made
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/17.png)
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/18.png)
+
+Open the app you want to monitor traffic for again
+
+Finally, you should the requests populate on HTTP HttpToolkit
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/19.png)
+
+## Shortened Steps After Installation
+
+Open LDPlayer9 and start the app you want to monitor
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/20.png)
+
+Open up a terminal and change directory into the cloned repository
+
+```bash
+cd frida-android-unpinning
+```
+
+Open up a terminal and start the emulator as root
+```bash
+adb root
+```
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/9.png)
+
+Start the Frida server
+
+```bash
+adb shell "/data/local/tmp/frida-server &"
+```
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/12.png)
+
+Open up another terminal
+
+Activate the virtual environment
+
+```bash
+frida\Scripts\activate.bat
+```
+
+Find the app identifier after opening the app
+```bash
+frida-ps -U -a
+```
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/13.png)
+
+```bash
+frida -U -l ./frida-script.js -f com.p1.mobile.putong
+```
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/14.png)
+
+Open HTTP Toolkit
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/15.png)
+
+Click `Android device via ADB`
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/16.png)
+
+Monitor traffic
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/19.png)
+
+

@@ -62,8 +62,12 @@ typings/
 
 .cache
 **/.cache
-public
 
 .idea
 .vscode
 .DS_Store
+
+node_modules
+# Keep environment variables out of version control
+.env
+.next
