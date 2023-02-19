@@ -6,6 +6,7 @@ import {
   Text,
   VStack,
   HStack,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { format } from 'timeago.js';
 
@@ -36,6 +37,8 @@ const BlogPostCard = ({
           },
         }}
         rounded='md'
+        borderWidth="1px"
+        borderColor={useColorModeValue('gray.100', 'gray.700')}
         transitionDuration='slow'
         transitionProperty='all'
         transitionTimingFunction='ease-out'
