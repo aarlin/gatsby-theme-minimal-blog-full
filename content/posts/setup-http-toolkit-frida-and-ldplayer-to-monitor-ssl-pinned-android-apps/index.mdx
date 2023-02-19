@@ -1,7 +1,7 @@
 ---
-title: Setup HTTP Toolkit, Frida, and LDPlayer to Monitor SSL Pinned Android Apps
+title: Setup HTTP Toolkit, Frida, and LDPlayer to Monitor SSL Certificate Pinned Android Apps
 date: 2023-02-19
-description: A guide on how to setup reversing APIs on ssl pinned android apps
+description: A guide on how to setup reversing APIs on ssl certificate pinned android apps
 tags:
   - Tutorial
   - Reverse Engineering
@@ -14,9 +14,9 @@ banner: ./images/winhex-logo.jpg
 * Python
 * 7zip
 
-For more context, this tutorial is following similar steps to this post originally from HttpToolkit's [blogspot](https://httptoolkit.com/blog/frida-certificate-pinning/), however under Windows
+For more context, this tutorial is following similar steps to this post originally from [HttpToolkit blogspot](https://httptoolkit.com/blog/frida-certificate-pinning/), however under Windows
 
-The endgoal of this tutorial is to be able to look into HTTPS requests for an Android app that has been SSL pinned.
+The endgoal of this tutorial is to be able to look into HTTPS requests for an Android app that has been SSL certificate pinned.
 
 ## **LDPlayer9 Installation**
 
@@ -54,7 +54,7 @@ Once it appears on your home screen, open up the application.
 
 ## **Frida** 
 
-**TL;DR**: Frida allows us to bypass SSL pinning
+**TL;DR**: Frida allows us to bypass SSL certificate pinning
 
 Clone this repository: https://github.com/httptoolkit/frida-android-unpinning
 
@@ -203,6 +203,12 @@ Open LDPlayer9 and start the app you want to monitor
 
 ![](./images/20.png)
 
+Open up a terminal and change directory into the cloned repository
+
+```bash
+cd frida-android-unpinning
+```
+
 Open up a terminal and start the emulator as root
 ```bash
 adb root
@@ -219,10 +225,6 @@ adb shell "/data/local/tmp/frida-server &"
 ![](./images/12.png)
 
 Open up another terminal
-
-```bash
-cd frida-android-unpinning
-```
 
 Activate the virtual environment
 
