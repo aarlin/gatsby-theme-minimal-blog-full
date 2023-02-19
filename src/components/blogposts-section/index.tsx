@@ -9,7 +9,7 @@ type Props = {
   posts: BlogPost[];
 };
 
-const BlogpostsSection = ({ posts }: Props) => {
+const BlogPostsSection = ({ posts }: Props) => {
   return (
     <VStack as="section" alignItems="flex-start" w="full" spacing={4}>
       <Heading size="md">Blog Posts</Heading>
@@ -44,4 +44,4 @@ const BlogpostsSection = ({ posts }: Props) => {
   );
 };
 
-export default BlogpostsSection;
+export default BlogPostsSection;

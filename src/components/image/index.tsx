@@ -13,7 +13,7 @@ const MagicImage = chakra(NextImage, {
       'width',
       'height',
       'priority',
-      'borderRadius'
+      'borderradius'
     ].includes(prop),
 });
 

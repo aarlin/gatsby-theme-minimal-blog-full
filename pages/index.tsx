@@ -9,32 +9,30 @@ import VideosSection from '@/components/videos-section';
 import courses from '@/data/courses';
 import { getRecentBlogPosts } from '@/utils/get-blog-posts';
 import { BlogPost } from '@/types/blog-post';
-import BlogpostsSection from '@/components/blogposts-section';
+import BlogPostsSection from '@/components/blogposts-section';
 
 type Props = {
-  videos: Video[];
   posts: BlogPost[];
+  videos?: Video[];
 };
 
 const IndexPage = ({ videos, posts }: Props) => {
   return (
     <>
       <Head>
-        <link rel='me' href='https://fosstodon.org/@nikolovlazar' />
+        <link rel='me' href='https://aarlin.netlify.com' />
       </Head>
       <Hero />
       <CoursesSection courses={courses} />
-      <BlogpostsSection posts={posts} />
+      <BlogPostsSection posts={posts} />
     </>
   );
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const { videos } = await readData<{ videos: Video[] }>('data/videos.json');
   const posts = await getRecentBlogPosts(3);
 
   const props: Props = {
-    videos,
     posts,
   };
 

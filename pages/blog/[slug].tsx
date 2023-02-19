@@ -25,6 +25,7 @@ import LikeButton from '@/components/like-button';
 import usePostLikes from 'src/hooks/use-post-likes';
 import imageMetadata from '@/utils/plugins/image-metadata';
 import ScrollToTopButton from '@/components/scroll-to-top-button';
+import BlogTags from "@/components/blog-tags";
 
 type Props = BlogPost & {
   source: MDXRemoteSerializeResult;
@@ -36,6 +37,7 @@ const BlogPostPage = ({
   date,
   source,
   readingTime,
+  tags,
 }: Props) => {
   const { query } = useRouter();
   const slug = query.slug as string;
@@ -63,13 +65,6 @@ const BlogPostPage = ({
           description,
           title: `${title} - Aaron Lin`,
           url: `https://aarlin.netlify.com/blog/${slug}`,
-          images: [
-            {
-              url: `https://res.cloudinary.com/nikolovlazar/image/upload/${encodeURIComponent(
-                `g_north_west,l_text:calsans-semibold.ttf_72:Lazar%20Nikolov,g_north_west,x_20,y_20,co_#EDF2F7,x_330,y_208,x_330,y_208/c_fit,g_north_west,l_c_fit,g_north_west,l_text:calsans-semibold.ttf_48:${title},g_north_west,x_20,y_20,co_#718096,w_771,x_330,y_306,w_771,x_330,y_306`
-              )}/blog-post-image-template_scisgq.png`,
-            },
-          ],
         }}
       />
       <VStack position='relative' alignItems='stretch' w='full' spacing={8}>
@@ -99,6 +94,9 @@ const BlogPostPage = ({
             <Text color='gray.500' fontSize='sm'>
               {readingTime}
             </Text>
+          </HStack>
+          <HStack>
+            <BlogTags tags={tags} />
           </HStack>
         </VStack>
         <MDXRemote {...source} components={MDXComponents} />
@@ -133,7 +131,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   const postContent = await readBlogPost(slug);
   const {
     content,
-    data: { title, description, date },
+    data: { title, description, date, tags },
   } = matter(postContent);
 
   return {
@@ -148,6 +146,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
       description,
       date,
       slug,
+      tags,
     },
   };
 };

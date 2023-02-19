@@ -143,8 +143,6 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
 };
 
 const LinkedHeading = (props: HTMLChakraProps<'h2'>) => {
-  console.log(props);
-  console.log(props.children);
   const slug = slugify(props.children as string, { lower: true });
   return (
     <Link alignItems='flex-end' display='flex' href={`#${slug}`} role='group'>

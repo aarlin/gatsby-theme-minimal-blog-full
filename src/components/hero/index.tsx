@@ -48,7 +48,7 @@ const Hero = () => {
           </Heading>
         </Stack>
         <Text as='h2' lineHeight='175%'>
-          I’m a full-stack engineer at <ExternalLink href='https://liveperson.com'>LivePerson</ExternalLink>
+          I’m a software engineer at <ExternalLink href='https://liveperson.com'>LivePerson</ExternalLink>
         </Text>
         <Stack direction={{ base: 'column', md: 'row' }} spacing={3}>
           {socialLinks.map(({ href, label, color }) => (

@@ -10,6 +10,7 @@ import {
 import { format } from 'timeago.js';
 
 import { BlogPost } from '@/types/blog-post';
+import BlogTags from "../blog-tags";
 
 const BlogPostCard = ({
   title,
@@ -17,6 +18,7 @@ const BlogPostCard = ({
   slug,
   date,
   readingTime,
+  tags,
 }: BlogPost) => {
   return (
     <LinkBox as='article'>
@@ -62,6 +64,7 @@ const BlogPostCard = ({
         <Text color='gray.500' fontSize='sm'>
           {description}
         </Text>
+        {tags?.length > 0 && <BlogTags tags={tags} />}
       </VStack>
     </LinkBox>
   );

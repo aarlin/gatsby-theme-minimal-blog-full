@@ -19,7 +19,7 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
 
       const {
         content,
-        data: { title, description, date },
+        data: { title, description, date, tags },
       } = matter(fileContent);
 
       result.push({
@@ -28,6 +28,7 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
         date,
         slug,
         readingTime: readingTime(content).text,
+        tags,
       });
     })
   );

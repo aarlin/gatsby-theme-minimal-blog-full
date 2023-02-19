@@ -12,8 +12,8 @@ const NotFound = () => {
   return (
     <VStack w="full" spacing={12}>
       <VStack w="full" spacing={4}>
-        <Heading>Say what? 🤨</Heading>
-        <Text>I&apos;m afraid this page doesn&apos;t exist.</Text>
+        <Heading>404 - Page Not Found</Heading>
+        <Text>Unfortunately we couldn't find what you were looking for 😕</Text>
       </VStack>
     </VStack>
   );
