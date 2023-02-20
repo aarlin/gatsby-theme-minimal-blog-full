@@ -19,7 +19,6 @@ import { motion } from 'framer-motion';
 import { Logo } from 'src/components/logo';
 import ThemeToggleButton from '../theme-toggle';
 import { useRouter } from "next/router";
-import ColorModeToggle from '../colormode-toggle';
 import { navigationLinks } from '@/data/links';
 
 const Header = () => {
@@ -91,7 +90,6 @@ const Header = () => {
           })}
           <Box flex={1} alignItems="right">
             <ThemeToggleButton />
-            {/* <ColorModeToggle /> */}
           </Box>
           <Tooltip label={`Command Palette (${shortcut})`}>
             <IconButton

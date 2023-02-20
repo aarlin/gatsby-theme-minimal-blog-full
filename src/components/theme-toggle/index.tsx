@@ -11,7 +11,7 @@ const ThemeToggleButton = () => {
         style={{ display: "inline-block" }}
         key={useColorModeValue("light", "dark")}
         animate={{ y: 0, opacity: 1 }}
-        transition={"all 1.5s ease-in-out"}
+        transition={{ duration: 1.5, ease: "ease-in-out" }}
       >
         <IconButton
           aria-label="Switch theme"

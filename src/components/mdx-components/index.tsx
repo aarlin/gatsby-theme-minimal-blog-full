@@ -68,20 +68,6 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
   const buttonHoverColor = useColorModeValue('gray.600', 'gray.300');
   const languageColor = useColorModeValue("white", "black");
 
-  const labelStyle = {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    padding: "0.2rem 0.5rem",
-    borderRadius: "0.25rem",
-    fontSize: "0.8rem",
-    fontWeight: "bold",
-    backgroundColor: buttonColor,
-    color: languageColor,
-    // padding: '0.1rem 0.5rem',
-    textTransform: 'uppercase',
-  };
-
   const handleCopy = () => {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -111,7 +97,19 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
   return (
     <Box position="relative" marginBottom="1rem">
       <chakra.div justifyContent="flex-end" pb={2}>
-        <Box style={labelStyle}>{language}</Box>
+        <Box 
+            position="absolute"
+            top="0"
+            left="0"
+            bg={buttonColor}
+            color={languageColor}
+            borderRadius="0.25rem"
+            fontSize="0.8rem"
+            fontWeight="bold"
+            px="0.5rem"
+            py="0.2rem"
+            textTransform="uppercase"
+        >{language}</Box>
       </chakra.div>
       <ChakraHighlight
         {...defaultProps}

@@ -31,7 +31,6 @@ export const Logo = (props) => (
               y={0}
               width={112.5}
               height={122.02661807295564}
-              filtersec="colorsb7017447100"
               className="image-svg-svg primary"
               style={{
                 overflow: "visible",
@@ -61,7 +60,7 @@ export const Logo = (props) => (
           </g>
         </g>
         <g transform="translate(8.645000457763672,38.258310317993164)">
-          <g data-gra="path-name" fillRule="" className="tp-name">
+          <g data-gra="path-name" className="tp-name">
             <g transform="scale(1)">
               <g>
                 <path

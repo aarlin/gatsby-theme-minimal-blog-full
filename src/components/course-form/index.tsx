@@ -18,7 +18,6 @@ import { Subscribers } from '@/types/subscribers';
 import { Form, FormState } from '@/types/form-state';
 import { Course } from '@/types/course';
 import Link from '../link';
-import { TWITTER_PROFILE } from 'src/constants';
 
 type Props = {
   course: Course;
@@ -119,9 +118,6 @@ const CourseForm = ({ course: { formId, title } }: Props) => {
       {form.state === Form.Error && (
         <Text color="red.500" size="sm">
           {form.message} 😕 Reach out to me on{' '}
-          <Link href={TWITTER_PROFILE} isExternal>
-            Twitter
-          </Link>{' '}
           about this.
         </Text>
       )}
