@@ -40,9 +40,6 @@ const Blog = ({ posts }: Props) => {
       <NextSeo title="Blog - Aaron Lin" />
       <VStack as="section" alignItems="flex-start" w="full" spacing={3}>
         <Heading size="md">Blog</Heading>
-        <Text fontSize="md">
-          Web development, reverse engineering and others. I’ve written {posts.length} articles.
-        </Text>
         <InputGroup>
           <InputLeftElement pointerEvents="none">
             <Icon as={HiOutlineSearch} color="gray.400" />

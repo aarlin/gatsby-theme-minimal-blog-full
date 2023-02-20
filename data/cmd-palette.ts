@@ -1,9 +1,10 @@
 import { IconType } from 'react-icons/lib';
-import { SiGithub, } from 'react-icons/si';
-import { IoMoon } from 'react-icons/io5';
+import { SiGithub, SiLinkedin } from 'react-icons/si';
+import { IoHome, IoPencil, IoCodeSlashOutline, IoTerminalOutline, IoMoon } from 'react-icons/io5';
 
 import {
   GITHUB_PROFILE,
+  LINKEDIN_PROFILE
 } from 'src/constants';
 
 type BaseItem = {
@@ -12,6 +13,7 @@ type BaseItem = {
 
 export type PageItem = BaseItem & {
   href: string;
+  icon?: IconType;
 };
 
 export type SocialItem = BaseItem & {
@@ -35,25 +37,34 @@ export const searchItems: SearchItemsType = {
     {
       title: 'Home',
       href: '/',
+      icon: IoHome,
     },
     {
       title: 'Blog',
       href: '/blog',
+      icon: IoPencil,
     },
     {
       title: 'Projects',
       href: '/projects',
+      icon: IoCodeSlashOutline,
     },
     {
       title: 'Uses',
       href: '/uses',
+      icon: IoTerminalOutline,
     },
   ],
   social: [
     {
       title: 'GitHub',
-      icon: SiGithub,
       href: GITHUB_PROFILE,
+      icon: SiGithub,
+    },
+    {
+      title: 'Linkedin',
+      href: LINKEDIN_PROFILE,
+      icon: SiLinkedin,
     },
   ],
   theme: [

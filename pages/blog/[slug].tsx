@@ -80,17 +80,11 @@ const BlogPostPage = ({
             }
           >
             <Text color='gray.500' fontSize='sm'>
+              {date}
+            </Text>
+            <Text color='gray.500' fontSize='sm'>
               {format(date)}
             </Text>
-            <HStack>
-              {!views && <Spinner color='gray.500' size='xs' />}
-              {views && (
-                <Text color='gray.500' fontSize='sm'>
-                  {views} views
-                </Text>
-              )}
-            </HStack>
-
             <Text color='gray.500' fontSize='sm'>
               {readingTime}
             </Text>
@@ -100,16 +94,6 @@ const BlogPostPage = ({
           </HStack>
         </VStack>
         <MDXRemote {...source} components={MDXComponents} />
-        <Divider />
-        {!isLoading && (
-          <HStack alignItems='center' justifyContent='center'>
-            <LikeButton
-              onLike={incrementLikes}
-              likes={likes}
-              userLikes={userLikes}
-            />
-          </HStack>
-        )}
       </VStack>
       <ScrollToTopButton />
     </>

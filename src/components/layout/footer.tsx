@@ -1,41 +1,26 @@
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
-import { chakra, Stack, VStack, Divider, Link, Text } from '@chakra-ui/react';
+import { chakra, Stack, VStack, HStack, Divider, Link, Text } from '@chakra-ui/react';
 
 import {
-  GITHUB_PROFILE,
+  GITHUB_PROFILE, LINKEDIN_PROFILE
 } from '../../constants';
 import { Link as LinkType } from '@/types/link';
-import VercelCallout from '../vercel-callout';
+import { SiGithub, SiLinkedin } from 'react-icons/si';
 
-const firstGroup: LinkType[] = [
-  {
-    href: '/',
-    label: 'Home',
-  },
-  {
-    href: '/blog',
-    label: 'Blog',
-  },
-  {
-    href: '/projects',
-    label: 'Projects',
-  },
-];
-
-const secondGroup = [
+const externalLinks = [
   {
     href: GITHUB_PROFILE,
+    icon: SiGithub,
     label: 'GitHub',
   },
+  {
+    href: LINKEDIN_PROFILE,
+    icon: SiLinkedin,
+    label: 'LinkedIn'
+  }
 ];
 
-const thirdGroup = [
-  {
-    href: '/uses',
-    label: 'Uses',
-  },
-];
 
 const Footer = () => {
   const { pathname } = useRouter();
@@ -49,21 +34,8 @@ const Footer = () => {
         w='full'
         spacing={{ base: 2, md: 8 }}
       >
-        <VStack alignItems='flex-start'>
-          {firstGroup.map(({ href, label }) => (
-            <Link
-              key={href}
-              as={NextLink}
-              color={pathname === href ? 'purple.500' : 'gray.500'}
-              href={href}
-              isExternal={href.startsWith('http')}
-            >
-              {label}
-            </Link>
-          ))}
-        </VStack>
-        <VStack alignItems='flex-start'>
-          {secondGroup.map(({ href, label }) => (
+        <HStack alignItems='flex-center'>
+          {externalLinks.map(({ href, label }) => (
             <Link
               key={href}
               as={NextLink}
@@ -75,20 +47,7 @@ const Footer = () => {
               {label}
             </Link>
           ))}
-        </VStack>
-        <VStack alignItems='flex-start'>
-          {thirdGroup.map(({ href, label }) => (
-            <Link
-              key={href}
-              as={NextLink}
-              color={pathname === href ? 'purple.500' : 'gray.500'}
-              href={href}
-              isExternal={href.startsWith('http')}
-            >
-              {label}
-            </Link>
-          ))}
-        </VStack>
+        </HStack>
       </Stack>
       <Stack
         alignItems='center'
@@ -105,7 +64,6 @@ const Footer = () => {
           </chakra.span>{' '}
           Aaron Lin
         </Text>
-        <VercelCallout />
       </Stack>
     </VStack>
   );

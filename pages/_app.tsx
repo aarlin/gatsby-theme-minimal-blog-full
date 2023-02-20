@@ -14,17 +14,17 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <ChakraProvider theme={theme}>
       <NextSeo
-        title="Aaron Lin - Developer, designer, course creator."
-        description="Full-stack Engineer, UI Designer, and Open Source Advocate."
+        title="Aaron Lin - Developer"
+        description="Full-stack Engineer"
         openGraph={{
           url: "https://aarlin.netlify.com",
-          title: "Aaron Lin - Developer, designer, course creator.",
+          title: "Aaron Lin - Developer",
           description:
             "Full-stack Engineer, UI Designer, and Open Source Advocate.",
           locale: "en_US",
           images: [
             {
-              url: "https://aarlin.netlify.com/assets/images/social.png",
+              url: "https://aarlin.netlify.com/assets/images/aaron.jpeg",
               width: 1200,
               height: 630,
               alt: "Aaron Lin",

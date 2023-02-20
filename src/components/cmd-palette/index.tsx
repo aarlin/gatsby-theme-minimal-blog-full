@@ -203,13 +203,13 @@ const CmdPalette = () => {
                       )}
                       {commands[section].map((command) => {
                         if (section === 'pages') {
-                          const { title, href } = command as PageItem;
+                          const { title, href, icon } = command as PageItem;
 
                           return (
                             <CommandItem
                               key={title}
                               title={title}
-                              icon={CgArrowRight}
+                              icon={icon}
                               href={href}
                             />
                           );

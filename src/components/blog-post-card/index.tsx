@@ -57,6 +57,9 @@ const BlogPostCard = ({
             }
           >
             <Text color='gray.500' fontSize='sm'>
+              {date}
+            </Text>
+            <Text color='gray.500' fontSize='sm'>
               {format(date)}
             </Text>
             <Text color='gray.500' fontSize='sm'>

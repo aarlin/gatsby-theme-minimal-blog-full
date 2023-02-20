@@ -94,7 +94,7 @@ const Code = ({
               <div>{title}</div>
             </div>
           )}
-          <div className="gatsby-highlight" data-language={language}>
+          <div data-language={language}>
             <pre className={className} style={style} data-linenumber={hasLineNumbers}>
               {showCopyButton && <Copy content={codeString} fileName={title} />}
               <code className={`language-${language}`}>

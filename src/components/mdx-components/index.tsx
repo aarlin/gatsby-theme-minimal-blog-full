@@ -6,6 +6,7 @@ import {
   HTMLChakraProps,
   Kbd,
   useColorModeValue,
+  HStack
 } from '@chakra-ui/react';
 import NextImage from 'next/image';
 import slugify from 'slugify';
@@ -98,7 +99,9 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
               p={4}
               mx={-4}
             >
-              <Copy content={codeString} />
+              <chakra.div justifyContent="flex-end" pb={2}>
+                <Copy content={codeString} />
+              </chakra.div>
               {tokens.map((line, i) => {
                 const lineProps = getLineProps({ line, key: i });
                 return (
