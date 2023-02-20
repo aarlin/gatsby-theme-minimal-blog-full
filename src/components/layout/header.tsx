@@ -20,11 +20,7 @@ import { Logo } from 'src/components/logo';
 import ThemeToggleButton from '../theme-toggle';
 import { useRouter } from "next/router";
 import ColorModeToggle from '../colormode-toggle';
-
-const navigationLinks = [
-  "Blog",
-  "Projects",
-];
+import { navigationLinks } from '@/data/links';
 
 const Header = () => {
   const { open: openCommandPalette } = useContext(CmdPaletteContext);
@@ -72,27 +68,26 @@ const Header = () => {
           </Link>
         </Heading>
         <HStack alignItems='center' spacing={{ base: 0, md: 2 }}>
-          { navigationLinks.map((navigationLink) => {
-             const path = `/${navigationLink.toLowerCase()}`;
-             const isActive = asPath.includes(path);
+          {navigationLinks.map((navigationLink) => {
+             const isActive = asPath.includes(navigationLink.href);
 
              return (
-              <NextLink href={path} passHref>
-                <MotionButton 
-                  as={Link} 
-                  size='sm' 
-                  colorScheme={isActive ? "brand" : "ghost"}
+              <NextLink href={navigationLink.href} passHref key={navigationLink.label}>
+                <Button
+                  as={Link}
+                  size="sm"
+                  colorScheme="gray"
                   variant={isActive ? "solid" : "ghost"}
                   transition={"all 0.2s ease-in-out"}
                   _hover={{
                     background: !isActive ? hoverBg : "",
                     textDecoration: "none",
-                  }}  
+                  }}
                 >
-                  {navigationLink}
-                </MotionButton>
+                  {navigationLink.label}
+                </Button>
               </NextLink>
-             )
+            );
           })}
           <Box flex={1} alignItems="right">
             {/* <ThemeToggleButton /> */}

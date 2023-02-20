@@ -18,6 +18,18 @@ const socialLinks: SocialLink[] = [
   },
 ];
 
+const navigationLinks: LinkType[] = [
+    {
+        label: "Blog",
+        href: "/blog"
+    },
+    {
+        label: "Projects",
+        href: "/projects"
+    }
+];
+
 export {
-  socialLinks
+  socialLinks,
+  navigationLinks
 };

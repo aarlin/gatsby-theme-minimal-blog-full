@@ -1,5 +1,5 @@
 import { Flex, Link, IconButton, useColorMode, Box, Tooltip, HStack } from "@chakra-ui/react";
-import { socialLinks } from '../../../data/external-links';
+import { socialLinks } from '@/data/links';
 
 const Footer = () => {
   const { colorMode } = useColorMode();
