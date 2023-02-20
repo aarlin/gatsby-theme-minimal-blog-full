@@ -1,4 +1,4 @@
-import { Heading, VStack, List, ListItem, Icon, Box } from "@chakra-ui/react";
+import { Heading, VStack, HStack, Text, List, ListItem, Icon, Box } from "@chakra-ui/react";
 import { CgArrowRight } from "react-icons/cg";
 
 import { BlogPost } from "@/types/blog-post";
@@ -12,7 +12,29 @@ type Props = {
 const BlogPostsSection = ({ posts }: Props) => {
   return (
     <VStack as="section" alignItems="flex-start" w="full" spacing={4}>
-      <Heading size="md">Blog Posts</Heading>
+      <HStack justifyContent="center" alignItems="center">
+        <Heading size="lg">Latest Blog Posts</Heading>
+          <HStack justifyContent="flex-end">
+            <Link
+              display="flex"
+              alignItems="center"
+              href="/blog"
+              ml={{ base: 0, md: 4 }}
+              role="group"
+            >
+              See all
+              <Icon
+                as={CgArrowRight}
+                ml={1}
+                color="purple.500"
+                _groupHover={{ ml: 3 }}
+                transitionDuration="slow"
+                transitionProperty="margin-left"
+                transitionTimingFunction="ease-out"
+              />
+            </Link>
+        </HStack>
+      </HStack>
       <List w="full" spacing={{ base: 8, md: 2 }}>
         {posts.map((post) => (
           <ListItem key={post.slug}>
@@ -20,26 +42,6 @@ const BlogPostsSection = ({ posts }: Props) => {
           </ListItem>
         ))}
       </List>
-      <Box>
-        <Link
-          display="flex"
-          alignItems="center"
-          href="/blog"
-          ml={{ base: 0, md: 4 }}
-          role="group"
-        >
-          Read all articles
-          <Icon
-            as={CgArrowRight}
-            ml={1}
-            color="purple.500"
-            _groupHover={{ ml: 3 }}
-            transitionDuration="slow"
-            transitionProperty="margin-left"
-            transitionTimingFunction="ease-out"
-          />
-        </Link>
-      </Box>
     </VStack>
   );
 };

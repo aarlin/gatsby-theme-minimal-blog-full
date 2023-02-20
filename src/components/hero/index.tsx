@@ -44,7 +44,7 @@ const Hero = () => {
           spacing={3}
         >
           <Heading as='h1' size='lg'>
-            Hi, I’m Aaron Lin
+            Hi, I’m Aaron
           </Heading>
         </Stack>
         <Text as='h2' lineHeight='175%'>

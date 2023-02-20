@@ -8,6 +8,7 @@ import {
   chakra,
   Button,
   Box,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { useContext, useEffect, useState } from 'react';
@@ -17,11 +18,20 @@ import { CmdPaletteContext } from 'src/providers/cmd-palette-provider';
 import { motion } from 'framer-motion';
 import { Logo } from 'src/components/logo';
 import ThemeToggleButton from '../theme-toggle';
+import { useRouter } from "next/router";
+import ColorModeToggle from '../colormode-toggle';
+
+const navigationLinks = [
+  "Blog",
+  "Projects",
+];
 
 const Header = () => {
   const { open: openCommandPalette } = useContext(CmdPaletteContext);
   const [shortcut, setShortcut] = useState<string>();
   const MotionButton = motion(Button);
+  const { asPath } = useRouter();
+  const hoverBg = useColorModeValue("gray.200", "gray.900");
 
   useEffect(() => {
     setShortcut(
@@ -62,18 +72,31 @@ const Header = () => {
           </Link>
         </Heading>
         <HStack alignItems='center' spacing={{ base: 0, md: 2 }}>
-          <NextLink href='/projects' passHref>
-            <MotionButton as={Link} size='sm' variant='ghost'>
-              Projects
-            </MotionButton>
-          </NextLink>
-          <NextLink href='/blog' passHref>
-            <MotionButton as={Link} size='sm' variant='ghost'>
-              Blog
-            </MotionButton>
-          </NextLink>
+          { navigationLinks.map((navigationLink) => {
+             const path = `/${navigationLink.toLowerCase()}`;
+             const isActive = asPath.includes(path);
+
+             return (
+              <NextLink href={path} passHref>
+                <MotionButton 
+                  as={Link} 
+                  size='sm' 
+                  colorScheme={isActive ? "brand" : "ghost"}
+                  variant={isActive ? "solid" : "ghost"}
+                  transition={"all 0.2s ease-in-out"}
+                  _hover={{
+                    background: !isActive ? hoverBg : "",
+                    textDecoration: "none",
+                  }}  
+                >
+                  {navigationLink}
+                </MotionButton>
+              </NextLink>
+             )
+          })}
           <Box flex={1} alignItems="right">
             <ThemeToggleButton />
+            {/* <ColorModeToggle> */}
           </Box>
           <Tooltip label={`Command Palette (${shortcut})`}>
             <IconButton
