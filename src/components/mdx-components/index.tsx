@@ -5,6 +5,7 @@ import {
   Link,
   HTMLChakraProps,
   Kbd,
+  useColorMode,
   useColorModeValue,
   HStack,
   IconButton,
@@ -17,7 +18,7 @@ import lightTheme from "prism-react-renderer/themes/nightOwlLight";
 import { useId, useState } from "react";
 // import Copy from '../copy';
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { HiOutlineClipboard, HiOutlineClipboardCheck } from "react-icons/hi";
+import { BiCopy, BiCheck } from "react-icons/bi";
 
 const ChakraHighlight = chakra(Highlight, {
   shouldForwardProp: (prop) =>
@@ -56,22 +57,30 @@ const TData = (props) => (
   />
 );
 
-const labelStyle = {
-  position: "absolute",
-  top: 0,
-  left: 0,
-  backgroundColor: "rgba(0, 0, 0, 0.7)",
-  color: "#fff",
-  padding: "0.2rem 0.5rem",
-  borderRadius: "0.25rem",
-  fontSize: "0.8rem",
-  fontWeight: "bold",
-};
-
 const CodeHighlight = ({ children: codeString, className: language }: any) => {
   const theme = useColorModeValue(lightTheme, darkTheme);
   const codeId = useId();
   const [copied, setCopied] = useState(false);
+
+  const { colorMode } = useColorMode();
+  const labelColor = useColorModeValue('gray.700', 'gray.400');
+  const buttonColor = useColorModeValue('rgba(0, 0, 0, 0.7)', 'rgba(255, 255, 255)');
+  const buttonHoverColor = useColorModeValue('gray.600', 'gray.300');
+  const languageColor = useColorModeValue("white", "black");
+
+  const labelStyle = {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    padding: "0.2rem 0.5rem",
+    borderRadius: "0.25rem",
+    fontSize: "0.8rem",
+    fontWeight: "bold",
+    backgroundColor: buttonColor,
+    color: languageColor,
+    // padding: '0.1rem 0.5rem',
+    textTransform: 'uppercase',
+  };
 
   const handleCopy = () => {
     setCopied(true);
@@ -133,14 +142,12 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
                       right="0"
                       transform="translateY(-50%)"
                       padding="0.2rem 0.5rem"
-                      color="white"
+                      backgroundColor="transparent"
                       border="none"
-                      borderTopRightRadius="0.25rem"
-                      borderBottomLeftRadius="0.25rem"
-                      icon={copied ? <HiOutlineClipboardCheck /> : <HiOutlineClipboard/>}
+                      borderRadius="0.25rem"
+                      icon={copied ? <BiCheck color='#6ee7b7' /> : <BiCopy/>}
                       aria-label="Copy code"
                       onClick={handleCopy}
-                      _hover={{ backgroundColor: "gray.600" }}
                     />
                   </CopyToClipboard>
                 </chakra.div>
