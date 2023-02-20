@@ -90,8 +90,8 @@ const Header = () => {
             );
           })}
           <Box flex={1} alignItems="right">
-            {/* <ThemeToggleButton /> */}
-            <ColorModeToggle />
+            <ThemeToggleButton />
+            {/* <ColorModeToggle /> */}
           </Box>
           <Tooltip label={`Command Palette (${shortcut})`}>
             <IconButton

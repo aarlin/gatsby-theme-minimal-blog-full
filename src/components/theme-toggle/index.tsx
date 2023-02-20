@@ -15,7 +15,7 @@ const ThemeToggleButton = () => {
       >
         <IconButton
           aria-label="Switch theme"
-          colorScheme={useColorModeValue(undefined, undefined)}
+          variant="ghost"
           icon={useColorModeValue(<FiMoon />, <FiSun />)}
           onClick={toggleColorMode}
         ></IconButton>

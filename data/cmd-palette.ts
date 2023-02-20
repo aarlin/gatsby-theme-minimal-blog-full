@@ -49,11 +49,6 @@ export const searchItems: SearchItemsType = {
       href: '/projects',
       icon: IoCodeSlashOutline,
     },
-    {
-      title: 'Uses',
-      href: '/uses',
-      icon: IoTerminalOutline,
-    },
   ],
   social: [
     {
