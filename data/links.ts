@@ -23,10 +23,10 @@ const navigationLinks: LinkType[] = [
         label: "Blog",
         href: "/blog"
     },
-    {
-        label: "Projects",
-        href: "/projects"
-    }
+    // {
+    //     label: "Projects",
+    //     href: "/projects"
+    // }
 ];
 
 export {

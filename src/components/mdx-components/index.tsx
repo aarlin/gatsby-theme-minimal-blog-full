@@ -145,7 +145,7 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
                       backgroundColor="transparent"
                       border="none"
                       borderRadius="0.25rem"
-                      icon={copied ? <BiCheck color='#6ee7b7' /> : <BiCopy/>}
+                      icon={copied ? <BiCheck color="#322659" /> : <BiCopy/>}
                       aria-label="Copy code"
                       onClick={handleCopy}
                     />

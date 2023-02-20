@@ -23,7 +23,7 @@ const IndexPage = ({ videos, posts }: Props) => {
         <link rel='me' href='https://aarlin.netlify.com' />
       </Head>
       <Hero />
-      <CoursesSection courses={courses} />
+      {/* <CoursesSection courses={courses} /> */}
       <BlogPostsSection posts={posts} />
     </>
   );

@@ -44,11 +44,11 @@ export const searchItems: SearchItemsType = {
       href: '/blog',
       icon: IoPencil,
     },
-    {
-      title: 'Projects',
-      href: '/projects',
-      icon: IoCodeSlashOutline,
-    },
+    // {
+    //   title: 'Projects',
+    //   href: '/projects',
+    //   icon: IoCodeSlashOutline,
+    // },
   ],
   social: [
     {
