@@ -1,0 +1,11 @@
+{
+  "tools": [
+    {
+      "title": "Visual Studio Code",
+      "description": "VSC is a go-to when it comes to web development.",
+      "url": "https://code.visualstudio.com/",
+      "image": "/assets/images/vsc.svg",
+      "category": "development"
+    }
+  ]
+}
