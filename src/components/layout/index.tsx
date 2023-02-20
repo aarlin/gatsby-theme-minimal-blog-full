@@ -3,7 +3,6 @@ import { VStack, Container } from '@chakra-ui/react';
 
 import Header from './header';
 import Footer from './footer';
-import { AnalyticsWrapper } from '../analytics/analytics-wrapper';
 
 type Props = PropsWithChildren<{}>;
 
@@ -24,7 +23,6 @@ const Layout = ({ children }: Props) => {
           </VStack>
           <Footer />
         </VStack>
-        <AnalyticsWrapper />
       </Container>
     </>
   );
