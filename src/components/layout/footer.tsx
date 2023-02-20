@@ -5,22 +5,8 @@ import { chakra, Stack, VStack, HStack, Divider, Link, Text } from '@chakra-ui/r
 import {
   GITHUB_PROFILE, LINKEDIN_PROFILE
 } from '../../constants';
-import { Link as LinkType } from '@/types/link';
 import { SiGithub, SiLinkedin } from 'react-icons/si';
-
-const externalLinks = [
-  {
-    href: GITHUB_PROFILE,
-    icon: SiGithub,
-    label: 'GitHub',
-  },
-  {
-    href: LINKEDIN_PROFILE,
-    icon: SiLinkedin,
-    label: 'LinkedIn'
-  }
-];
-
+import { socialLinks } from '@/data/external-links';
 
 const Footer = () => {
   const { pathname } = useRouter();
@@ -35,7 +21,7 @@ const Footer = () => {
         spacing={{ base: 2, md: 8 }}
       >
         <HStack alignItems='flex-center'>
-          {externalLinks.map(({ href, label }) => (
+          {socialLinks.map(({ href, label }) => (
             <Link
               key={href}
               as={NextLink}

@@ -20,7 +20,7 @@ const App = ({ Component, pageProps }: AppProps) => {
           url: "https://aarlin.netlify.com",
           title: "Aaron Lin - Developer",
           description:
-            "Full-stack Engineer, UI Designer, and Open Source Advocate.",
+            "Full-stack Engineer",
           locale: "en_US",
           images: [
             {
