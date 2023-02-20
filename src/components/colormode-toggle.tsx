@@ -38,9 +38,6 @@ const ColorModeToggle = () => {
           cursor: `pointer`,
           padding: 0,
           appearance: `none`,
-          "&:hover, &:focus": { opacity: 1 },
-          width: `24px`,
-          height: `24px`,
           border: (t) =>
             useColorModeValue(`none`, `4px solid ${t.colors.toggleIcon}`),
           backgroundColor: useColorModeValue(`transparent`, `toggleIcon`),
@@ -65,7 +62,6 @@ const ColorModeToggle = () => {
               `translate(0, 0)`,
               `translate(14px, -14px)`,
             ),
-            opacity: useColorModeValue(1, 0),
             transition: `transform 1s ease-in-out`,
           },
           "&:after": {

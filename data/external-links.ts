@@ -13,7 +13,7 @@ const socialLinks: SocialLink[] = [
   },
   {
     href: LINKEDIN_PROFILE,
-    label: 'Linkedin',
+    label: 'LinkedIn',
     icon: SiLinkedin,
   },
 ];

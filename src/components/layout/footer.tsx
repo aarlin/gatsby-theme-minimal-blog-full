@@ -1,57 +1,46 @@
-import { useRouter } from 'next/router';
-import NextLink from 'next/link';
-import { chakra, Stack, VStack, HStack, Divider, Link, Text } from '@chakra-ui/react';
-
-import {
-  GITHUB_PROFILE, LINKEDIN_PROFILE
-} from '../../constants';
-import { SiGithub, SiLinkedin } from 'react-icons/si';
-import { socialLinks } from '@/data/external-links';
+import { Flex, Link, IconButton, useColorMode, Box, Tooltip, HStack } from "@chakra-ui/react";
+import { socialLinks } from '../../../data/external-links';
 
 const Footer = () => {
-  const { pathname } = useRouter();
-
+  const { colorMode } = useColorMode();
+  const borderIcon = {
+    light: "undefined",
+    dark: "undefined",
+  };
+  const footerHoverBg = {
+    light: "gray.400",
+    dark: "gray.400",
+  };
+  const linkColor = {
+    light: "undefined",
+    dark: "white",
+  };
   return (
-    <VStack as='footer' alignItems='flex-start' pb={8} spacing={8}>
-      <Divider />
-      <Stack
-        justifyContent='space-between'
-        direction={{ base: 'column', md: 'row' }}
-        w='full'
-        spacing={{ base: 2, md: 8 }}
-      >
-        <HStack alignItems='flex-center'>
-          {socialLinks.map(({ href, label }) => (
-            <Link
-              key={href}
-              as={NextLink}
-              color='gray.500'
-              href={href}
-              isExternal={href.startsWith('http')}
-              target='_blank'
-            >
-              {label}
-            </Link>
-          ))}
-        </HStack>
-      </Stack>
-      <Stack
-        alignItems='center'
-        justifyContent={{ base: 'center', md: 'space-between' }}
-        direction={{ base: 'column', md: 'row' }}
-        gridRowGap={4}
-        w='full'
-        spacing={0}
-      >
-        <Text color='gray.500' fontSize='sm'>
-          ©{' '}
-          <chakra.span as='time' color='purple.500'>
-            {new Date().getFullYear()}
-          </chakra.span>{' '}
-          Aaron Lin
-        </Text>
-      </Stack>
-    </VStack>
+    <Box color={linkColor[colorMode]} mt={8} >
+      <Flex align="center" my={8} direction="column">
+        <HStack>
+          {socialLinks.map((socialLink) => {
+            return (
+              <Tooltip label={socialLink.label}>
+                <Link
+                  href={socialLink.href}
+                  isExternal
+                >
+                  <IconButton
+                    aria-label={socialLink.label}
+                    icon={<socialLink.icon />}
+                    size="lg"
+                    color={borderIcon[colorMode]}
+                    variant="ghost"
+                    _hover={{ backgroundColor: footerHoverBg[colorMode] }}
+                  />
+                </Link>
+              </Tooltip>
+            )
+          })}
+         </HStack>
+      </Flex>
+    </Box>
   );
 };
 
