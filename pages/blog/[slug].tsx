@@ -42,19 +42,19 @@ const BlogPostPage = ({
   const { query } = useRouter();
   const slug = query.slug as string;
 
-  const { views, increment: incrementViews } = usePostViews(slug);
-  const {
-    likes,
-    userLikes,
-    isLoading,
-    increment: incrementLikes,
-  } = usePostLikes(slug);
+  // const { views, increment: incrementViews } = usePostViews(slug);
+  // const {
+  //   likes,
+  //   userLikes,
+  //   isLoading,
+  //   increment: incrementLikes,
+  // } = usePostLikes(slug);
 
-  useEffect(() => {
-    if (slug) {
-      incrementViews();
-    }
-  }, [slug, incrementViews]);
+  // useEffect(() => {
+  //   if (slug) {
+  //     incrementViews();
+  //   }
+  // }, [slug, incrementViews]);
 
   return (
     <>
