@@ -11,28 +11,17 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
-import { useContext, useEffect, useState } from 'react';
-import { FiCommand } from 'react-icons/fi';
 
-import { CmdPaletteContext } from 'src/providers/cmd-palette-provider';
 import { motion } from 'framer-motion';
 import { Logo } from 'src/components/logo';
 import ThemeToggleButton from '../theme-toggle';
 import { useRouter } from "next/router";
-import { navigationLinks } from '@/data/links';
+import { navigationLinks } from 'src/data/links';
 
 const Header = () => {
-  const { open: openCommandPalette } = useContext(CmdPaletteContext);
-  const [shortcut, setShortcut] = useState<string>();
   const MotionButton = motion(Button);
   const { asPath } = useRouter();
   const hoverBg = useColorModeValue("gray.200", "gray.900");
-
-  useEffect(() => {
-    setShortcut(
-      navigator.userAgent.indexOf('Mac OS X') != -1 ? 'Cmd + K' : 'Ctrl + K'
-    );
-  }, [setShortcut]);
 
   return (
     <HStack
@@ -91,15 +80,6 @@ const Header = () => {
           <Box flex={1} alignItems="right">
             <ThemeToggleButton />
           </Box>
-          <Tooltip label={`Command Palette (${shortcut})`}>
-            <IconButton
-              aria-label='toggle theme'
-              icon={<FiCommand />}
-              onClick={openCommandPalette}
-              size='sm'
-              variant='ghost'
-            />  
-          </Tooltip>
         </HStack>
       </Container>
     </HStack>

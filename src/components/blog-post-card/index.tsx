@@ -8,7 +8,6 @@ import {
   HStack,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { format } from 'timeago.js';
 
 import { BlogPost } from '@/types/blog-post';
 import BlogTags from "../blog-tags";
@@ -57,9 +56,6 @@ const BlogPostCard = ({
           >
             <Text color='gray.500' fontSize='sm'>
               {date}
-            </Text>
-            <Text color='gray.500' fontSize='sm'>
-              {format(date)}
             </Text>
             <Text color='gray.500' fontSize='sm'>
               {readingTime}

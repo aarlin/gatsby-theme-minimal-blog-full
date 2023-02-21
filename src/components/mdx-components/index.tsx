@@ -62,11 +62,9 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
   const codeId = useId();
   const [copied, setCopied] = useState(false);
 
-  const { colorMode } = useColorMode();
-  const labelColor = useColorModeValue('gray.700', 'gray.400');
   const buttonColor = useColorModeValue('rgba(0, 0, 0, 0.7)', 'rgba(255, 255, 255)');
-  const buttonHoverColor = useColorModeValue('gray.600', 'gray.300');
   const languageColor = useColorModeValue("white", "black");
+  const checkColor = useColorModeValue("purple.300", "#ffffff")
 
   const handleCopy = () => {
     setCopied(true);
@@ -143,7 +141,7 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
                       backgroundColor="transparent"
                       border="none"
                       borderRadius="0.25rem"
-                      icon={copied ? <BiCheck color="#322659" /> : <BiCopy/>}
+                      icon={copied ? <BiCheck color={checkColor} /> : <BiCopy/>}
                       aria-label="Copy code"
                       onClick={handleCopy}
                     />

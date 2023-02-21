@@ -5,8 +5,6 @@ import "cal-sans";
 
 import theme from "../src/theme";
 import Layout from "@/components/layout";
-import CmdPalette from "@/components/cmd-palette";
-import CmdPaletteProvider from "src/providers/cmd-palette-provider";
 
 import "../style.css";
 
@@ -33,12 +31,9 @@ const App = ({ Component, pageProps }: AppProps) => {
           ],
         }}
       />
-      <CmdPaletteProvider>
         <Layout>
-          <CmdPalette />
           <Component {...pageProps} />
         </Layout>
-      </CmdPaletteProvider>
     </ChakraProvider>
   );
 };

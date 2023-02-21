@@ -4,7 +4,6 @@ import { serialize } from 'next-mdx-remote/serialize';
 import matter from 'gray-matter';
 import readingTime from 'reading-time';
 import { NextSeo } from 'next-seo';
-import { format } from 'timeago.js';
 import {
   VStack,
   Heading,
@@ -42,19 +41,19 @@ const BlogPostPage = ({
   const { query } = useRouter();
   const slug = query.slug as string;
 
-  const { views, increment: incrementViews } = usePostViews(slug);
-  const {
-    likes,
-    userLikes,
-    isLoading,
-    increment: incrementLikes,
-  } = usePostLikes(slug);
+  // const { views, increment: incrementViews } = usePostViews(slug);
+  // const {
+  //   likes,
+  //   userLikes,
+  //   isLoading,
+  //   increment: incrementLikes,
+  // } = usePostLikes(slug);
 
-  useEffect(() => {
-    if (slug) {
-      incrementViews();
-    }
-  }, [slug, incrementViews]);
+  // useEffect(() => {
+  //   if (slug) {
+  //     incrementViews();
+  //   }
+  // }, [slug, incrementViews]);
 
   return (
     <>
@@ -81,9 +80,6 @@ const BlogPostPage = ({
           >
             <Text color='gray.500' fontSize='sm'>
               {date}
-            </Text>
-            <Text color='gray.500' fontSize='sm'>
-              {format(date)}
             </Text>
             <Text color='gray.500' fontSize='sm'>
               {readingTime}
