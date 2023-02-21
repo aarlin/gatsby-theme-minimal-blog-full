@@ -1,5 +1,5 @@
 import { Flex, Link, IconButton, useColorMode, Box, Tooltip, HStack } from "@chakra-ui/react";
-import { socialLinks } from '@/data/links';
+import { socialLinks } from 'src/data/links';
 
 const Footer = () => {
   const { colorMode } = useColorMode();
@@ -21,7 +21,7 @@ const Footer = () => {
         <HStack>
           {socialLinks.map((socialLink) => {
             return (
-              <Tooltip label={socialLink.label}>
+              <Tooltip key={socialLink.label} label={socialLink.label}>
                 <Link
                   href={socialLink.href}
                   isExternal

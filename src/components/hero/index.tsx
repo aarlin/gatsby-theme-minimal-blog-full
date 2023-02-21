@@ -34,7 +34,9 @@ const Hero = () => {
           </Heading>
         </Stack>
         <Text as='h2' lineHeight='175%'>
-          I’m a software engineer at <ExternalLink href='https://liveperson.com'>LivePerson</ExternalLink>
+          My current role is a Software Engineer II at <ExternalLink href='https://liveperson.com'>LivePerson</ExternalLink>.
+          {' '}
+          I have interests in web development, reverse engineering, and 3D printing
         </Text>
         <Stack direction={{ base: 'column', md: 'row' }} spacing={3}>
         </Stack>

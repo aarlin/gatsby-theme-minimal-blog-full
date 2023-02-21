@@ -6,7 +6,7 @@ import CoursesSection from '@/components/courses-section';
 import { readData } from '@/utils/read-data';
 import { Video } from '@/types/video';
 import VideosSection from '@/components/videos-section';
-import courses from '@/data/courses';
+import courses from 'src/data/courses';
 import { getRecentBlogPosts } from '@/utils/get-blog-posts';
 import { BlogPost } from '@/types/blog-post';
 import BlogPostsSection from '@/components/blogposts-section';

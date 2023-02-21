@@ -16,7 +16,7 @@ import { motion } from 'framer-motion';
 import { Logo } from 'src/components/logo';
 import ThemeToggleButton from '../theme-toggle';
 import { useRouter } from "next/router";
-import { navigationLinks } from '@/data/links';
+import { navigationLinks } from 'src/data/links';
 
 const Header = () => {
   const MotionButton = motion(Button);

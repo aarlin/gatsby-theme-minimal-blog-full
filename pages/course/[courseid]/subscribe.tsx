@@ -1,7 +1,7 @@
 import type { GetStaticPaths, GetStaticProps } from "next";
 import { VStack, Heading, Text } from "@chakra-ui/react";
 
-import courses from "@/data/courses";
+import courses from "src/data/courses";
 import CourseForm from "@/components/course-form";
 import { Course } from "@/types/course";
 

@@ -6,7 +6,7 @@ import {
   useColorModeValue as mode,
 } from '@chakra-ui/react';
 
-import status from '@/data/status';
+import status from 'src/data/status';
 
 const StatusIndicator = () => {
   const isMobile = useBreakpointValue({ base: true, lg: false });
