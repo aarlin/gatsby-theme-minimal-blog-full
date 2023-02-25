@@ -13,12 +13,12 @@ import { socialLinks } from "@/data/links"
 const Links = [
   {
     name: "Github",
-    link: "https://github.com/amankrx",
+    link: "https://github.com/aarlin",
     icon: <FaGithub />,
   },
   {
     name: "LinkedIn",
-    link: "https://www.linkedin.com/in/amankrx/",
+    link: "https://www.linkedin.com/in/aarlin256/",
     icon: <FaLinkedin />,
   },
 ]
@@ -42,28 +42,26 @@ const Footer = () => (
         ))}
       </ButtonGroup>
     </Flex>
-    <Text
-      fontSize={["xs", "sm"]}
-      align="center"
-      color={useColorModeValue("textMediumLight", "textMediumDark")}
-    >
-      &copy; {new Date().getFullYear()} Aaron Lin. Made with{" "}
-      <a href="https://nextjs.org/" target="_blank" rel="noreferrer">
-        NextJS
-      </a>{" "}
-      and{" "}
-      <a href="https://chakra-ui.com/" target="_blank" rel="noreferrer">
-        Chakra UI
-      </a>
-      . View Source on{" "}
-      <a
-        href="https://github.com/aarlin/aarlin.netlify.app"
-        target="_blank"
-        rel="noreferrer"
+    <Flex
+        width="100%"
+        display={{ base: 'block', sm: 'flex' }}
+        justifyContent="space-between"
+        alignItems="center"
+        direction={{ base: 'column', sm: 'row' }}
+        px={{ base: '5', sm: '6' }}
+        py={{ base: '3.5', sm: '4' }}
+        textAlign="center"
       >
-        GitHub
-      </a>
-    </Text>
+        <Text fontSize="sm" mb="0">
+          {'{'}Developed by{' '}
+          <Text as="span" fontWeight="bold">
+            Aaron Lin{'}'}
+          </Text>
+        </Text>
+        <Text fontSize="sm" mt={{ base: '-1', sm: '0' }} mb="0">
+          With <b>Next.js</b> and <b>ChakraUI</b>
+        </Text>
+      </Flex>
   </Box>
 )
 

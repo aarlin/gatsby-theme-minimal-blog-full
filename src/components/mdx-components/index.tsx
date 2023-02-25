@@ -13,12 +13,13 @@ import {
 import NextImage from "next/image";
 import slugify from "slugify";
 import Highlight, { defaultProps } from "prism-react-renderer";
-import darkTheme from "prism-react-renderer/themes/nightOwl";
-import lightTheme from "prism-react-renderer/themes/nightOwlLight";
+import darkTheme from "prism-react-renderer/themes/shadesOfPurple";
+import lightTheme from "prism-react-renderer/themes/duotoneLight";
 import { useId, useState } from "react";
 // import Copy from '../copy';
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { BiCopy, BiCheck } from "react-icons/bi";
+import { HiCheckCircle, HiClipboard } from "react-icons/hi";
 
 const ChakraHighlight = chakra(Highlight, {
   shouldForwardProp: (prop) =>
@@ -106,7 +107,7 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
             fontWeight="bold"
             px="0.5rem"
             py="0.2rem"
-            textTransform="uppercase"
+            textTransform="lowercase"
         >{language}</Box>
       </chakra.div>
       <ChakraHighlight
@@ -141,7 +142,7 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
                       backgroundColor="transparent"
                       border="none"
                       borderRadius="0.25rem"
-                      icon={copied ? <BiCheck color={checkColor} /> : <BiCopy/>}
+                      icon={copied ? <HiCheckCircle color={checkColor} /> : <HiClipboard/>}
                       aria-label="Copy code"
                       onClick={handleCopy}
                     />

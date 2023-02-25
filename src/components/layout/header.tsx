@@ -9,6 +9,7 @@ import {
   Button,
   Box,
   useColorModeValue,
+  Flex,
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
@@ -17,6 +18,36 @@ import { Logo } from 'src/components/logo';
 import ThemeToggleButton from '../theme-toggle';
 import { useRouter } from "next/router";
 import { navigationLinks } from 'src/data/links';
+import RouterLink from 'next/link'
+import { DarkThemeButton } from 'src/components/dark-theme-button';
+
+interface NavigationLinkProps {
+  href: string
+  textLink: string
+}
+
+function NavigationLink(props: NavigationLinkProps) {
+  const { href, textLink } = props
+
+  const router = useRouter()
+
+  const isActive = router.pathname === href
+
+  return (
+    <RouterLink href={href} passHref>
+      <Link
+        _hover={{
+          textColor: 'secondary.400',
+        }}
+        pointerEvents={isActive ? 'none' : undefined}
+        textColor={isActive && 'secondary.400'}
+      >
+        {textLink}
+      </Link>
+    </RouterLink>
+  )
+}
+
 
 const Header = () => {
   const MotionButton = motion(Button);
@@ -48,39 +79,25 @@ const Header = () => {
         display='flex'
         maxW='container.md'
         px={{ base: 4, lg: 0 }}
-      >
+      > 
+        <Flex>
         <Heading size='sm'>
           <Link as={NextLink} href='/'>
             {/* <Logo/> */}
             Aaron Lin
           </Link>
         </Heading>
-        <HStack alignItems='center' spacing={{ base: 0, md: 2 }}>
-          {navigationLinks.map((navigationLink) => {
-             const isActive = asPath.includes(navigationLink.href);
 
-             return (
-              <NextLink href={navigationLink.href} passHref key={navigationLink.label}>
-                <Button
-                  as={Link}
-                  size="sm"
-                  colorScheme="gray"
-                  variant={isActive ? "solid" : "ghost"}
-                  transition={"all 0.2s ease-in-out"}
-                  _hover={{
-                    background: !isActive ? hoverBg : "",
-                    textDecoration: "none",
-                  }}
-                >
-                  {navigationLink.label}
-                </Button>
-              </NextLink>
-            );
+        </Flex>
+        <Flex alignItems="center" fontSize="sm" fontWeight="bold" columnGap="5">
+          
+          {navigationLinks.map((navigationLink) => {
+            return (
+              <NavigationLink href={navigationLink.href} textLink={navigationLink.label} />
+            )
           })}
-          <Box flex={1} alignItems="right">
-            <ThemeToggleButton />
-          </Box>
-        </HStack>
+          <DarkThemeButton />
+        </Flex>
       </Container>
     </HStack>
   );
