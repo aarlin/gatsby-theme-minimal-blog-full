@@ -30,7 +30,7 @@ const IndexPage = ({ videos, posts }: Props) => {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const posts = await getRecentBlogPosts(3);
+  const posts = await getRecentBlogPosts(4);
 
   const props: Props = {
     posts,

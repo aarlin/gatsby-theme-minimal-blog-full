@@ -1,4 +1,4 @@
-import { Heading, VStack, HStack, Text, List, ListItem, Icon, Box } from "@chakra-ui/react";
+import { Heading, HStack, Icon, List, ListItem, VStack } from "@chakra-ui/react";
 import { CgArrowRight } from "react-icons/cg";
 
 import { BlogPost } from "@/types/blog-post";

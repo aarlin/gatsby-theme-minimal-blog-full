@@ -11,6 +11,8 @@ import {
   Text,
   Spinner,
   Divider,
+  Flex,
+  Icon,
 } from '@chakra-ui/react';
 
 import { BlogPost } from '@/types/blog-post';
@@ -25,6 +27,7 @@ import usePostLikes from 'src/hooks/use-post-likes';
 import imageMetadata from '@/utils/plugins/image-metadata';
 import ScrollToTopButton from '@/components/scroll-to-top-button';
 import BlogTags from "@/components/blog-tags";
+import { RxCalendar, RxTimer } from 'react-icons/rx';
 
 type Props = BlogPost & {
   source: MDXRemoteSerializeResult;
@@ -78,12 +81,18 @@ const BlogPostPage = ({
               </Text>
             }
           >
-            <Text color='gray.500' fontSize='sm'>
-              {date}
-            </Text>
-            <Text color='gray.500' fontSize='sm'>
-              {readingTime}
-            </Text>
+            <Flex align="center">
+              <Icon as={RxCalendar} mr={2} />
+              <Text color="gray.500" fontSize="sm">
+                {date}
+              </Text>
+            </Flex>
+            <Flex align="center">
+              <Icon as={RxTimer} mr={2} />
+              <Text color="gray.500" fontSize="sm">
+                {readingTime}
+              </Text>
+            </Flex>
           </HStack>
           <HStack>
             <BlogTags tags={tags} />

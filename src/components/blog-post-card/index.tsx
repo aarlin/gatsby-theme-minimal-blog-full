@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from "next/link";
 import {
   LinkBox,
   LinkOverlay,
@@ -7,10 +7,13 @@ import {
   VStack,
   HStack,
   useColorModeValue,
-} from '@chakra-ui/react';
+  Flex,
+  Icon,
+} from "@chakra-ui/react";
 
-import { BlogPost } from '@/types/blog-post';
+import { BlogPost } from "@/types/blog-post";
 import BlogTags from "../blog-tags";
+import { RxCalendar, RxTimer } from "react-icons/rx";
 
 const BlogPostCard = ({
   title,
@@ -21,48 +24,54 @@ const BlogPostCard = ({
   tags,
 }: BlogPost) => {
   return (
-    <LinkBox as='article'>
+    <LinkBox as="article">
       <VStack
-        alignItems='stretch'
-        w='full'
+        alignItems="stretch"
+        w="full"
         p={{ base: 0, md: 4 }}
         _hover={{
-          bg: 'gray.100',
-          transform: 'scale(1.025, 1.025)',
+          bg: "gray.100",
+          transform: "scale(1.025, 1.025)",
         }}
         _dark={{
           _hover: {
-            bg: 'gray.700',
+            bg: "gray.700",
           },
         }}
-        rounded='md'
-        borderColor={useColorModeValue('gray.100', 'gray.700')}
-        transitionDuration='slow'
-        transitionProperty='all'
-        transitionTimingFunction='ease-out'
+        rounded="md"
+        borderColor={useColorModeValue("gray.100", "gray.700")}
+        transitionDuration="slow"
+        transitionProperty="all"
+        transitionTimingFunction="ease-out"
       >
-        <VStack alignItems='flex-start'>
-          <Heading size='md'>
+        <VStack alignItems="flex-start">
+          <Heading size="md">
             <LinkOverlay as={Link} href={`/blog/${slug}`}>
               {title}
             </LinkOverlay>
           </Heading>
           <HStack
             divider={
-              <Text mx={2} color='gray.500'>
+              <Text mx={2} color="gray.500">
                 •
               </Text>
             }
           >
-            <Text color='gray.500' fontSize='sm'>
-              {date}
-            </Text>
-            <Text color='gray.500' fontSize='sm'>
-              {readingTime}
-            </Text>
+            <Flex align="center">
+              <Icon as={RxCalendar} mr={2} />
+              <Text color="gray.500" fontSize="sm">
+                {date}
+              </Text>
+            </Flex>
+            <Flex align="center">
+              <Icon as={RxTimer} mr={2} />
+              <Text color="gray.500" fontSize="sm">
+                {readingTime}
+              </Text>
+            </Flex>
           </HStack>
         </VStack>
-        <Text color='gray.500' fontSize='sm'>
+        <Text color="gray.500" fontSize="sm">
           {description}
         </Text>
         {tags?.length > 0 && <BlogTags tags={tags} />}
