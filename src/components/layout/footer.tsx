@@ -55,8 +55,9 @@ const Footer = () => (
         <Text fontSize="sm" mb="0">
           {'{'}Developed by{' '}
           <Text as="span" fontWeight="bold">
-            Aaron Lin{'}'}
+            Aaron Lin
           </Text>
+          {'}'}
         </Text>
         <Text fontSize="sm" mt={{ base: '-1', sm: '0' }} mb="0">
           With <b>Next.js</b> and <b>ChakraUI</b>

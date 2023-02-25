@@ -10,6 +10,9 @@ import {
   Icon,
   List,
   ListItem,
+  InputRightElement,
+  Badge,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { NextSeo } from "next-seo";
 import { HiOutlineSearch } from "react-icons/hi";
@@ -49,6 +52,11 @@ const Blog = ({ posts }: Props) => {
             placeholder="Search blog posts"
             variant="filled"
           />
+          <InputRightElement pointerEvents="none">
+            <Badge variant="solid" colorScheme={useColorModeValue("secondary", "primary")} fontSize="sm">
+              {displayPosts.length}
+            </Badge>
+          </InputRightElement>
         </InputGroup>
       </VStack>
       <List w="full" spacing={2}>
