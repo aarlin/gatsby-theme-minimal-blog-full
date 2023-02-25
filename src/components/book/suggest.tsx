@@ -66,7 +66,7 @@ const Suggest = () => {
         {...getButtonProps()}
         h={6}
         mb={3}
-        color="purple.500"
+        color="green.500"
         fontSize="sm"
         fontWeight="normal"
         onClick={onToggle}

@@ -9,6 +9,7 @@ import {
   useColorModeValue,
   Flex,
   Icon,
+  Avatar,
 } from "@chakra-ui/react";
 
 import { BlogPost } from "@/types/blog-post";

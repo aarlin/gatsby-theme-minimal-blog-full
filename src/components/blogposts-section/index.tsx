@@ -21,13 +21,13 @@ const BlogPostsSection = ({ posts }: Props) => {
               href="/blog"
               ml={{ base: 0, md: 4 }}
               role="group"
-              colorScheme={"purple"}
+              colorScheme={"green"}
             >
               See all
               <Icon
                 as={CgArrowRight}
                 ml={1}
-                color={"purple.500"}
+                color={"green.500"}
                 _groupHover={{ ml: 3 }}
                 transitionDuration="slow"
                 transitionProperty="margin-left"

@@ -13,8 +13,8 @@ const BlogTags = ({ tags }: Props) => {
         <Badge 
           borderRadius="4px" 
           key={tag} 
-          colorScheme={"purple"}
-          variant="subtle"
+          colorScheme={"green"}
+          variant="outline"
         >
           {tag}
         </Badge>

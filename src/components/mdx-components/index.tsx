@@ -64,7 +64,7 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
 
   const buttonColor = useColorModeValue('rgba(0, 0, 0, 0.7)', 'rgba(255, 255, 255)');
   const languageColor = useColorModeValue("white", "black");
-  const checkColor = useColorModeValue("purple.300", "#ffffff")
+  const checkColor = useColorModeValue("green.300", "#ffffff")
 
   const handleCopy = () => {
     setCopied(true);
@@ -75,12 +75,12 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
     return (
       <chakra.code
         apply="mdx.code"
-        color="purple.500"
+        color="green.500"
         _dark={{
-          color: "purple.200",
-          bg: "purple.900",
+          color: "green.200",
+          bg: "green.900",
         }}
-        bg="purple.50"
+        bg="green.50"
         px={1}
         py={0.5}
         rounded={{ base: "none", md: "md" }}
@@ -208,7 +208,7 @@ const LinkedHeading = (props: HTMLChakraProps<"h2">) => {
       </Box>
       <chakra.span
         aria-label="anchor"
-        color="purple.500"
+        color="green.500"
         userSelect="none"
         fontWeight="normal"
         outline="none"
@@ -230,7 +230,7 @@ const Image = (props) => {
 };
 
 const Anchor = (props) => (
-  <chakra.a color="purple.500" _dark={{ color: "purple.300" }} {...props} />
+  <chakra.a color="green.500" _dark={{ color: "green.300" }} {...props} />
 );
 
 const MDXComponents = {

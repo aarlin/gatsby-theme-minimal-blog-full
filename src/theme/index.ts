@@ -5,21 +5,21 @@ const config: ThemeConfig = {
   useSystemColorMode: true,
 };
 
-const purpleRing = {
+const greenRing = {
   _focus: {
-    ringColor: 'purple.300',
+    ringColor: 'green.300',
     ring: 3,
     _dark: {
-      ringColor: 'purple.600',
+      ringColor: 'green.600',
     },
   },
 };
 
 const inputBorder = () => ({
   _focus: {
-    borderColor: 'purple.300',
+    borderColor: 'green.300',
     _dark: {
-      borderColor: 'purple.600',
+      borderColor: 'green.600',
     },
   },
 });
@@ -57,12 +57,17 @@ const theme = extendTheme({
     },
     Link: {
       baseStyle: {
-        ...purpleRing,
+        ...greenRing,
       },
     },
     Button: {
       baseStyle: {
-        ...purpleRing,
+        ...greenRing,
+      },
+    },
+    Badge: {
+      baseStyle: {
+        ...greenRing,
       },
     },
     Input: {
