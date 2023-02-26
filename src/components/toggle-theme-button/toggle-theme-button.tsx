@@ -4,7 +4,7 @@ import { Box, useColorMode } from '@chakra-ui/react'
 import { MoonFillIcon } from './components/moon-fill-icon'
 import { SunFillIcon } from './components/sun-fill-icon'
 
-export function DarkThemeButton() {
+export function ToggleThemeButton() {
   const { colorMode, toggleColorMode } = useColorMode()
 
   return (

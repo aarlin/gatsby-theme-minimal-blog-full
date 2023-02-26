@@ -1,6 +1,6 @@
 import { Box, AspectRatio, Flex } from '@chakra-ui/react';
 
-import Image from '@/components/image';
+import Image from '@/components/Image';
 
 const HeroImage = () => {
   return (

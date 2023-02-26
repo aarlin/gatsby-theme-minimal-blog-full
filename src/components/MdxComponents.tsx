@@ -1,7 +1,13 @@
 import {
   Alert,
   Box,
-  chakra, HTMLChakraProps, IconButton, Kbd, Link, useColorModeValue
+  chakra,
+  HTMLChakraProps,
+  Icon,
+  IconButton,
+  Kbd,
+  Link,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import NextImage from "next/image";
 import Highlight, { defaultProps } from "prism-react-renderer";
@@ -12,7 +18,8 @@ import slugify from "slugify";
 // import Copy from '../copy';
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { HiCheckCircle, HiClipboard } from "react-icons/hi";
-import Step from 'src/components/Step';
+import MarkdownStep from "@/components/MarkdownStep";
+import { CopyIcon, CheckIcon } from '@chakra-ui/icons';
 
 const ChakraHighlight = chakra(Highlight, {
   shouldForwardProp: (prop) =>
@@ -56,9 +63,12 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
   const codeId = useId();
   const [copied, setCopied] = useState(false);
 
-  const buttonColor = useColorModeValue('rgba(0, 0, 0, 0.7)', 'rgba(255, 255, 255)');
+  const buttonColor = useColorModeValue(
+    "rgba(0, 0, 0, 0.7)",
+    "rgba(255, 255, 255)"
+  );
   const languageColor = useColorModeValue("white", "black");
-  const checkColor = useColorModeValue("green.300", "#ffffff")
+  const checkColor = useColorModeValue("green.300", "#ffffff");
 
   const handleCopy = () => {
     setCopied(true);
@@ -89,19 +99,21 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
   return (
     <Box position="relative" marginBottom="1rem">
       <chakra.div justifyContent="flex-end" pb={2}>
-        <Box 
-            position="absolute"
-            top="0"
-            left="0"
-            bg={buttonColor}
-            color={languageColor}
-            borderRadius="0.25rem"
-            fontSize="0.8rem"
-            fontWeight="bold"
-            px="0.5rem"
-            py="0.2rem"
-            textTransform="lowercase"
-        >{language}</Box>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          bg={buttonColor}
+          color={languageColor}
+          borderRadius="0.25rem"
+          fontSize="0.8rem"
+          fontWeight="bold"
+          px="0.5rem"
+          py="0.2rem"
+          textTransform="lowercase"
+        >
+          {language}
+        </Box>
       </chakra.div>
       <ChakraHighlight
         {...defaultProps}
@@ -124,7 +136,7 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
                 p={4}
                 mx={-4}
               >
-                <chakra.div justifyContent="flex-end" pb={2}>
+                <chakra.div justifyContent="flex-end" pb={2} w="100%">
                   <CopyToClipboard text={codeString} onCopy={handleCopy}>
                     <IconButton
                       position="absolute"
@@ -135,7 +147,13 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
                       backgroundColor="transparent"
                       border="none"
                       borderRadius="0.25rem"
-                      icon={copied ? <HiCheckCircle color={checkColor} /> : <HiClipboard/>}
+                      icon={
+                        copied ? (
+                          <CheckIcon color={checkColor} />
+                        ) : (
+                          <CopyIcon />
+                        )
+                      }
                       aria-label="Copy code"
                       onClick={handleCopy}
                     />
@@ -218,9 +236,7 @@ const LinkedHeading = (props: HTMLChakraProps<"h2">) => {
 };
 
 const Image = (props) => {
-  return (
-    <NextImage {...props} loading="lazy" quality={100} />
-  );
+  return <NextImage {...props} loading="lazy" quality={100} />;
 };
 
 const Anchor = (props) => (
@@ -232,7 +248,7 @@ function RoundedImage(props) {
 }
 
 const MDXComponents = {
-  Step,
+  MarkdownStep,
   Image: RoundedImage,
   code: CodeHighlight,
   h1: (props) => <LinkedHeading as="h1" apply="mdx.h1" {...props} />,

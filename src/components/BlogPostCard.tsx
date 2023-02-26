@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 
 import { BlogPost } from "@/types/blog-post";
-import BlogTags from "../blog-tags";
+import BlogTags from "@/components/BlogTags";
 import { RxCalendar, RxTimer } from "react-icons/rx";
 
 const BlogPostCard = ({

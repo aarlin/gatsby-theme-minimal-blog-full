@@ -1,19 +1,11 @@
 import {
-  Stack,
-  VStack,
-  Heading,
-  Text,
-  Button,
-  Icon,
-  Link,
-  Flex,
+  Button, Flex, Heading, Icon, Stack, Text, VStack
 } from '@chakra-ui/react';
 import { FaGithub } from 'react-icons/fa';
-import { FiArrowUpRight } from 'react-icons/fi';
 import { SiLinkedin } from 'react-icons/si';
 
-import ExternalLink from '../external-link';
-import HeroImage from '../hero-image';
+import ExternalLink from '@/components/ExternalLink';
+import HeroImage from '@/components/HeroImage';
 
 const Hero = () => (
   <Stack

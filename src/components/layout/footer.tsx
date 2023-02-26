@@ -7,7 +7,7 @@ import {
   IconButton,
   Text,
 } from "@chakra-ui/react";
-import ExternalLink from "../external-link";
+import ExternalLink from '@/components/ExternalLink';
 
 const Footer = () => (
   <Container maxW="container.xl" px={{ base: 4, lg: 0 }}>

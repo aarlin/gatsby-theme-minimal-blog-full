@@ -1,6 +1,6 @@
 import { Flex, Box, Text } from "@chakra-ui/react";
 
-export default function Step({ number, title }) {
+export default function MarkdownStep({ number, title }) {
   return (
     <Flex alignItems="center" py={4}>
       <Box

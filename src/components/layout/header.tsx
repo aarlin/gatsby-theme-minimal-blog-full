@@ -10,7 +10,7 @@ import {
 import NextLink from "next/link";
 
 import { useRouter } from "next/router";
-import { DarkThemeButton } from "src/components/dark-theme-button";
+import { ToggleThemeButton } from "src/components/toggle-theme-button";
 import { navigationLinks } from "src/data/links";
 
 const NavigationLink = ({ name, href }) => {
@@ -100,7 +100,7 @@ const Header = () => {
               />
             );
           })}
-          <DarkThemeButton />
+          <ToggleThemeButton />
         </Flex>
       </Container>
     </HStack>

@@ -2,7 +2,7 @@ import type { GetStaticPaths, GetStaticProps } from "next";
 import { VStack, Heading, Text } from "@chakra-ui/react";
 
 import courses from "src/data/courses";
-import CourseForm from "@/components/course-form";
+import CourseForm from "@/components/CourseForm";
 import { Course } from "@/types/course";
 
 type Props = {

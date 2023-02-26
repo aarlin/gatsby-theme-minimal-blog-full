@@ -15,9 +15,9 @@ import {
 } from '@chakra-ui/react';
 
 import { Course } from '@/types/course';
-import ExternalLink from '../external-link';
+import ExternalLink from '@/components/ExternalLink';
 import { FiArrowUpRight } from 'react-icons/fi';
-import Image from '../image';
+import Image from '@/components/Image'
 
 type Props = Course;
 

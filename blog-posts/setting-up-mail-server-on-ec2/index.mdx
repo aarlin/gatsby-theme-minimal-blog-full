@@ -19,43 +19,43 @@ Alright, so what do we need?
 * Route 53 domain name
 * EC2 instance
 
-<Step number={1} title="Start with Route 53 on AWS by searching for a domain name."/>
+<MarkdownStep number={1} title="Start with Route 53 on AWS by searching for a domain name."/>
 I personally just chose the cheapest option from the dropdown selection which came to be $5
 
 ![](/assets/images/blog-posts/setting-up-mail-server-on-ec2/1.png)
 
-<Step number={2} title="Enter your contact information"/>
+<MarkdownStep number={2} title="Enter your contact information"/>
 
 ![](/assets/images/blog-posts/setting-up-mail-server-on-ec2/2.png)
 
-<Step number={3} title="Verify and accept if you want to renew domain automatically, accept terms & conditions, and complete order"/>
+<MarkdownStep number={3} title="Verify and accept if you want to renew domain automatically, accept terms & conditions, and complete order"/>
 ![](/assets/images/blog-posts/setting-up-mail-server-on-ec2/3.png)
 
-<Step number={4} title="It'll take a few minutes for domain registration to take place. "/>
+<MarkdownStep number={4} title="It'll take a few minutes for domain registration to take place. "/>
 Once you see domain registration succesful under [Route 53 Dashboard](https://console.aws.amazon.com/route53/v2/home#Dashboard), you can continue
 
 ![](/assets/images/blog-posts/setting-up-mail-server-on-ec2/4.png)
 
-<Step number={5} title="In the meantime, go to [EC2](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Instances:)"/>
+<MarkdownStep number={5} title="In the meantime, go to [EC2](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Instances:)"/>
 and launch an Ubuntu instance. Personally I went with 20.04 and t2.small 
 ![](/assets/images/blog-posts/setting-up-mail-server-on-ec2/6.png)
 
-<Step number={6} title="Under [Security Groups](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#SecurityGroups:),"/>
+<MarkdownStep number={6} title="Under [Security Groups](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#SecurityGroups:),"/>
 you'll want to create a new security group for Mailcow. Follow this screenshot for inbound rules
 ![](/assets/images/blog-posts/setting-up-mail-server-on-ec2/8.png)
 
 Click this [link](https://mailcow.github.io/mailcow-dockerized-docs/prerequisite-system/#default-ports) to double check which ports need to be enabled
 
-<Step number={7} title="Attach this security group to your EC2 instance by right clicking your instance, choosing Security and Change security group"/>
+<MarkdownStep number={7} title="Attach this security group to your EC2 instance by right clicking your instance, choosing Security and Change security group"/>
 Search for your security group you made, add, and save
 ![](/assets/images/blog-posts/setting-up-mail-server-on-ec2/9.png)
 ![](/assets/images/blog-posts/setting-up-mail-server-on-ec2/10.png)
 
-<Step number={8} title="Go to [Elastic IPs](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Addresses:) and allocate an elastic IP address"/>
+<MarkdownStep number={8} title="Go to [Elastic IPs](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Addresses:) and allocate an elastic IP address"/>
 Under actions, click Associate Elastic IP Address and point it to your EC2 instance you launched
 ![](/assets/images/blog-posts/setting-up-mail-server-on-ec2/7.png)
 
-<Step number={9} title="Under [hosted zones](https://console.aws.amazon.com/route53/v2/hostedzones#), "/>
+<MarkdownStep number={9} title="Under [hosted zones](https://console.aws.amazon.com/route53/v2/hostedzones#), "/>
 click your domain name and click View details. You'll want your domain to have these records.
 Follow this [guide](https://mailcow.github.io/mailcow-dockerized-docs/prerequisite-dns/#the-minimal-dns-configuration) to double check
 
@@ -64,6 +64,6 @@ Follow this [guide](https://mailcow.github.io/mailcow-dockerized-docs/prerequisi
 ![](/assets/images/blog-posts/setting-up-mail-server-on-ec2/5.png)
 ![](/assets/images/blog-posts/setting-up-mail-server-on-ec2/11.png)
 
-<Step number={10} title="The rest is super simple. SSH into the EC2 instance and follow this [guide](https://mailcow.github.io/mailcow-dockerized-docs/i_u_m_install/)"/>
+<MarkdownStep number={10} title="The rest is super simple. SSH into the EC2 instance and follow this [guide](https://mailcow.github.io/mailcow-dockerized-docs/i_u_m_install/)"/>
 
-<Step number={11} title="If you set everything up, you should be able to access your mailcow server using: `https://${MAILCOW_HOSTNAME}` with the default credentials admin + password moohoo."/>
+<MarkdownStep number={11} title="If you set everything up, you should be able to access your mailcow server using: `https://${MAILCOW_HOSTNAME}` with the default credentials admin + password moohoo."/>

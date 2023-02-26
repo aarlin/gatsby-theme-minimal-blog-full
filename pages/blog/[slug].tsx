@@ -1,8 +1,8 @@
-import BlogTags from "@/components/blog-tags";
-import MDXComponents from "@/components/mdx-components";
-import ScrollToTopButton from "@/components/scroll-to-top-button";
-import SocialShare from "@/components/social-share.tsx";
-// import { TableOfContents } from "@/components/table-of-contents";
+import BlogTags from "@/components/BlogTags";
+import MDXComponents from "@/components/MdxComponents";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
+import SocialShare from "@/components/SocialShare";
+// import TableOfContents from "@/components/TableOfContents";
 import { BlogPost } from "@/types/blog-post";
 import { getBlogPosts } from "@/utils/get-blog-posts";
 import imageMetadata from "@/utils/plugins/image-metadata";
@@ -90,10 +90,10 @@ const BlogPostContent = ({ date, title, readingTime, source }) => {
   );
 };
 
-const BlogContentAside = ({ tags, title }) => {
+const BlogContentAside = ({ source, tags, title }) => {
   return (
     <>
-      {/* <TableOfContents source={post.body.raw} /> */}
+      {/* <TableOfContents source={source?.compiledSource} /> */}
       <BlogTags tags={tags} />
       <SocialShare title={title} />
     </>
@@ -127,7 +127,7 @@ const BlogPostPage = ({
       {!isMobile && (
         <HStack spacing={4} w="100%">
           <VStack
-          alignSelf="flex-start"
+            alignSelf="flex-start"
             spacing={4}
             flex={1}
             align="flex-start"
@@ -148,7 +148,7 @@ const BlogPostPage = ({
             />
           </VStack>
           <VStack
-          alignItems="flex-start"
+            alignSelf="flex-start"
             spacing={4}
             flex={1}
             align="flex-start"
@@ -157,7 +157,6 @@ const BlogPostPage = ({
             as="nav"
             zIndex="popover"
             top={100}
-            alignSelf="center"
           >
             <BlogContentAside tags={tags} title={title} />
           </VStack>

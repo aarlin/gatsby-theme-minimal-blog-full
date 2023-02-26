@@ -2,8 +2,8 @@ import { Heading, HStack, Icon, List, ListItem, VStack } from "@chakra-ui/react"
 import { CgArrowRight } from "react-icons/cg";
 
 import { BlogPost } from "@/types/blog-post";
-import BlogPostCard from "../blog-post-card";
-import Link from "../link";
+import BlogPostCard from "@/components/BlogPostCard";
+import Link from "@/components/Link"
 
 type Props = {
   posts: BlogPost[];

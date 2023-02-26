@@ -13,12 +13,12 @@ banner: ./images/winhex-logo.jpg
 
 Today we'll look into how to reverse engineer an executable file with unknown programming language origin
 
-<Step number={1} title='Download WinHex as a prequisite for the following steps. You can find one with a license on a torrent site.'/>
+<MarkdownStep number={1} title='Download WinHex as a prequisite for the following steps. You can find one with a license on a torrent site.'/>
 
-<Step number={2} title='Open WinHex and drag in your .exe file'/>
+<MarkdownStep number={2} title='Open WinHex and drag in your .exe file'/>
   ![](/assets/images/blog-posts/analysis-and-reverse-engineer-executable-file/1.png)
 
-<Step number={3} title='Start scrolling the hex of the .exe until you find something recognizable.'/>
+<MarkdownStep number={3} title='Start scrolling the hex of the .exe until you find something recognizable.'/>
 In this case, I found code that could be an indication that it is Java code bundled into an .exe
   ![](/assets/images/blog-posts/analysis-and-reverse-engineer-executable-file/2.png)
 
@@ -27,26 +27,26 @@ In this case, I found code that could be an indication that it is Java code bund
  ![](/assets/images/blog-posts/analysis-and-reverse-engineer-executable-file/3.png)
 
 
-<Step number={4} title='Doing some research, we can see that if we can extract the hex starting from **PK** to the end of the hex, we can turn it back into a .jar file'/>
+<MarkdownStep number={4} title='Doing some research, we can see that if we can extract the hex starting from **PK** to the end of the hex, we can turn it back into a .jar file'/>
 
 For reference:  
 http://reverseengineeringtips.blogspot.com/2014/12/unpacking-launch4j-35-extracting-jar.html  
 https://reverseengineering.stackexchange.com/questions/3532/get-jar-back-from-wrappedinto-exe-jar  
 
-<Step number={5} title='Search for "META-INF" for the starting block. Right click the hex block starting with PK and select **Beginning of block**'/>
+<MarkdownStep number={5} title='Search for "META-INF" for the starting block. Right click the hex block starting with PK and select **Beginning of block**'/>
 ![](/assets/images/blog-posts/analysis-and-reverse-engineer-executable-file/4.png)
 
-<Step number={6} title='Scroll down to the bottom and right click and set the last hex block as **End of block**'/>
+<MarkdownStep number={6} title='Scroll down to the bottom and right click and set the last hex block as **End of block**'/>
 ![](/assets/images/blog-posts/analysis-and-reverse-engineer-executable-file/5.png)
 
-<Step number={7} title='Right click the highlighted block and click **Edit**'/>
+<MarkdownStep number={7} title='Right click the highlighted block and click **Edit**'/>
 ![](/assets/images/blog-posts/analysis-and-reverse-engineer-executable-file/6.png)
 
-<Step number={8} title='Then click **Copy Block** followed by **Into New file** and name the file appended with .jar'/>
+<MarkdownStep number={8} title='Then click **Copy Block** followed by **Into New file** and name the file appended with .jar'/>
 ![](/assets/images/blog-posts/analysis-and-reverse-engineer-executable-file/7.png)
 
-<Step number={9} title='Right click the .jar file and click **7-Zip** followed by **Open archive**'/>
+<MarkdownStep number={9} title='Right click the .jar file and click **7-Zip** followed by **Open archive**'/>
 
-<Step number={10} title='If done correctly, the jar should open as java class files'/>
+<MarkdownStep number={10} title='If done correctly, the jar should open as java class files'/>
 ![](/assets/images/blog-posts/analysis-and-reverse-engineer-executable-file/8.png)
 
