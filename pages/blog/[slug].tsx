@@ -17,6 +17,7 @@ import {
   Text,
   useMediaQuery,
   VStack,
+  Image,
 } from "@chakra-ui/react";
 import matter from "gray-matter";
 import { GetStaticPaths, GetStaticProps } from "next";
@@ -56,11 +57,48 @@ const BlogPostPage = ({
       />
 
       <VStack position="relative" alignItems="stretch" spacing={16}>
-          <VStack alignItems="flex-start" spacing={5}>
-            <Heading as="h1" size="lg">
-              {title}
-            </Heading>
-            <Flex
+        <VStack alignItems="flex-start" spacing={5}>
+          <Heading as="h1" size="lg">
+            {title}
+          </Heading>
+          <Flex
+            flexFlow="row"
+            justifyContent="space-between"
+            alignItems="center"
+            width="100%"
+            my={8}
+          >
+            <Flex alignItems="center">
+              <Image
+                alt="Aaron Lin"
+                height={10}
+                width={10}
+                borderRadius="10px"
+                sizes="20vw"
+                src="/aaron.webp"
+                className="rounded-full mt-0 mb-0"
+              />
+              <Text ml={2} fontSize="sm" color="gray.600" fontWeight="medium">
+                <Text as="span" color="black" fontWeight="bold">
+                  Aaron Lin
+                </Text>
+                <br />
+                <Flex align="center">
+                  <Icon as={RxCalendar} mr={2} />
+                  <Text color="gray.500" fontSize="sm">
+                    {date}
+                  </Text>
+                </Flex>
+              </Text>
+            </Flex>
+            <Flex align="center">
+              <Icon as={RxTimer} mr={2} />
+              <Text color="gray.500" fontSize="sm">
+                {readingTime}
+              </Text>
+            </Flex>
+          </Flex>
+          {/* <Flex
               flexFlow="row"
               justifyContent="space-between"
               alignItems="center"
@@ -78,11 +116,11 @@ const BlogPostPage = ({
                   {readingTime}
                 </Text>
               </Flex>
-            </Flex>
-            <HStack>
-              <BlogTags tags={tags} />
-            </HStack>
-          </VStack>
+            </Flex> */}
+          <HStack>
+            <BlogTags tags={tags} />
+          </HStack>
+        </VStack>
 
         <MDXRemote {...source} components={MDXComponents} />
       </VStack>
