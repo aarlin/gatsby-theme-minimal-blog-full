@@ -1,9 +1,16 @@
 import { socialLinks } from "@/data/links";
-import { Box, ButtonGroup, Flex, IconButton, Text } from "@chakra-ui/react";
+import {
+  Box,
+  ButtonGroup,
+  Container,
+  Flex,
+  IconButton,
+  Text,
+} from "@chakra-ui/react";
 import ExternalLink from "../external-link";
 
 const Footer = () => (
-  <Box as="footer" role="contentinfo" py={{ base: "12", md: "16" }}>
+  <Container maxW="container.xl" px={{ base: 4, lg: 0 }}>
     <Flex justify="center" direction="row" align="center">
       <ButtonGroup variant="ghost">
         {socialLinks.map((link) => (
@@ -43,9 +50,9 @@ const Footer = () => (
             color: "green.500",
             transform: "translateX(3px)",
           },
-          "& .name": {
+          "& .developer-name": {
             color: "green.500",
-          }
+          },
         }}
       >
         <Box
@@ -56,13 +63,11 @@ const Footer = () => (
           _hover={{ transform: "translateX(-3px)" }}
         >
           {"{ "}
-        </Box>
-        {" "}
+        </Box>{" "}
         Developed by{" "}
-        <Text as="span" fontWeight="bold" className="name">
+        <Text as="span" fontWeight="bold" className="developer-name">
           Aaron Lin
-        </Text>
-        {" "}
+        </Text>{" "}
         <Box
           display="inline-block"
           right="0"
@@ -80,7 +85,7 @@ const Footer = () => (
         <ExternalLink href={"https://chakra-ui.com/"}>Chakra UI</ExternalLink>
       </Text>
     </Flex>
-  </Box>
+  </Container>
 );
 
 export default Footer;

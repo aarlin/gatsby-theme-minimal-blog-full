@@ -219,7 +219,7 @@ const LinkedHeading = (props: HTMLChakraProps<"h2">) => {
 
 const Image = (props) => {
   return (
-    <NextImage {...props} layout="responsive" loading="lazy" quality={100} />
+    <NextImage {...props} loading="lazy" quality={100} />
   );
 };
 
