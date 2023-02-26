@@ -1,22 +1,47 @@
 import {
-  HStack,
-  Heading,
-  IconButton,
-  Link,
-  Tooltip,
-  Container,
-  chakra,
-  Button,
-  Box,
-  useColorModeValue,
+  Box, Button, Container, Flex, Heading, HStack, Link, Text, useColorModeValue
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
 import { motion } from 'framer-motion';
-import { Logo } from 'src/components/logo';
-import ThemeToggleButton from '../theme-toggle';
 import { useRouter } from "next/router";
+import { DarkThemeButton } from 'src/components/dark-theme-button';
 import { navigationLinks } from 'src/data/links';
+
+const NavigationLink = ({ name, href }) => {
+  const router = useRouter();
+  const isActive = `/${router.pathname.split('/')[1]}` === href;
+
+  const textColorLight = useColorModeValue('green.600', 'green.500');
+  const textColorDark = useColorModeValue('blue.700', 'blue.400');
+
+  return (
+    <NextLink href={href} passHref>
+      <Link borderRadius="full" p="0.5" position="relative" role="group">
+        <Flex py={1} px={2} rounded="full" align="end" justifyContent="center">
+          <Text fontSize="sm"
+            color={isActive ? textColorLight : textColorDark}
+            _groupHover={{
+              color: textColorLight
+            }}
+          >
+            {name}
+          </Text>
+          {isActive && (
+            <Box
+              height="1px"
+              width="70%"
+              pos="absolute"
+              top="10"
+              bgGradient="linear(to-r, blackAlpha.50, orange.500, blackAlpha.50)"
+            ></Box>
+          )}
+        </Flex>
+      </Link>
+    </NextLink>
+  );
+};
+
 
 const Header = () => {
   const MotionButton = motion(Button);
@@ -48,39 +73,25 @@ const Header = () => {
         display='flex'
         maxW='container.md'
         px={{ base: 4, lg: 0 }}
-      >
+      > 
+        <Flex>
         <Heading size='sm'>
           <Link as={NextLink} href='/'>
             {/* <Logo/> */}
             Aaron Lin
           </Link>
         </Heading>
-        <HStack alignItems='center' spacing={{ base: 0, md: 2 }}>
-          {navigationLinks.map((navigationLink) => {
-             const isActive = asPath.includes(navigationLink.href);
 
-             return (
-              <NextLink href={navigationLink.href} passHref key={navigationLink.label}>
-                <Button
-                  as={Link}
-                  size="sm"
-                  colorScheme="gray"
-                  variant={isActive ? "solid" : "ghost"}
-                  transition={"all 0.2s ease-in-out"}
-                  _hover={{
-                    background: !isActive ? hoverBg : "",
-                    textDecoration: "none",
-                  }}
-                >
-                  {navigationLink.label}
-                </Button>
-              </NextLink>
-            );
+        </Flex>
+        <Flex alignItems="center" fontSize="sm" fontWeight="bold" columnGap="5">
+          
+          {navigationLinks.map((navigationLink) => {
+            return (
+              <NavigationLink key={navigationLink.label} href={navigationLink.href} name={navigationLink.label} />
+            )
           })}
-          <Box flex={1} alignItems="right">
-            <ThemeToggleButton />
-          </Box>
-        </HStack>
+          <DarkThemeButton />
+        </Flex>
       </Container>
     </HStack>
   );

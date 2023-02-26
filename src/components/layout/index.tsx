@@ -17,8 +17,8 @@ const Layout = ({ children }: Props) => {
         px={{ base: 4, lg: 0 }}
         centerContent
       >
-        <VStack alignItems='stretch' flex={1} w='full' spacing={16}>
-          <VStack as='main' flex={1} w='full' spacing={16}>
+        <VStack alignItems='stretch' flex={1} w='full' spacing={20}>
+          <VStack as='main' flex={1} w='full' spacing={20}>
             {children}
           </VStack>
           <Footer />

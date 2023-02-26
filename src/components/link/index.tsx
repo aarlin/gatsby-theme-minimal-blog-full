@@ -8,7 +8,7 @@ type Props = LinkProps & ChakraLinkProps;
 
 const Link = ({ href, children, ...rest }: Props) => {
   return (
-    <ChakraLink as={NextLink} href={href} {...rest} color='purple.500'>
+    <ChakraLink as={NextLink} href={href} {...rest} color='green.500'>
       {children}
     </ChakraLink>
   );

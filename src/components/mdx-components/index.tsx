@@ -1,24 +1,18 @@
 import {
   Alert,
   Box,
-  chakra,
-  Link,
-  HTMLChakraProps,
-  Kbd,
-  useColorMode,
-  useColorModeValue,
-  HStack,
-  IconButton,
+  chakra, HTMLChakraProps, IconButton, Kbd, Link, useColorModeValue
 } from "@chakra-ui/react";
 import NextImage from "next/image";
-import slugify from "slugify";
 import Highlight, { defaultProps } from "prism-react-renderer";
-import darkTheme from "prism-react-renderer/themes/nightOwl";
-import lightTheme from "prism-react-renderer/themes/nightOwlLight";
+import lightTheme from "prism-react-renderer/themes/duotoneLight";
+import darkTheme from "prism-react-renderer/themes/shadesOfPurple";
 import { useId, useState } from "react";
+import slugify from "slugify";
 // import Copy from '../copy';
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { BiCopy, BiCheck } from "react-icons/bi";
+import { HiCheckCircle, HiClipboard } from "react-icons/hi";
+import Step from 'src/components/Step';
 
 const ChakraHighlight = chakra(Highlight, {
   shouldForwardProp: (prop) =>
@@ -64,7 +58,7 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
 
   const buttonColor = useColorModeValue('rgba(0, 0, 0, 0.7)', 'rgba(255, 255, 255)');
   const languageColor = useColorModeValue("white", "black");
-  const checkColor = useColorModeValue("purple.300", "#ffffff")
+  const checkColor = useColorModeValue("green.300", "#ffffff")
 
   const handleCopy = () => {
     setCopied(true);
@@ -75,12 +69,12 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
     return (
       <chakra.code
         apply="mdx.code"
-        color="purple.500"
+        color="green.500"
         _dark={{
-          color: "purple.200",
-          bg: "purple.900",
+          color: "green.200",
+          bg: "green.900",
         }}
-        bg="purple.50"
+        bg="green.50"
         px={1}
         py={0.5}
         rounded={{ base: "none", md: "md" }}
@@ -106,7 +100,7 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
             fontWeight="bold"
             px="0.5rem"
             py="0.2rem"
-            textTransform="uppercase"
+            textTransform="lowercase"
         >{language}</Box>
       </chakra.div>
       <ChakraHighlight
@@ -141,7 +135,7 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
                       backgroundColor="transparent"
                       border="none"
                       borderRadius="0.25rem"
-                      icon={copied ? <BiCheck color={checkColor} /> : <BiCopy/>}
+                      icon={copied ? <HiCheckCircle color={checkColor} /> : <HiClipboard/>}
                       aria-label="Copy code"
                       onClick={handleCopy}
                     />
@@ -208,7 +202,7 @@ const LinkedHeading = (props: HTMLChakraProps<"h2">) => {
       </Box>
       <chakra.span
         aria-label="anchor"
-        color="purple.500"
+        color="green.500"
         userSelect="none"
         fontWeight="normal"
         outline="none"
@@ -230,10 +224,16 @@ const Image = (props) => {
 };
 
 const Anchor = (props) => (
-  <chakra.a color="purple.500" _dark={{ color: "purple.300" }} {...props} />
+  <chakra.a color="green.500" _dark={{ color: "green.300" }} {...props} />
 );
 
+function RoundedImage(props) {
+  return <Image alt={props.alt} className="rounded-lg" {...props} />;
+}
+
 const MDXComponents = {
+  Step,
+  Image: RoundedImage,
   code: CodeHighlight,
   h1: (props) => <LinkedHeading as="h1" apply="mdx.h1" {...props} />,
   h2: (props) => <LinkedHeading as="h2" apply="mdx.h2" {...props} />,

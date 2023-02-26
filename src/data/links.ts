@@ -1,7 +1,7 @@
 import { Link as LinkType } from '@/types/link';
 import { IconType } from 'react-icons';
-import { SiGithub, SiLinkedin } from 'react-icons/si';
-import { GITHUB_PROFILE, LINKEDIN_PROFILE } from 'src/constants';
+import { FaGithub, FaLinkedin, FaRss } from 'react-icons/fa';
+import { GITHUB_PROFILE, LINKEDIN_PROFILE, RSS_FEED } from 'src/constants';
 
 type SocialLink = LinkType & { color?: string; icon?: IconType; };
 
@@ -9,13 +9,18 @@ const socialLinks: SocialLink[] = [
   {
     href: GITHUB_PROFILE,
     label: 'GitHub',
-    icon: SiGithub,
+    icon: FaGithub,
   },
   {
     href: LINKEDIN_PROFILE,
     label: 'LinkedIn',
-    icon: SiLinkedin,
+    icon: FaLinkedin,
   },
+  {
+    href: RSS_FEED,
+    label: 'Rss Feed',
+    icon: FaRss
+  }
 ];
 
 const navigationLinks: LinkType[] = [

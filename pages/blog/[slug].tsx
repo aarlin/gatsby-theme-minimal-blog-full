@@ -1,30 +1,32 @@
-import { GetStaticProps, GetStaticPaths } from 'next';
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
-import { serialize } from 'next-mdx-remote/serialize';
-import matter from 'gray-matter';
-import readingTime from 'reading-time';
-import { NextSeo } from 'next-seo';
+import BlogTags from "@/components/blog-tags";
+import MDXComponents from "@/components/mdx-components";
+import ScrollToTopButton from "@/components/scroll-to-top-button";
+import SocialShare from "@/components/social-share.tsx";
+// import { TableOfContents } from "@/components/table-of-contents";
+import { BlogPost } from "@/types/blog-post";
+import { getBlogPosts } from "@/utils/get-blog-posts";
+import imageMetadata from "@/utils/plugins/image-metadata";
+import { readBlogPost } from "@/utils/read-blog-post";
 import {
-  VStack,
+  Box,
+  Flex,
+  Grid,
   Heading,
   HStack,
+  Icon,
   Text,
-  Spinner,
-  Divider,
-} from '@chakra-ui/react';
-
-import { BlogPost } from '@/types/blog-post';
-import { getBlogPosts } from '@/utils/get-blog-posts';
-import { readBlogPost } from '@/utils/read-blog-post';
-import MDXComponents from '@/components/mdx-components';
-import { useRouter } from 'next/router';
-import usePostViews from 'src/hooks/use-post-views';
-import { useEffect } from 'react';
-import LikeButton from '@/components/like-button';
-import usePostLikes from 'src/hooks/use-post-likes';
-import imageMetadata from '@/utils/plugins/image-metadata';
-import ScrollToTopButton from '@/components/scroll-to-top-button';
-import BlogTags from "@/components/blog-tags";
+  useMediaQuery,
+  VStack,
+  Image,
+} from "@chakra-ui/react";
+import matter from "gray-matter";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { serialize } from "next-mdx-remote/serialize";
+import { NextSeo } from "next-seo";
+import { useRouter } from "next/router";
+import { RxCalendar, RxTimer } from "react-icons/rx";
+import readingTime from "reading-time";
 
 type Props = BlogPost & {
   source: MDXRemoteSerializeResult;
@@ -40,20 +42,7 @@ const BlogPostPage = ({
 }: Props) => {
   const { query } = useRouter();
   const slug = query.slug as string;
-
-  // const { views, increment: incrementViews } = usePostViews(slug);
-  // const {
-  //   likes,
-  //   userLikes,
-  //   isLoading,
-  //   increment: incrementLikes,
-  // } = usePostLikes(slug);
-
-  // useEffect(() => {
-  //   if (slug) {
-  //     incrementViews();
-  //   }
-  // }, [slug, incrementViews]);
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
 
   return (
     <>
@@ -66,30 +55,85 @@ const BlogPostPage = ({
           url: `https://aarlin.netlify.com/blog/${slug}`,
         }}
       />
-      <VStack position='relative' alignItems='stretch' w='full' spacing={8}>
-        <VStack alignItems='flex-start' spacing={3}>
-          <Heading as='h1' size='lg'>
+
+      <VStack position="relative" alignItems="stretch" spacing={16}>
+        <VStack alignItems="flex-start" spacing={5}>
+          <Heading as="h1" size="lg">
             {title}
           </Heading>
-          <HStack
-            divider={
-              <Text mx={2} color='gray.500'>
-                •
-              </Text>
-            }
+          <Flex
+            flexFlow="row"
+            justifyContent="space-between"
+            alignItems="center"
+            width="100%"
+            my={8}
           >
-            <Text color='gray.500' fontSize='sm'>
-              {date}
-            </Text>
-            <Text color='gray.500' fontSize='sm'>
-              {readingTime}
-            </Text>
-          </HStack>
+            <Flex alignItems="center">
+              <Image
+                alt="Aaron Lin"
+                height={10}
+                width={10}
+                borderRadius="10px"
+                sizes="20vw"
+                src="/aaron.webp"
+                className="rounded-full mt-0 mb-0"
+              />
+              <Text ml={2} fontSize="sm" color="gray.600" fontWeight="medium">
+                <Text as="span" color="black" fontWeight="bold">
+                  Aaron Lin
+                </Text>
+                <br />
+                <Flex align="center">
+                  <Icon as={RxCalendar} mr={2} />
+                  <Text color="gray.500" fontSize="sm">
+                    {date}
+                  </Text>
+                </Flex>
+              </Text>
+            </Flex>
+            <Flex align="center">
+              <Icon as={RxTimer} mr={2} />
+              <Text color="gray.500" fontSize="sm">
+                {readingTime}
+              </Text>
+            </Flex>
+          </Flex>
+          {/* <Flex
+              flexFlow="row"
+              justifyContent="space-between"
+              alignItems="center"
+              width="100%"
+            >
+              <Flex align="center">
+                <Icon as={RxCalendar} mr={2} />
+                <Text color="gray.500" fontSize="sm">
+                  {date}
+                </Text>
+              </Flex>
+              <Flex align="center">
+                <Icon as={RxTimer} mr={2} />
+                <Text color="gray.500" fontSize="sm">
+                  {readingTime}
+                </Text>
+              </Flex>
+            </Flex> */}
           <HStack>
             <BlogTags tags={tags} />
           </HStack>
         </VStack>
+
         <MDXRemote {...source} components={MDXComponents} />
+      </VStack>
+      <VStack
+        spacing={3}
+        pos="sticky"
+        top={8}
+        h="80vh"
+        overflow="auto"
+        display={["none", "none", "none", "block"]}
+      >
+        {/* <TableOfContents source={post.body.raw} /> */}
+        <SocialShare title={title} />
       </VStack>
       <ScrollToTopButton />
     </>

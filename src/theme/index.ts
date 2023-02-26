@@ -1,31 +1,29 @@
 import { extendTheme, theme as base, ThemeConfig } from '@chakra-ui/react';
-
-const config: ThemeConfig = {
-  initialColorMode: 'light',
-  useSystemColorMode: true,
-};
-
-const purpleRing = {
-  _focus: {
-    ringColor: 'purple.300',
-    ring: 3,
-    _dark: {
-      ringColor: 'purple.600',
-    },
-  },
-};
+import colors from './options/colors'
+import config from './options/config'
+import fontSizes from './options/font-sizes'
+import fonts from './options/fonts'
+import mdx from './options/mdx'
+import semanticTokens from './options/semantic-tokens'
+import styles from './options/styles'
 
 const inputBorder = () => ({
   _focus: {
-    borderColor: 'purple.300',
+    borderColor: 'green.300',
     _dark: {
-      borderColor: 'purple.600',
+      borderColor: 'green.600',
     },
   },
 });
 
 const theme = extendTheme({
-  config,
+  // colors,
+  // config,
+  // fontSizes,
+  // fonts,
+  // semanticTokens,
+  // styles,
+  mdx,
   styles: {
     global: {
       body: {
@@ -55,16 +53,6 @@ const theme = extendTheme({
         },
       },
     },
-    Link: {
-      baseStyle: {
-        ...purpleRing,
-      },
-    },
-    Button: {
-      baseStyle: {
-        ...purpleRing,
-      },
-    },
     Input: {
       variants: {
         filled: {
@@ -82,30 +70,9 @@ const theme = extendTheme({
       },
     },
   },
-  colors: {
-    twitter: '#1EA1F1',
-  },
   fonts: {
     heading: `Cal Sans, ${base.fonts.heading}`,
     body: `Inter, ${base.fonts.body}`,
-  },
-  mdx: {
-    h1: {
-      fontSize: '3xl',
-      letterSpacing: '1px',
-    },
-    h2: {
-      fontSize: 'xl',
-      letterSpacing: '0.8px',
-    },
-    h3: {
-      fontSize: 'md',
-      letterSpacing: '0.6px',
-    },
-    h4: {
-      fontSize: 'xs',
-      letterSpacing: '0.5px',
-    },
   },
 });
 
