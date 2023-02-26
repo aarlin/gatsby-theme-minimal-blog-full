@@ -2,7 +2,7 @@ import BlogTags from "@/components/blog-tags";
 import MDXComponents from "@/components/mdx-components";
 import ScrollToTopButton from "@/components/scroll-to-top-button";
 import SocialShare from "@/components/social-share.tsx";
-import { TableOfContents } from "@/components/table-of-contents";
+// import { TableOfContents } from "@/components/table-of-contents";
 import { BlogPost } from "@/types/blog-post";
 import { getBlogPosts } from "@/utils/get-blog-posts";
 import imageMetadata from "@/utils/plugins/image-metadata";

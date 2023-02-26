@@ -15,6 +15,10 @@ export function DarkThemeButton() {
       _dark={{
         color: 'secondary.400',
       }}
+      _hover={{
+        bg: "transparent",
+        color: "green.500",
+      }}
       onClick={() => toggleColorMode()}
     >
       {colorMode === 'dark' ? <SunFillIcon /> : <MoonFillIcon />}

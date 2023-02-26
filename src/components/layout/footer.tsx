@@ -13,7 +13,7 @@ const Footer = () => (
             href={link.href}
             _hover={{
               bg: "transparent",
-              color: "brand",
+              color: "green.500",
             }}
             aria-label={link.label}
             icon={<link.icon />}
@@ -43,6 +43,9 @@ const Footer = () => (
             color: "green.500",
             transform: "translateX(3px)",
           },
+          "& .name": {
+            color: "green.500",
+          }
         }}
       >
         <Box
@@ -56,7 +59,7 @@ const Footer = () => (
         </Box>
         {" "}
         Developed by{" "}
-        <Text as="span" fontWeight="bold">
+        <Text as="span" fontWeight="bold" className="name">
           Aaron Lin
         </Text>
         {" "}
