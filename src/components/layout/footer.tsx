@@ -1,8 +1,6 @@
-import { socialLinks } from "@/data/links"
-import {
-  Box, ButtonGroup, Flex, IconButton, Text
-} from "@chakra-ui/react"
-import ExternalLink from "../external-link"
+import { socialLinks } from "@/data/links";
+import { Box, ButtonGroup, Flex, IconButton, Text } from "@chakra-ui/react";
+import ExternalLink from "../external-link";
 
 const Footer = () => (
   <Box as="footer" role="contentinfo" py={{ base: "12", md: "16" }}>
@@ -24,30 +22,62 @@ const Footer = () => (
       </ButtonGroup>
     </Flex>
     <Flex
-        width="100%"
-        display={{ base: 'block', sm: 'flex' }}
-        justifyContent="space-between"
-        alignItems="center"
-        direction={{ base: 'column', sm: 'row' }}
-        px={{ base: '5', sm: '6' }}
-        py={{ base: '3.5', sm: '4' }}
-        textAlign="center"
+      width="100%"
+      display={{ base: "block", sm: "flex" }}
+      justifyContent="space-between"
+      alignItems="center"
+      direction={{ base: "column", sm: "row" }}
+      px={{ base: "5", sm: "6" }}
+      py={{ base: "3.5", sm: "4" }}
+      textAlign="center"
+    >
+      <Box
+        display="inline-block"
+        position="relative"
+        _hover={{
+          "& .opening-brace": {
+            color: "green.500",
+            transform: "translateX(-3px)",
+          },
+          "& .closing-brace": {
+            color: "green.500",
+            transform: "translateX(3px)",
+          },
+        }}
       >
-        <Text fontSize="sm" mb="0">
-          {'{ '}Developed by{' '}
-          <Text as="span" fontWeight="bold">
-            Aaron Lin
-          </Text>
-          {' }'}
+        <Box
+          display="inline-block"
+          left="0"
+          transition="transform 0.2s"
+          className="opening-brace"
+          _hover={{ transform: "translateX(-3px)" }}
+        >
+          {"{ "}
+        </Box>
+        {" "}
+        Developed by{" "}
+        <Text as="span" fontWeight="bold">
+          Aaron Lin
         </Text>
-        <Text fontSize="sm" mt={{ base: '-1', sm: '0' }} mb="0">
-          Built with{' '}
-          <ExternalLink href={'https://nextjs.org/'}>Next.js</ExternalLink>
-          {' '}and{' '}
-          <ExternalLink href={'https://chakra-ui.com/'}>Chakra UI</ExternalLink>
-        </Text>
-      </Flex>
-  </Box>
-)
+        {" "}
+        <Box
+          display="inline-block"
+          right="0"
+          transition="transform 0.2s"
+          className="closing-brace"
+          _hover={{ transform: "translateX(3px)" }}
+        >
+          {" }"}
+        </Box>
+      </Box>
 
-export default Footer
+      <Text fontSize="sm" mt={{ base: "-1", sm: "0" }} mb="0">
+        Built with{" "}
+        <ExternalLink href={"https://nextjs.org/"}>Next.js</ExternalLink> and{" "}
+        <ExternalLink href={"https://chakra-ui.com/"}>Chakra UI</ExternalLink>
+      </Text>
+    </Flex>
+  </Box>
+);
+
+export default Footer;
