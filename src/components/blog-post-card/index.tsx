@@ -44,6 +44,7 @@ const BlogPostCard = ({
         transitionDuration="slow"
         transitionProperty="all"
         transitionTimingFunction="ease-out"
+        padding='0.5rem'
       >
         <VStack alignItems="flex-start">
           <Heading size="md">

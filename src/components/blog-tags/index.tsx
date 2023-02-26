@@ -1,5 +1,4 @@
-import { Stack, Badge, useColorMode, useColorModeValue } from "@chakra-ui/react";
-import { ThemeTypings } from "@chakra-ui/styled-system";
+import { Badge, Stack, useColorModeValue } from "@chakra-ui/react";
 
 type Props = {
   tags: string[];
@@ -13,7 +12,7 @@ const BlogTags = ({ tags }: Props) => {
 
   return (
     <Stack direction="row">
-      {tags.sort().map((tag, index) => (
+      {tags.sort().map((tag, _) => (
         <Badge 
           borderRadius="4px" 
           key={tag} 

@@ -1,52 +1,46 @@
 import {
-  HStack,
-  Heading,
-  IconButton,
-  Link,
-  Tooltip,
-  Container,
-  chakra,
-  Button,
-  Box,
-  useColorModeValue,
-  Flex,
+  Box, Button, Container, Flex, Heading, HStack, Link, Text, useColorModeValue
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
 import { motion } from 'framer-motion';
-import { Logo } from 'src/components/logo';
-import ThemeToggleButton from '../theme-toggle';
 import { useRouter } from "next/router";
-import { navigationLinks } from 'src/data/links';
-import RouterLink from 'next/link'
 import { DarkThemeButton } from 'src/components/dark-theme-button';
+import { navigationLinks } from 'src/data/links';
 
-interface NavigationLinkProps {
-  href: string
-  textLink: string
-}
+const NavigationLink = ({ name, href }) => {
+  const router = useRouter();
+  const isActive = `/${router.pathname.split('/')[1]}` === href;
 
-function NavigationLink(props: NavigationLinkProps) {
-  const { href, textLink } = props
-
-  const router = useRouter()
-
-  const isActive = router.pathname === href
+  const textColorLight = useColorModeValue('green.600', 'green.500');
+  const textColorDark = useColorModeValue('blue.700', 'blue.400');
 
   return (
-    <RouterLink href={href} passHref>
-      <Link
-        _hover={{
-          textColor: 'secondary.400',
-        }}
-        pointerEvents={isActive ? 'none' : undefined}
-        textColor={isActive && 'secondary.400'}
-      >
-        {textLink}
+    <NextLink href={href} passHref>
+      <Link borderRadius="full" p="0.5" position="relative" role="group">
+        <Flex py={1} px={2} rounded="full" align="end" justifyContent="center">
+          <Text fontSize="sm"
+            color={isActive ? textColorLight : textColorDark}
+            _groupHover={{
+              color: textColorLight
+            }}
+          >
+            {name}
+          </Text>
+          {isActive && (
+            <Box
+              height="1px"
+              width="70%"
+              pos="absolute"
+              top="10"
+              bgGradient="linear(to-r, blackAlpha.50, orange.500, blackAlpha.50)"
+            ></Box>
+          )}
+        </Flex>
       </Link>
-    </RouterLink>
-  )
-}
+    </NextLink>
+  );
+};
 
 
 const Header = () => {
@@ -93,7 +87,7 @@ const Header = () => {
           
           {navigationLinks.map((navigationLink) => {
             return (
-              <NavigationLink href={navigationLink.href} textLink={navigationLink.label} />
+              <NavigationLink key={navigationLink.label} href={navigationLink.href} name={navigationLink.label} />
             )
           })}
           <DarkThemeButton />

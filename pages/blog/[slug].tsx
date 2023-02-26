@@ -1,33 +1,22 @@
-import { GetStaticProps, GetStaticPaths } from 'next';
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
-import { serialize } from 'next-mdx-remote/serialize';
-import matter from 'gray-matter';
-import readingTime from 'reading-time';
-import { NextSeo } from 'next-seo';
-import {
-  VStack,
-  Heading,
-  HStack,
-  Text,
-  Spinner,
-  Divider,
-  Flex,
-  Icon,
-} from '@chakra-ui/react';
-
+import BlogTags from "@/components/blog-tags";
+import MDXComponents from '@/components/mdx-components';
+import ScrollToTopButton from '@/components/scroll-to-top-button';
 import { BlogPost } from '@/types/blog-post';
 import { getBlogPosts } from '@/utils/get-blog-posts';
-import { readBlogPost } from '@/utils/read-blog-post';
-import MDXComponents from '@/components/mdx-components';
-import { useRouter } from 'next/router';
-import usePostViews from 'src/hooks/use-post-views';
-import { useEffect } from 'react';
-import LikeButton from '@/components/like-button';
-import usePostLikes from 'src/hooks/use-post-likes';
 import imageMetadata from '@/utils/plugins/image-metadata';
-import ScrollToTopButton from '@/components/scroll-to-top-button';
-import BlogTags from "@/components/blog-tags";
+import { readBlogPost } from '@/utils/read-blog-post';
+import {
+  Flex, Heading,
+  HStack, Icon, Text, VStack
+} from '@chakra-ui/react';
+import matter from 'gray-matter';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { serialize } from 'next-mdx-remote/serialize';
+import { NextSeo } from 'next-seo';
+import { useRouter } from 'next/router';
 import { RxCalendar, RxTimer } from 'react-icons/rx';
+import readingTime from 'reading-time';
 
 type Props = BlogPost & {
   source: MDXRemoteSerializeResult;
@@ -43,20 +32,6 @@ const BlogPostPage = ({
 }: Props) => {
   const { query } = useRouter();
   const slug = query.slug as string;
-
-  // const { views, increment: incrementViews } = usePostViews(slug);
-  // const {
-  //   likes,
-  //   userLikes,
-  //   isLoading,
-  //   increment: incrementLikes,
-  // } = usePostLikes(slug);
-
-  // useEffect(() => {
-  //   if (slug) {
-  //     incrementViews();
-  //   }
-  // }, [slug, incrementViews]);
 
   return (
     <>
@@ -74,12 +49,11 @@ const BlogPostPage = ({
           <Heading as='h1' size='lg'>
             {title}
           </Heading>
-          <HStack
-            divider={
-              <Text mx={2} color='gray.500'>
-                •
-              </Text>
-            }
+          <Flex
+            flexFlow="row"
+            justifyContent="space-between"
+            alignItems="center"
+            width="100%"
           >
             <Flex align="center">
               <Icon as={RxCalendar} mr={2} />
@@ -93,7 +67,7 @@ const BlogPostPage = ({
                 {readingTime}
               </Text>
             </Flex>
-          </HStack>
+          </Flex>
           <HStack>
             <BlogTags tags={tags} />
           </HStack>
