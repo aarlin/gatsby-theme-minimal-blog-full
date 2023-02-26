@@ -1,25 +1,18 @@
 import {
   Alert,
   Box,
-  chakra,
-  Link,
-  HTMLChakraProps,
-  Kbd,
-  useColorMode,
-  useColorModeValue,
-  HStack,
-  IconButton,
+  chakra, HTMLChakraProps, IconButton, Kbd, Link, useColorModeValue
 } from "@chakra-ui/react";
 import NextImage from "next/image";
-import slugify from "slugify";
 import Highlight, { defaultProps } from "prism-react-renderer";
-import darkTheme from "prism-react-renderer/themes/shadesOfPurple";
 import lightTheme from "prism-react-renderer/themes/duotoneLight";
+import darkTheme from "prism-react-renderer/themes/shadesOfPurple";
 import { useId, useState } from "react";
+import slugify from "slugify";
 // import Copy from '../copy';
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { BiCopy, BiCheck } from "react-icons/bi";
 import { HiCheckCircle, HiClipboard } from "react-icons/hi";
+import Step from 'src/components/Step';
 
 const ChakraHighlight = chakra(Highlight, {
   shouldForwardProp: (prop) =>
@@ -234,7 +227,13 @@ const Anchor = (props) => (
   <chakra.a color="green.500" _dark={{ color: "green.300" }} {...props} />
 );
 
+function RoundedImage(props) {
+  return <Image alt={props.alt} className="rounded-lg" {...props} />;
+}
+
 const MDXComponents = {
+  Step,
+  Image: RoundedImage,
   code: CodeHighlight,
   h1: (props) => <LinkedHeading as="h1" apply="mdx.h1" {...props} />,
   h2: (props) => <LinkedHeading as="h2" apply="mdx.h2" {...props} />,

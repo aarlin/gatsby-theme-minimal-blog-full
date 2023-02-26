@@ -1,22 +1,16 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
-import Hero from '@/components/hero';
-import CoursesSection from '@/components/courses-section';
-import { readData } from '@/utils/read-data';
-import { Video } from '@/types/video';
-import VideosSection from '@/components/videos-section';
-import courses from 'src/data/courses';
-import { getRecentBlogPosts } from '@/utils/get-blog-posts';
-import { BlogPost } from '@/types/blog-post';
 import BlogPostsSection from '@/components/blogposts-section';
+import Hero from '@/components/hero';
+import { BlogPost } from '@/types/blog-post';
+import { getRecentBlogPosts } from '@/utils/get-blog-posts';
 
 type Props = {
   posts: BlogPost[];
-  videos?: Video[];
 };
 
-const IndexPage = ({ videos, posts }: Props) => {
+const IndexPage = ({ posts }: Props) => {
   return (
     <>
       <Head>

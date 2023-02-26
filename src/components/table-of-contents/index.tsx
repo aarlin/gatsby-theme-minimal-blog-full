@@ -1,102 +1,127 @@
-// import React, { useRef, useEffect, useState } from 'react';
-// import Slugger from 'github-slugger';
+import { Button, Heading, VStack } from "@chakra-ui/react";
+import GithubSlugger from "github-slugger";
+import React, {
+  Dispatch,
+  FC,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
-// interface Heading {
-//   depth: number;
-//   value: string;
-// }
+interface IProps {
+  source: string;
+}
 
-// interface TableOfContentsProps {
-//   headings: Heading[];
-//   withTabs: boolean;
-// }
+const useIntersectionObserver = (
+  setActiveId: Dispatch<SetStateAction<string>>
+) => {
+  const headingElementsRef = useRef({});
 
-// function getActiveElement(rects: DOMRect[]) {
-//   if (rects.length === 0) {
-//     return -1;
-//   }
+  useEffect(() => {
+    const callback = (headings: IntersectionObserverEntry[]) => {
+      headingElementsRef.current = headings.reduce(
+        (
+          map: { [x: string]: any },
+          headingElement: { target: { id: string | number } }
+        ) => {
+          map[headingElement.target.id] = headingElement;
 
-//   const closest = rects.reduce(
-//     (acc, item, index) => {
-//       if (Math.abs(acc.position) < Math.abs(item.y)) {
-//         return acc;
-//       }
+          return map;
+        },
+        headingElementsRef.current
+      );
 
-//       return {
-//         index,
-//         position: item.y,
-//       };
-//     },
-//     { index: 0, position: rects[0].y }
-//   );
+      const visibleHeadings = [];
 
-//   return closest.index;
-// }
+      Object.keys(headingElementsRef.current).forEach((key) => {
+        const headingElement = headingElementsRef.current[key];
+        if (headingElement.isIntersecting) visibleHeadings.push(headingElement);
+      });
 
-// export default function TableOfContents({ headings, withTabs }: TableOfContentsProps) {
-//   const theme = useMantineTheme();
-//   const { classes, cx } = useStyles();
-//   const slugger = new Slugger();
-//   const [active, setActive] = useState(0);
-//   const { pathname } = useLocation();
+      const getIndexFromId = (id: string) =>
+        headingElements.findIndex((heading) => heading.id === id);
 
-//   const slugs = useRef<HTMLDivElement[]>([]);
-//   const filteredHeadings = headings.filter((heading) => heading.depth > 1);
+      if (visibleHeadings.length === 1) {
+        setActiveId(visibleHeadings[0].target.id);
+      } else if (visibleHeadings.length > 1) {
+        const sortedVisibleHeadings = visibleHeadings.sort(
+          (a, b) => getIndexFromId(b.target.id) - getIndexFromId(a.target.id)
+        );
 
-//   useEffect(() => {
-//     slugger.reset();
-//     slugs.current = filteredHeadings.map(
-//       (heading) => document.getElementById(slugger.slug(heading.value)) as HTMLDivElement
-//     );
-//   }, [headings]);
+        setActiveId(sortedVisibleHeadings[0].target.id);
+      }
+    };
 
-//   const handleScroll = () => {
-//     setActive(getActiveElement(slugs.current.map((d) => d.getBoundingClientRect())));
-//   };
+    const observer = new IntersectionObserver(callback, {
+      rootMargin: "0px 0px -70% 0px",
+    });
 
-//   useEffect(() => {
-//     setActive(getActiveElement(slugs.current.map((d) => d.getBoundingClientRect())));
-//     window.addEventListener('scroll', handleScroll);
-//     return () => window.removeEventListener('scroll', handleScroll);
-//   }, []);
+    const headingElements = Array.from(
+      document.querySelectorAll(".article h2, .article h3")
+    );
 
-//   if (filteredHeadings.length === 0) {
-//     return null;
-//   }
+    headingElements.forEach((element) => observer.observe(element));
 
-//   const items = filteredHeadings.map((heading, index) => {
-//     const slug = slugger.slug(heading.value);
-//     return (
-//       <Text<'a'>
-//         key={slug}
-//         component="a"
-//         size="sm"
-//         className={cx(classes.link, { [classes.linkActive]: active === index })}
-//         href={`#${slug}`}
-//         sx={{ paddingLeft: (heading.depth - 1) * theme.spacing.lg }}
-//         onClick={(event) => {
-//           event.preventDefault();
-//           navigate(`${pathname}#${slug}`, { replace: true });
-//         }}
-//       >
-//         {heading.value}
-//       </Text>
-//     );
-//   });
+    return () => observer.disconnect();
+  }, [setActiveId]);
+};
 
-//   return (
-//     <nav className={cx(classes.wrapper, { [classes.withTabs]: withTabs })}>
-//       <div className={classes.inner}>
-//         <div>
-//           <div className={classes.header}>
-//             <IconList size={20} stroke={1.5} />
-//             <Text className={classes.title}>Table of contents</Text>
-//           </div>
-//           <ScrollArea.Autosize maxHeight="calc(100vh - 140px)" type="scroll" offsetScrollbars>
-//             <div className={classes.items}>{items}</div>
-//           </ScrollArea.Autosize>
-//         </div>
-//       </div>
-//     </nav>
-//   );
-// }
+const TableOfContents: FC<IProps> = ({ source }) => {
+  const headingLines = source
+    .split("\n")
+    .filter((line) => line.match(/^###*\s/));
+
+  const headings = headingLines.map((raw) => {
+    const text = raw.replace(/^###*\s/, "");
+    const level = raw.slice(0, 3) === "###" ? 3 : 2;
+    const slugger = new GithubSlugger();
+
+    return {
+      text,
+      level,
+      href: slugger.slug(text),
+    };
+  });
+
+  const [activeId, setActiveId] = useState<string>();
+
+  useIntersectionObserver(setActiveId);
+
+  return (
+    <VStack alignItems="left">
+      <Heading size="sm">Table of Contents</Heading>
+      <VStack spacing={2} alignItems="left">
+        {headings.map((heading, index) => {
+          return (
+            <Button
+              key={index}
+              variant="link"
+              justifyContent="left"
+              color="gray.400"
+              fontSize="sm"
+              pl={(heading.level - 2) * 4}
+              _hover={{
+                color: "blue.400",
+              }}
+              _focus={{}}
+              onClick={(e) => {
+                e.preventDefault();
+                document.querySelector(`#${heading.href}`).scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                  inline: "nearest",
+                });
+              }}
+              fontWeight={heading.href === activeId ? "bold" : "normal"}
+            >
+              {heading.text}
+            </Button>
+          );
+        })}
+      </VStack>
+    </VStack>
+  );
+};
+
+export default TableOfContents;

@@ -5,4 +5,5 @@ export type BlogPost = {
   slug: string;
   readingTime: string;
   tags?: string[];
+  headers?: string[]
 };
