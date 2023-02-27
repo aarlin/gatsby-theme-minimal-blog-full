@@ -1,5 +1,5 @@
-import BlogTags from "@/components/BlogTags";
-import MDXComponents from "@/components/MdxComponents";
+import BlogTags from "@/components/blog/BlogTags";
+import MDXComponents from "@/components/markdown/MdxComponents";
 import ModifiedChakraLink from "@/components/ModifiedChakraLink";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import SocialShare from "@/components/SocialShare";

@@ -16,30 +16,33 @@ banner: ./images/apktool-logo.png
 This a quick guide on how to grab assets from an APK folder.  
 I'll be using a physical Android device for this guide
 
-<MarkdownStep number={1} title='Follow the steps for this [page](https://ibotpeaches.github.io/Apktool/install/) to get Apktool downloaded.'/>
+<Badge>1</Badge> Follow the steps for this [page](https://ibotpeaches.github.io/Apktool/install/) to get Apktool downloaded.
    Keep this jar file and bat file if you're using Windows in a folder. We'll get back to this later.
 
-<MarkdownStep number={2} title='Download the app from Google Playstore you want to decode assets from.'/>
+<Badge>2</Badge> Download the app from Google Playstore you want to decode assets from.
 For this guide, I'll be using Fire Emblem Heroes as an example.
 
-<MarkdownStep number={3} title='Go search under your apps - **Files**'/>
+<Badge>3</Badge> Go search under your apps - **Files**
+  
   ![](/assets/images/blog-posts/decode-apk/files-app.png)
 
-<MarkdownStep number={4} title='Under **Installed apps**, click on the arrow button next to the app you want to export the APK file'/>
+<Badge>4</Badge> Under **Installed apps**, click on the arrow button next to the app you want to export the APK file
 and select **Share**
+ 
   ![](/assets/images/blog-posts/decode-apk/installed-apps.png)
-<MarkdownStep number={5} title='In my case, transfer the file over to Dropbox'/>
+<Badge>5</Badge> In my case, transfer the file over to Dropbox
+ 
   ![](/assets/images/blog-posts/decode-apk/share-to-dropbox.png)
 
-<MarkdownStep number={6} title='Once the file transfer is complete, move the file to the folder where you downloaded the apktool'/>
+<Badge>6</Badge> Once the file transfer is complete, move the file to the folder where you downloaded the apktool
 
-<MarkdownStep number={7} title='Run the following commands'/>
+<Badge>7</Badge> Run the following commands
 `java -jar apktool.jar d <apk_name>`. In this case, it would be `java -jar apktool.jar d feh.apk`
 If you are using Windows, you can run `apktool.bat d <apk_name>`  
 
-<MarkdownStep number={8} title='The outputted folder should have the assets you want but under **.bin.lz** format'/>
+<Badge>8</Badge> The outputted folder should have the assets you want but under **.bin.lz** format
 
-<MarkdownStep number={9} title='The following steps are specific for this apk.'/>
+<Badge>9</Badge> The following steps are specific for this apk.
 **.bin.lz** are xor encrytpted lz77 files. 
 We can use [FEHDataExtractor](https://github.com/Lorenzooone/FEHDataExtractor/releases) to grab the internal data
 

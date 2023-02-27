@@ -20,7 +20,7 @@ import { HiOutlineSearch } from "react-icons/hi";
 
 import { BlogPost } from "@/types/blog-post";
 import { getBlogPosts } from "@/utils/get-blog-posts";
-import BlogPostCard from "@/components/BlogPostCard";
+import BlogPostCard from "@/components/blog/BlogPostCard";
 import ExternalLink from "@/components/ExternalLink";
 import { RiRssFill } from "react-icons/ri"
 

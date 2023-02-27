@@ -1,5 +1,6 @@
 import {
   Alert,
+  Badge,
   Box,
   chakra,
   HTMLChakraProps,
@@ -18,7 +19,6 @@ import slugify from "slugify";
 // import Copy from '../copy';
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { HiCheckCircle, HiClipboard } from "react-icons/hi";
-import MarkdownStep from "@/components/MarkdownStep";
 import { CopyIcon, CheckIcon } from '@chakra-ui/icons';
 
 const ChakraHighlight = chakra(Highlight, {
@@ -248,7 +248,7 @@ function RoundedImage(props) {
 }
 
 const MDXComponents = {
-  MarkdownStep,
+  Badge,
   Image: RoundedImage,
   code: CodeHighlight,
   h1: (props) => <LinkedHeading as="h1" apply="mdx.h1" {...props} />,

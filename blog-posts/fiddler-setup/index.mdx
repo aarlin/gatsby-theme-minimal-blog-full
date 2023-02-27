@@ -24,101 +24,123 @@ plus Charles proxy has a 30 day trial period while Fiddler is entirely free.
 
 ## Windows PC configuration
 
-<MarkdownStep number={1} title="Start by downloading Fiddler from this [site](https://www.telerik.com/download/fiddler)"/>
+<Badge>1</Badge> Start by downloading Fiddler from this [site](https://www.telerik.com/download/fiddler)
    Enter how you're planning to use Fiddler, your email, and country and accept the Fiddler End User Agreement
+
    ![](/assets/images/blog-posts/fiddler-setup/download.png)
 
-<MarkdownStep number={2} title="Open **FiddlerSetup.exe** and click **Yes**"/>
+<Badge>2</Badge> Open **FiddlerSetup.exe** and click **Yes**
+
    ![](/assets/images/blog-posts/fiddler-setup/fiddler_uac.png)
 
-<MarkdownStep number={3} title="Accept license with **I agree** "/>
+<Badge>3</Badge> Accept license with **I agree** 
+
    ![](/assets/images/blog-posts/fiddler-setup/license_agreement.png)
 
-<MarkdownStep number={4} title="Install location folder location and click **Install**"/>
+<Badge>4</Badge> Install location folder location and click **Install**
+
    ![](/assets/images/blog-posts/fiddler-setup/installation_folder.png)
 
-<MarkdownStep number={5} title="Download the [Certificate Maker plugin](https://telerik-fiddler.s3.amazonaws.com/fiddler/addons/fiddlercertmaker.exe) for Fiddler"/>
+<Badge>5</Badge> Download the [Certificate Maker plugin](https://telerik-fiddler.s3.amazonaws.com/fiddler/addons/fiddlercertmaker.exe) for Fiddler
 
-<MarkdownStep number={6} title="Open **fiddlercertmaker.exe** and click **Yes**"/>
+<Badge>6</Badge> Open **fiddlercertmaker.exe** and click **Yes**
+
    ![](/assets/images/blog-posts/fiddler-setup/cert_maker_uac.png)
 
-<MarkdownStep number={7} title="Installation complete message, hit **OK**"/>
+<Badge>7</Badge> Installation complete message, hit **OK**
+
    ![](/assets/images/blog-posts/fiddler-setup/cert_maker_setup_complete.png)
 
-<MarkdownStep number={8} title="Open Fiddler, press **Cancel** for AppContainer message"/>
+<Badge>8</Badge> Open Fiddler, press **Cancel** for AppContainer message
+
    ![](/assets/images/blog-posts/fiddler-setup/appcontainer.png)
 
-<MarkdownStep number={9} title="Enable HTTPS traffic decryption"/>
+<Badge>9</Badge> Enable HTTPS traffic decryption
 
    - Go to **Tools > Options... > HTTPS**
    - Click checkbox **Decrypt HTTPS traffic**title='
    - Hit **OK** on the **Options** window
+
      ![](/assets/images/blog-posts/fiddler-setup/decrypt_https.png)
 
-<MarkdownStep number={10} title="Allow remote computers to connect"/>   
+<Badge>10</Badge> Allow remote computers to connect   
 
     - Go to **Tools > Options... > Connections**
     - Click checkbox **Allow remote computers to connect**
+
       ![](/assets/images/blog-posts/fiddler-setup/allow_remote.png)
     - Hit **OK** from popup window
+
       ![](/assets/images/blog-posts/fiddler-setup/enabling_remote_access.png)
     - Hit **OK** on the **Options** window
 
-<MarkdownStep number={11} title="Restart Fiddler"/>
+<Badge>11</Badge> Restart Fiddler
 
-<MarkdownStep number={12} title="Ensure your firewall allows incoming connections to the Fiddler process, and that it's not blocking all incoming connections, including those in the list of allowed apps."/>
+<Badge>12</Badge> Ensure your firewall allows incoming connections to the Fiddler process, and that it's not blocking all incoming connections, including those in the list of allowed apps.
 
-<MarkdownStep number={13} title="Hover over the Online indicator at the far right of the Fiddler toolbar to display the IP addresses assigned to Fiddler's machine. Note this down for step 17. Usually this is the bottommost IP address if you have multiple IP addresses"/>
+<Badge>13</Badge> Hover over the Online indicator at the far right of the Fiddler toolbar to display the IP addresses assigned to Fiddler's machine. Note this down for step 17. Usually this is the bottommost IP address if you have multiple IP addresses
+   
     ![](/assets/images/blog-posts/fiddler-setup/online_ip.png)
 
 ## iPhone device configuration
 
-<MarkdownStep number={14} title="Go to **Settings > Wi-Fi**"/>
+<Badge>14</Badge> Go to **Settings > Wi-Fi**
 
-<MarkdownStep number={15} title="Find your current network and click the (i) icon"/>
+<Badge>15</Badge> Find your current network and click the (i) icon
+   
     ![](/assets/images/blog-posts/fiddler-setup/wifi_info.png)
 
-<MarkdownStep number={16} title="Scroll to the bottom and open up **HTTP Proxy**"/>
+<Badge>16</Badge> Scroll to the bottom and open up **HTTP Proxy**
 
-<MarkdownStep number={17} title="Choose **Manual**, type your IP address in the **Server** field and type the Fiddler listening port (8888 by default) in the **Port** field. Keep **Authentication** off"/>
+<Badge>17</Badge> Choose **Manual**, type your IP address in the **Server** field and type the Fiddler listening port (8888 by default) in the **Port** field. Keep **Authentication** off
+   
     ![](/assets/images/blog-posts/fiddler-setup/sample_proxy.png)
 
-<MarkdownStep number={18} title="Hit **Save**"/>
+<Badge>18</Badge> Hit **Save**
 
-<MarkdownStep number={19} title="Go to Safari. It has to be Safari, not Chrome! Open up http://ipv4.fiddler:8888"/>
+<Badge>19</Badge> Go to Safari. It has to be Safari, not Chrome! Open up http://ipv4.fiddler:8888
+   
     ![](/assets/images/blog-posts/fiddler-setup/ipv4fiddler.png)
 
-<MarkdownStep number={20} title="Click FiddlerRoot certificate. Click **Allow**"/>
+<Badge>20</Badge> Click FiddlerRoot certificate. Click **Allow**
+  
     ![](/assets/images/blog-posts/fiddler-setup/fiddler_root.png)
 
-<MarkdownStep number={21} title="If there is a prompt, choose **iPhone** for device to download this certificate to"/>
+<Badge>21</Badge> If there is a prompt, choose **iPhone** for device to download this certificate to
+  
     ![](/assets/images/blog-posts/fiddler-setup/install_device.png)
 
-<MarkdownStep number={22} title="Click **Close** for Profile Downloaded"/>
+<Badge>22</Badge> Click **Close** for Profile Downloaded
+   
     ![](/assets/images/blog-posts/fiddler-setup/profile_downloaded.png)
 
-<MarkdownStep number={22} title="Click on **Profile Downloaded** under **Settings** in your iPhone"/>
+<Badge>22</Badge> Click on **Profile Downloaded** under **Settings** in your iPhone
+   
     ![](/assets/images/blog-posts/fiddler-setup/settings.png)
 
-<MarkdownStep number={23} title="Click **Install** for the DO_NOT_TRUST_FiddlerRoot profile"/>
+<Badge>23</Badge> Click **Install** for the DO_NOT_TRUST_FiddlerRoot profile
+  
     ![](/assets/images/blog-posts/fiddler-setup/install_profile.png)
 
-<MarkdownStep number={24} title="Enter your passcode if you have one"/>
+<Badge>24</Badge> Enter your passcode if you have one
+  
     ![](/assets/images/blog-posts/fiddler-setup/passcode.png)
 
-<MarkdownStep number={25} title="Hit **Install** when warning message comes up and click **Install** again"/>
+<Badge>25</Badge> Hit **Install** when warning message comes up and click **Install** again
+   
     ![](/assets/images/blog-posts/fiddler-setup/install_warning.png)
 
-<MarkdownStep number={26} title="Click **Done** afterwards for Profile Installed"/>
+<Badge>26</Badge> Click **Done** afterwards for Profile Installed
 
-<MarkdownStep number={27} title="Go to **Settings > About > Certificate Trust Settings**. It should be located at the bottom"/>
+<Badge>27</Badge> Go to **Settings > About > Certificate Trust Settings**. It should be located at the bottom
 
-<MarkdownStep number={28} title="Turn on the Certificate you downloaded. Click **Continue** for Root Certificate warning"/>
+<Badge>28</Badge> Turn on the Certificate you downloaded. Click **Continue** for Root Certificate warning
+    
     ![](/assets/images/blog-posts/fiddler-setup/root_certificate.png)
 
-<MarkdownStep number={29} title="You're done! When you go to any site or app, you should now see traffic being logged into the Fiddler app on your desktop"/>
+<Badge>29</Badge> You're done! When you go to any site or app, you should now see traffic being logged into the Fiddler app on your desktop
 
-<MarkdownStep number={30} title="You can turn this off by going to the **HTTP Proxy** in the Wi-Fi and configure the proxy to **Off**"/>
+<Badge>30</Badge> You can turn this off by going to the **HTTP Proxy** in the Wi-Fi and configure the proxy to **Off**
 
 Hopefully this guide has helped you out. I wanted to make this guide as a way to guide others and remind myself if I need to re-install Fiddler.  
 

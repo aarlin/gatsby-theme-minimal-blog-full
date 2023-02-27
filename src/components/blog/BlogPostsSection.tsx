@@ -2,7 +2,7 @@ import { Heading, HStack, Icon, List, ListItem, VStack } from "@chakra-ui/react"
 import { CgArrowRight } from "react-icons/cg";
 
 import { BlogPost } from "@/types/blog-post";
-import BlogPostCard from "@/components/BlogPostCard";
+import BlogPostCard from "@/components/blog/BlogPostCard";
 import ModifiedChakraLink from "@/components/ModifiedChakraLink"
 
 type Props = {

@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
-import BlogPostsSection from '@/components/BlogPostsSection';
+import BlogPostsSection from '@/components/blog/BlogPostsSection';
 import Hero from '@/components/Hero';
 import { BlogPost } from '@/types/blog-post';
 import { getRecentBlogPosts } from '@/utils/get-blog-posts';

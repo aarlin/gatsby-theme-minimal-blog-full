@@ -11,7 +11,7 @@ import ExternalLink from '@/components/ExternalLink';
 import { LAYOUT_CONTAINER_MAX_WIDTH } from 'src/constants';
 
 const Footer = () => (
-  <Container maxW={LAYOUT_CONTAINER_MAX_WIDTH} px={{ base: 4, lg: 0 }}>
+  <Container maxW={LAYOUT_CONTAINER_MAX_WIDTH}>
     <Flex justify="center" direction="row" align="center">
       <ButtonGroup variant="ghost">
         {socialLinks.map((link) => (
@@ -36,7 +36,7 @@ const Footer = () => (
       alignItems="center"
       direction={{ base: "column", sm: "row" }}
       px={{ base: "5", sm: "6" }}
-      py={{ base: "3.5", sm: "4" }}
+      paddingBottom={{ base: "3.5", sm: "4" }}
       textAlign="center"
     >
       <Box
@@ -62,6 +62,7 @@ const Footer = () => (
           transition="transform 0.2s"
           className="opening-brace"
           _hover={{ transform: "translateX(-3px)" }}
+          mb={3}
         >
           {"{ "}
         </Box>{" "}
@@ -80,7 +81,7 @@ const Footer = () => (
         </Box>
       </Box>
 
-      <Text fontSize="sm" mt={{ base: "-1", sm: "0" }} mb="0">
+      <Text fontSize="sm" mt={{ base: "-1", sm: "0" }} mb="3">
         Built with{" "}
         <ExternalLink href={"https://nextjs.org/"}>Next.js</ExternalLink> and{" "}
         <ExternalLink href={"https://chakra-ui.com/"}>Chakra UI</ExternalLink>
