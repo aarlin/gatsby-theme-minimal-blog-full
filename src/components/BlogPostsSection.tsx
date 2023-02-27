@@ -3,7 +3,7 @@ import { CgArrowRight } from "react-icons/cg";
 
 import { BlogPost } from "@/types/blog-post";
 import BlogPostCard from "@/components/BlogPostCard";
-import Link from "@/components/Link"
+import ModifiedChakraLink from "@/components/ModifiedChakraLink"
 
 type Props = {
   posts: BlogPost[];
@@ -15,7 +15,7 @@ const BlogPostsSection = ({ posts }: Props) => {
       <HStack justifyContent="center" alignItems="center">
         <Heading size="lg">Latest Blog Posts</Heading>
           <HStack justifyContent="flex-end">
-            <Link
+            <ModifiedChakraLink
               display="flex"
               alignItems="center"
               href="/blog"
@@ -33,7 +33,7 @@ const BlogPostsSection = ({ posts }: Props) => {
                 transitionProperty="margin-left"
                 transitionTimingFunction="ease-out"
               />
-            </Link>
+            </ModifiedChakraLink>
         </HStack>
       </HStack>
       <List w="full" spacing={{ base: 8, md: 2 }}>

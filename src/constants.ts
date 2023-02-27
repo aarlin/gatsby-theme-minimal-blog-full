@@ -12,3 +12,5 @@ export const MOTION_WHILE_TYPE_VARIANT = {
     scale: 0.8,
     rotate: 40,
 }
+
+export const LAYOUT_CONTAINER_MAX_WIDTH = 'container.lg';

@@ -11,6 +11,7 @@ import NextLink from "next/link";
 
 import { useRouter } from "next/router";
 import { ToggleThemeButton } from "src/components/toggle-theme-button";
+import { LAYOUT_CONTAINER_MAX_WIDTH } from "src/constants";
 import { navigationLinks } from "src/data/links";
 
 const NavigationLink = ({ name, href }) => {
@@ -73,7 +74,7 @@ const Header = () => {
         alignItems="center"
         justifyContent="space-between"
         display="flex"
-        maxW="container.xl"
+        maxW={LAYOUT_CONTAINER_MAX_WIDTH}
         px={{ base: 4, lg: 0 }}
       >
         <Flex alignItems="center" fontWeight="bold" columnGap="5">

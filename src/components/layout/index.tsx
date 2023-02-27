@@ -1,5 +1,6 @@
 import { Container, VStack } from '@chakra-ui/react';
 import { PropsWithChildren } from 'react';
+import { LAYOUT_CONTAINER_MAX_WIDTH } from 'src/constants';
 
 import Footer from './footer';
 import Header from './header';
@@ -12,7 +13,7 @@ const Layout = ({ children }: Props) => {
       <Header />
       <Container
         display='flex'
-        maxW='container.lg'
+        maxW={LAYOUT_CONTAINER_MAX_WIDTH}
         minH={{ base: 'auto', md: '100vh' }}
         px={{ base: 4, lg: 0 }}
       >

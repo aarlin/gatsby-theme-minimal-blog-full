@@ -68,6 +68,7 @@ const useIntersectionObserver = (
 };
 
 const TableOfContents: FC<IProps> = ({ source }) => {
+  console.log(source);
   const headingLines = source
     .split("\n")
     .filter((line) => line.match(/^###*\s/));

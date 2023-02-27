@@ -76,7 +76,7 @@ const BlogPostCard = ({
         <Text color="gray.500" fontSize="sm">
           {description}
         </Text>
-        {tags?.length > 0 && <BlogTags tags={tags} />}
+        {tags?.length > 0 && <BlogTags direction="row" tags={tags} />}
       </VStack>
     </LinkBox>
   );

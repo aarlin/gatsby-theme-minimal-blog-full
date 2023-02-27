@@ -6,7 +6,7 @@ import {
 
 type Props = LinkProps & ChakraLinkProps;
 
-const Link = ({ href, children, ...rest }: Props) => {
+const ModifiedChakraLink = ({ href, children, ...rest }: Props) => {
   return (
     <ChakraLink as={NextLink} href={href} {...rest} color='green.500'>
       {children}
@@ -14,4 +14,4 @@ const Link = ({ href, children, ...rest }: Props) => {
   );
 };
 
-export default Link;
+export default ModifiedChakraLink;

@@ -8,9 +8,10 @@ import {
   Text,
 } from "@chakra-ui/react";
 import ExternalLink from '@/components/ExternalLink';
+import { LAYOUT_CONTAINER_MAX_WIDTH } from 'src/constants';
 
 const Footer = () => (
-  <Container maxW="container.xl" px={{ base: 4, lg: 0 }}>
+  <Container maxW={LAYOUT_CONTAINER_MAX_WIDTH} px={{ base: 4, lg: 0 }}>
     <Flex justify="center" direction="row" align="center">
       <ButtonGroup variant="ghost">
         {socialLinks.map((link) => (
