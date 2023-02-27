@@ -19,7 +19,7 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
 
       const {
         content,
-        data: { title, description, date, tags },
+        data: { title, description, date, tags, draft },
       } = matter(fileContent);
 
       result.push({

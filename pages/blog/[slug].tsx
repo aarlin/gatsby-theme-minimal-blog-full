@@ -4,7 +4,7 @@ import ModifiedChakraLink from "@/components/ModifiedChakraLink";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import SocialShare from "@/components/SocialShare";
 // import TableOfContents from "@/components/TableOfContents";
-import { TableOfContents } from "@/components/table-of-contents";
+// import { TableOfContents } from "@/components/table-of-contents";
 import * as blogPost from "@/types/blog-post";
 import { getBlogPosts } from "@/utils/get-blog-posts";
 import imageMetadata from "@/utils/plugins/image-metadata";
@@ -122,7 +122,7 @@ const BlogContentAside = ({props}) => {
   return (
     <>
       <BlogTags direction="column" tags={props.frontMatter.tags} />
-      <TableOfContents headings={props.tableOfContents} />
+      {/* <TableOfContents headings={props.tableOfContents} /> */}
       <SocialShare title={props.frontMatter.title} />
     </>
   );
