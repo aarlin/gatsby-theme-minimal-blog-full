@@ -1,9 +1,17 @@
 import { socialLinks } from "@/data/links";
-import { Box, ButtonGroup, Flex, IconButton, Text } from "@chakra-ui/react";
-import ExternalLink from "../external-link";
+import {
+  Box,
+  ButtonGroup,
+  Container,
+  Flex,
+  IconButton,
+  Text,
+} from "@chakra-ui/react";
+import ExternalLink from '@/components/ExternalLink';
+import { LAYOUT_CONTAINER_MAX_WIDTH } from 'src/constants';
 
 const Footer = () => (
-  <Box as="footer" role="contentinfo" py={{ base: "12", md: "16" }}>
+  <Container maxW={LAYOUT_CONTAINER_MAX_WIDTH}>
     <Flex justify="center" direction="row" align="center">
       <ButtonGroup variant="ghost">
         {socialLinks.map((link) => (
@@ -28,7 +36,7 @@ const Footer = () => (
       alignItems="center"
       direction={{ base: "column", sm: "row" }}
       px={{ base: "5", sm: "6" }}
-      py={{ base: "3.5", sm: "4" }}
+      paddingBottom={{ base: "3.5", sm: "4" }}
       textAlign="center"
     >
       <Box
@@ -43,9 +51,9 @@ const Footer = () => (
             color: "green.500",
             transform: "translateX(3px)",
           },
-          "& .name": {
+          "& .developer-name": {
             color: "green.500",
-          }
+          },
         }}
       >
         <Box
@@ -54,15 +62,14 @@ const Footer = () => (
           transition="transform 0.2s"
           className="opening-brace"
           _hover={{ transform: "translateX(-3px)" }}
+          mb={3}
         >
           {"{ "}
-        </Box>
-        {" "}
+        </Box>{" "}
         Developed by{" "}
-        <Text as="span" fontWeight="bold" className="name">
+        <Text as="span" fontWeight="bold" className="developer-name">
           Aaron Lin
-        </Text>
-        {" "}
+        </Text>{" "}
         <Box
           display="inline-block"
           right="0"
@@ -74,13 +81,13 @@ const Footer = () => (
         </Box>
       </Box>
 
-      <Text fontSize="sm" mt={{ base: "-1", sm: "0" }} mb="0">
+      <Text fontSize="sm" mt={{ base: "-1", sm: "0" }} mb="3">
         Built with{" "}
         <ExternalLink href={"https://nextjs.org/"}>Next.js</ExternalLink> and{" "}
         <ExternalLink href={"https://chakra-ui.com/"}>Chakra UI</ExternalLink>
       </Text>
     </Flex>
-  </Box>
+  </Container>
 );
 
 export default Footer;

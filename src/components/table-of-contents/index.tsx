@@ -1,127 +1,57 @@
-import { Button, Heading, VStack } from "@chakra-ui/react";
-import GithubSlugger from "github-slugger";
-import React, {
-  Dispatch,
-  FC,
-  SetStateAction,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { Box, Text } from '@chakra-ui/react'
+import { useEffect, useState } from 'react'
+import { FragmentLink } from './FragmentLink'
 
-interface IProps {
-  source: string;
-}
-
-const useIntersectionObserver = (
-  setActiveId: Dispatch<SetStateAction<string>>
-) => {
-  const headingElementsRef = useRef({});
+export const TableOfContents = ({ headings }) => {
+  const [activeFragment, setActiveFragment] = useState<HTMLHeadingElement>()
 
   useEffect(() => {
-    const callback = (headings: IntersectionObserverEntry[]) => {
-      headingElementsRef.current = headings.reduce(
-        (
-          map: { [x: string]: any },
-          headingElement: { target: { id: string | number } }
-        ) => {
-          map[headingElement.target.id] = headingElement;
-
-          return map;
-        },
-        headingElementsRef.current
-      );
-
-      const visibleHeadings = [];
-
-      Object.keys(headingElementsRef.current).forEach((key) => {
-        const headingElement = headingElementsRef.current[key];
-        if (headingElement.isIntersecting) visibleHeadings.push(headingElement);
-      });
-
-      const getIndexFromId = (id: string) =>
-        headingElements.findIndex((heading) => heading.id === id);
-
-      if (visibleHeadings.length === 1) {
-        setActiveId(visibleHeadings[0].target.id);
-      } else if (visibleHeadings.length > 1) {
-        const sortedVisibleHeadings = visibleHeadings.sort(
-          (a, b) => getIndexFromId(b.target.id) - getIndexFromId(a.target.id)
-        );
-
-        setActiveId(sortedVisibleHeadings[0].target.id);
-      }
-    };
-
-    const observer = new IntersectionObserver(callback, {
-      rootMargin: "0px 0px -70% 0px",
-    });
-
-    const headingElements = Array.from(
-      document.querySelectorAll(".article h2, .article h3")
-    );
-
-    headingElements.forEach((element) => observer.observe(element));
-
-    return () => observer.disconnect();
-  }, [setActiveId]);
-};
-
-const TableOfContents: FC<IProps> = ({ source }) => {
-  const headingLines = source
-    .split("\n")
-    .filter((line) => line.match(/^###*\s/));
-
-  const headings = headingLines.map((raw) => {
-    const text = raw.replace(/^###*\s/, "");
-    const level = raw.slice(0, 3) === "###" ? 3 : 2;
-    const slugger = new GithubSlugger();
-
-    return {
-      text,
-      level,
-      href: slugger.slug(text),
-    };
-  });
-
-  const [activeId, setActiveId] = useState<string>();
-
-  useIntersectionObserver(setActiveId);
+    setActiveFragment(headings[0].item)
+  }, [])
 
   return (
-    <VStack alignItems="left">
-      <Heading size="sm">Table of Contents</Heading>
-      <VStack spacing={2} alignItems="left">
-        {headings.map((heading, index) => {
-          return (
-            <Button
-              key={index}
-              variant="link"
-              justifyContent="left"
-              color="gray.400"
-              fontSize="sm"
-              pl={(heading.level - 2) * 4}
-              _hover={{
-                color: "blue.400",
-              }}
-              _focus={{}}
-              onClick={(e) => {
-                e.preventDefault();
-                document.querySelector(`#${heading.href}`).scrollIntoView({
-                  behavior: "smooth",
-                  block: "start",
-                  inline: "nearest",
-                });
-              }}
-              fontWeight={heading.href === activeId ? "bold" : "normal"}
-            >
-              {heading.text}
-            </Button>
-          );
-        })}
-      </VStack>
-    </VStack>
-  );
-};
+    <Box
+      as="aside"
+      display={{ base: 'none', md: 'block' }}
+      pos="sticky"
+      top="20"
+    >
+      <Box as="nav">
+        <Text
+          as="h2"
+          fontSize="sm"
+          fontWeight="medium"
+          letterSpacing=".8px"
+          mb="4"
+          textTransform="uppercase"
+        >
+          Table of Contents
+        </Text>
+        {headings.map((heading, index) => (
+          <FragmentLink
+            key={`${heading.href}-${index}`}
+            heading={heading}
+            active={activeFragment === heading.item}
+            setActiveFragment={setActiveFragment}
+          >
+            {heading.textContent}
+          </FragmentLink>
+        ))}
+      </Box>
+    </Box>
+  )
+}
 
-export default TableOfContents;
+export type Heading = ReturnType<typeof makeHeadingObject>
+
+const makeHeadingObject = (item: HTMLHeadingElement) => {
+  const textContent = item.textContent ?? ''
+  const childAnchorElement = item.querySelector('a')
+  const href = childAnchorElement?.getAttribute('data-href') ?? '#'
+
+  return {
+    item,
+    href,
+    textContent,
+  }
+}

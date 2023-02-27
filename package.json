@@ -13,6 +13,7 @@
   "dependencies": {
     "@babel/core": "^7.19.6",
     "@chakra-ui/descendant": "^3.0.12",
+    "@chakra-ui/icons": "^2.0.17",
     "@chakra-ui/react": "2.4.9",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",

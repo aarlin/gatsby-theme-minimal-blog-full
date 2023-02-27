@@ -1,0 +1,50 @@
+---
+title: Apk Into Readable Source Code
+date: December 15, 2021
+description: Using Bytecode Viewer to look into an Android application's source code
+tags: [Tutorial, Reverse Engineering, Android]
+---
+
+**Prerequisites**
+
+* Java - should be able to run `java -version` in your terminal
+* Bytecode Viewer
+
+<Badge>1</Badge> Download the jar for Bytecode Viewer located at this link: [page](https://github.com/Konloch/bytecode-viewer/releases)
+
+<Badge>2</Badge> Use a site like apkpure.com to download the apk you want to look into
+For this guide, we'll be this [apk](https://m.apkpure.com/eme-hive-meet-chat-go-live/com.eastmeeteast.eme_android)
+
+<Badge>3</Badge> Open Bytecode Viewer using the following command
+```bash
+java -jar jda-1.2.0-with-deps
+```
+
+<Badge>4</Badge> You should see the application open up, with an option to drag a .jar file into the top left window
+  
+  ![](/assets/images/blog-posts/apk-into-readable-source-code/1.png)
+
+<Badge>5</Badge> Drag in the apk downloaded in step 2
+
+<Badge>6</Badge> You should see the source code after the application has processed the apk 
+  
+  ![](/assets/images/blog-posts/apk-into-readable-source-code/2.png)
+
+<Badge>7</Badge> Looking through we can see several things about this application
+
+a. The usage of Firebase  
+b. Kotlin based application  
+c. Source code under `com.eastmeeteast`  
+
+<Badge>8</Badge> Looking at one .class file, we can see the implementation. Example shown below is for `com.eastmeeteast.api.servicemodule.CommunitiesModule.class`
+
+ ![](/assets/images/blog-posts/apk-into-readable-source-code/3.png)
+
+<Badge>9</Badge> You can change which disassembler/decompiler you use to view .class files under `View > Pane 1 OR Pane 2 OR Pane 3`
+As an example, I set pane 3 to be bytecode
+
+![](/assets/images/blog-posts/apk-into-readable-source-code/4.png)
+
+<Badge>10</Badge> Hit the Refresh button under Workspace window and you should see the pane changed to whatever you wanted to view the code in
+
+![](/assets/images/blog-posts/apk-into-readable-source-code/5.png)

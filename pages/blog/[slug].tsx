@@ -1,23 +1,23 @@
-import BlogTags from "@/components/blog-tags";
-import MDXComponents from "@/components/mdx-components";
-import ScrollToTopButton from "@/components/scroll-to-top-button";
-import SocialShare from "@/components/social-share.tsx";
+import BlogTags from "@/components/blog/BlogTags";
+import MDXComponents from "@/components/markdown/MdxComponents";
+import ModifiedChakraLink from "@/components/ModifiedChakraLink";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
+import SocialShare from "@/components/SocialShare";
+// import TableOfContents from "@/components/TableOfContents";
 // import { TableOfContents } from "@/components/table-of-contents";
-import { BlogPost } from "@/types/blog-post";
+import * as blogPost from "@/types/blog-post";
 import { getBlogPosts } from "@/utils/get-blog-posts";
 import imageMetadata from "@/utils/plugins/image-metadata";
 import { readBlogPost } from "@/utils/read-blog-post";
 import {
-  Box,
   Flex,
-  Grid,
   Heading,
   HStack,
   Icon,
+  Image,
   Text,
   useMediaQuery,
   VStack,
-  Image,
 } from "@chakra-ui/react";
 import matter from "gray-matter";
 import { GetStaticPaths, GetStaticProps } from "next";
@@ -25,116 +25,166 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
-import { RxCalendar, RxTimer } from "react-icons/rx";
+import { RxCalendar, RxChevronLeft, RxTimer } from "react-icons/rx";
 import readingTime from "reading-time";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
-type Props = BlogPost & {
-  source: MDXRemoteSerializeResult;
+export type TableOfContents = Section[];
+export type SubSection = {
+  slug: string;
+  text: string;
+};
+export type Section = SubSection & {
+  subSections: SubSection[];
 };
 
-const BlogPostPage = ({
-  title,
-  description,
-  date,
-  source,
-  readingTime,
-  tags,
-}: Props) => {
+type Props = blogPost.BlogPost & {
+  source: MDXRemoteSerializeResult;
+  frontMatter: any;
+  tableOfContents: any;
+  postContent: any;
+};
+
+const BackToBlogButton = () => {
+  return (
+    <HStack>
+      <ModifiedChakraLink
+        display="flex"
+        alignItems="center"
+        href="/blog"
+        ml={{ base: 0, md: 4 }}
+        role=""
+      >
+        <Icon
+          as={RxChevronLeft}
+          ml={1}
+          _groupHover={{ ml: -3 }}
+          transitionDuration="slow"
+          transitionProperty="margin-left"
+          transitionTimingFunction="ease-out"
+        />
+        Back
+      </ModifiedChakraLink>
+    </HStack>
+  );
+};
+
+const BlogPostContent = ({ props }) => {
+
+  return (
+    <>
+      <Heading as="h1" size="lg">
+        {props.frontMatter.title}
+      </Heading>
+      <Flex
+        flexFlow="row"
+        justifyContent="space-between"
+        alignItems="center"
+        width="100%"
+        my={8}
+      >
+        <Flex alignItems="center">
+          <Image
+            alt="Aaron Lin"
+            height={10}
+            width={10}
+            borderRadius="10px"
+            sizes="20vw"
+            src="/aaron.webp"
+            className="rounded-full mt-0 mb-0"
+          />
+          <Text ml={2} fontSize="sm" color="gray.600" fontWeight="medium">
+            <Text as="span" color="black" fontWeight="bold">
+              Aaron Lin
+            </Text>
+            <br />
+            <Flex align="center">
+              <Icon as={RxCalendar} mr={2} />
+              <Text color="gray.500" fontSize="sm">
+                {props.frontMatter.date}
+              </Text>
+            </Flex>
+          </Text>
+        </Flex>
+        <Flex align="center">
+          <Icon as={RxTimer} mr={2} />
+          <Text color="gray.500" fontSize="sm">
+            {props.readingTime}
+          </Text>
+        </Flex>
+      </Flex>
+      <MDXRemote {...props.source} components={MDXComponents} />
+    </>
+  );
+};
+
+const BlogContentAside = ({props}) => {
+  return (
+    <>
+      <BlogTags direction="column" tags={props.frontMatter.tags} />
+      {/* <TableOfContents headings={props.tableOfContents} /> */}
+      <SocialShare title={props.frontMatter.title} />
+    </>
+  );
+};
+
+const BlogPostPage = ({ source, readingTime, frontMatter, tableOfContents, postContent }) => {
   const { query } = useRouter();
   const slug = query.slug as string;
   const [isMobile] = useMediaQuery("(max-width: 768px)");
+  const mergedProps = { source, readingTime, frontMatter, tableOfContents, postContent }
 
   return (
     <>
       <NextSeo
-        title={`${title} - Aaron Lin`}
-        description={description}
+        title={`${frontMatter.title} - Aaron Lin`}
+        description={frontMatter.description}
         openGraph={{
-          description,
-          title: `${title} - Aaron Lin`,
+          description: frontMatter.description,
+          title: `${frontMatter.title} - Aaron Lin`,
           url: `https://aarlin.netlify.com/blog/${slug}`,
         }}
       />
 
-      <VStack position="relative" alignItems="stretch" spacing={16}>
-        <VStack alignItems="flex-start" spacing={5}>
-          <Heading as="h1" size="lg">
-            {title}
-          </Heading>
-          <Flex
-            flexFlow="row"
-            justifyContent="space-between"
-            alignItems="center"
-            width="100%"
-            my={8}
+      {!isMobile && (
+        <HStack spacing={8} w="100%">
+          <VStack
+            alignSelf="flex-start"
+            spacing={4}
+            flex={1}
+            align="flex-start"
+            w="full"
+            position="sticky"
+            as="nav"
+            zIndex="popover"
+            top={100}
           >
-            <Flex alignItems="center">
-              <Image
-                alt="Aaron Lin"
-                height={10}
-                width={10}
-                borderRadius="10px"
-                sizes="20vw"
-                src="/aaron.webp"
-                className="rounded-full mt-0 mb-0"
-              />
-              <Text ml={2} fontSize="sm" color="gray.600" fontWeight="medium">
-                <Text as="span" color="black" fontWeight="bold">
-                  Aaron Lin
-                </Text>
-                <br />
-                <Flex align="center">
-                  <Icon as={RxCalendar} mr={2} />
-                  <Text color="gray.500" fontSize="sm">
-                    {date}
-                  </Text>
-                </Flex>
-              </Text>
-            </Flex>
-            <Flex align="center">
-              <Icon as={RxTimer} mr={2} />
-              <Text color="gray.500" fontSize="sm">
-                {readingTime}
-              </Text>
-            </Flex>
-          </Flex>
-          {/* <Flex
-              flexFlow="row"
-              justifyContent="space-between"
-              alignItems="center"
-              width="100%"
-            >
-              <Flex align="center">
-                <Icon as={RxCalendar} mr={2} />
-                <Text color="gray.500" fontSize="sm">
-                  {date}
-                </Text>
-              </Flex>
-              <Flex align="center">
-                <Icon as={RxTimer} mr={2} />
-                <Text color="gray.500" fontSize="sm">
-                  {readingTime}
-                </Text>
-              </Flex>
-            </Flex> */}
-          <HStack>
-            <BlogTags tags={tags} />
-          </HStack>
-        </VStack>
+            <BackToBlogButton />
+          </VStack>
+          <VStack spacing={4} flex={3} align="flex-start" w="100%">
+            <BlogPostContent props={mergedProps} />
+          </VStack>
+          <VStack
+            alignSelf="flex-start"
+            spacing={4}
+            flex={1}
+            align="flex-start"
+            w="full"
+            position="sticky"
+            as="nav"
+            zIndex="popover"
+            top={100}
+          >
+            <BlogContentAside props={mergedProps} />
+          </VStack>
+        </HStack>
+      )}
 
-        <MDXRemote {...source} components={MDXComponents} />
-      </VStack>
-      <VStack
-        spacing={3}
-        pos="sticky"
-        top={8}
-        h="80vh"
-        overflow="auto"
-        display={["none", "none", "none", "block"]}
-      >
-        {/* <TableOfContents source={post.body.raw} /> */}
-        <SocialShare title={title} />
-      </VStack>
+      {isMobile && (
+        <VStack spacing={4} flex={4} align="flex-start" w="100%">
+          <BlogPostContent props={mergedProps} />
+        </VStack>
+      )}
       <ScrollToTopButton />
     </>
   );
@@ -149,28 +199,51 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
+const parseTableOfContents = (content: string) => {
+  const headings = Array.from(
+    (function* () {
+      const regex = /(#{1,6})\s+(.+)/g;
+      let match;
+      while ((match = regex.exec(content))) {
+        yield {
+          depth: match[1].length,
+          text: match[2]
+            .replace(/\s+/g, "-")
+            .replace(/[^a-zA-Z0-9-]/g, "")
+            .toLowerCase(),
+        };
+      }
+    })()
+  );
+  return headings;
+};
+
 export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   const slug = ctx.params.slug as string;
 
   const postContent = await readBlogPost(slug);
-  const {
-    content,
-    data: { title, description, date, tags },
-  } = matter(postContent);
+  const { content, data } = matter(postContent);
+
+  const tableOfContents = parseTableOfContents(content);
+
+  const mdxSource = await serialize(content, {
+    mdxOptions: {
+      remarkPlugins: [],
+      rehypePlugins: [
+        imageMetadata,
+        rehypeAutolinkHeadings,
+        // [rehypeToc, { headings: ["h2", "h3"] }],
+      ],
+    },
+  });
 
   return {
     props: {
-      source: await serialize(content, {
-        mdxOptions: {
-          rehypePlugins: [imageMetadata],
-        },
-      }),
+      source: mdxSource,
       readingTime: readingTime(content).text,
-      title,
-      description,
-      date,
-      slug,
-      tags,
+      tableOfContents,
+      postContent,
+      frontMatter: data,
     },
   };
 };

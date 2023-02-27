@@ -1,0 +1,55 @@
+---
+title: Decompile Pyinstaller Source Code
+date: 2021-12-13
+description: Looking into a Pyinstaller executable for the original source code
+tags:
+  - Tutorial
+  - Reverse Engineering
+  - Python
+banner: ./images/winhex-logo.jpg
+---
+
+**Prerequisites**
+
+* WinHex
+* 7zip
+
+
+
+<Badge>1</Badge> Download WinHex as a prequisite for the following steps. You can find one with a license on a torrent site.
+
+<Badge>2</Badge> Open WinHex and drag in your .exe file
+  ![](./images/1.png)
+
+<Badge>3</Badge> Start scrolling the hex of the .exe until you find something recognizable.
+In this case, I found code that could be an indication that it is Java code bundled into an .exe
+  ![](./images/2.png)
+
+> We can also know this is a launch4j jar bundled inside an exe if we open the .exe with 7zip. It should be the following content structure
+
+ ![](./images/3.png)
+
+
+<Badge>4</Badge> Doing some research, we can see that if we can extract the hex starting from **PK** to the end of the hex, we can turn it back into a .jar file
+
+For reference:  
+http://reverseengineeringtips.blogspot.com/2014/12/unpacking-launch4j-35-extracting-jar.html  
+https://reverseengineering.stackexchange.com/questions/3532/get-jar-back-from-wrappedinto-exe-jar  
+
+<Badge>5</Badge> Search for "META-INF" for the starting block. Right click the hex block starting with PK and select **Beginning of block**
+![](./images/4.png)
+
+<Badge>6</Badge> Scroll down to the bottom and right click and set the last hex block as **End of block**
+![](./images/5.png)
+
+<Badge>7</Badge> Right click the highlighted block and click **Edit**
+![](./images/6.png)
+
+<Badge>8</Badge> Then click **Copy Block** followed by **Into New file** and name the file appended with .jar
+![](./images/7.png)
+
+<Badge>9</Badge> Right click the .jar file and click **7-Zip** followed by **Open archive**
+
+<Badge>10</Badge> If done correctly, the jar should open as java class files
+![](./images/8.png)
+

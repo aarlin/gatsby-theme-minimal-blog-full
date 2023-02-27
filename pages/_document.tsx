@@ -7,7 +7,7 @@ import theme from '../src/theme';
 const Doc = () => (
   <Html lang='en'>
     <Head>
-      <link rel="shortcut icon" href="/static/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     </Head>
     <body>
       <ColorModeScript initialColorMode={theme.config.initialColorMode} />

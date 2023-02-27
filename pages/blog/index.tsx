@@ -20,8 +20,8 @@ import { HiOutlineSearch } from "react-icons/hi";
 
 import { BlogPost } from "@/types/blog-post";
 import { getBlogPosts } from "@/utils/get-blog-posts";
-import BlogPostCard from "@/components/blog-post-card";
-import ExternalLink from "@/components/external-link";
+import BlogPostCard from "@/components/blog/BlogPostCard";
+import ExternalLink from "@/components/ExternalLink";
 import { RiRssFill } from "react-icons/ri"
 
 type Props = {

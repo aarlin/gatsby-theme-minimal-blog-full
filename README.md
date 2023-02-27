@@ -11,6 +11,20 @@
   </a>
 </p>
 
+<p align="center">
+  <p align="center">
+    <a href="https://nextjs.org/">
+      <img src="https://img.shields.io/badge/frontend-Next.js-%23000000?style=for-the-badge&logo=next.js" alt="Built with Next.js">
+    </a>
+    <a href="https://www.typescriptlang.org/">
+      <img src="https://img.shields.io/badge/types-typescript-%23007ACC?style=for-the-badge&logo=typescript" alt="Built with Typescript">
+    </a>
+    <a href="https://chakra-ui.com/">
+      <img src="https://img.shields.io/badge/styling-Chakra UI-%23319795?style=for-the-badge" alt="Built with Chakra UI">
+    </a>
+  </p>
+</p>
+
 ## ✨ Features
 
 - Light Mode / Dark Mode
@@ -21,16 +35,21 @@
 - SEO (Sitemap, OpenGraph tags, Twitter tags)
 - WebApp Manifest
 
-- **Framework**: [Next.js](https://nextjs.org/)
-- **Deployment**: [Netlify](https://netlify.com)
-- **Content**: [MDX](https://github.com/mdx-js/mdx)
-- **Styling**: [Chakra UI](https://chakra-ui.com/)
 
 ## Running Locally
 
 ```bash
-$ git clone https://github.com/aarlin/aarlin.netlify.com.git
-$ cd aarlin.netlify.com
-$ npm
-$ npm run dev
+git clone https://github.com/aarlin/aarlin.netlify.com.git
+```
+
+```bash
+cd aarlin.netlify.com
+```
+
+```bash
+npm install
+```
+
+```bash
+npm run dev
 ```
