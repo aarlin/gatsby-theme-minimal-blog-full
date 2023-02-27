@@ -6,8 +6,6 @@ import "cal-sans";
 import theme from "../src/theme";
 import Layout from "@/components/layout";
 
-import "../style.css";
-
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <ChakraProvider theme={theme}>
