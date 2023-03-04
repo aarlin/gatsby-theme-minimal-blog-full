@@ -19,7 +19,7 @@ import slugify from "slugify";
 // import Copy from '../copy';
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { HiCheckCircle, HiClipboard } from "react-icons/hi";
-import { CopyIcon, CheckIcon } from '@chakra-ui/icons';
+import { CopyIcon, CheckIcon } from "@chakra-ui/icons";
 
 const ChakraHighlight = chakra(Highlight, {
   shouldForwardProp: (prop) =>
@@ -97,8 +97,8 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
   const showLineNumbers = !["shell", "text"].includes(language);
 
   return (
-    <Box position="relative" marginBottom="1rem">
-      <chakra.div justifyContent="flex-end" pb={2}>
+    <Box as="pre" position="relative" marginBottom="1rem" w="100%">
+      <chakra.div justifyContent="flex-end" pb={2} width="100%">
         <Box
           position="absolute"
           top="0"
@@ -135,6 +135,9 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
                 rounded="md"
                 p={4}
                 mx={-4}
+                width="100%"
+                whiteSpace="pre-wrap"
+                css={{ "&::-webkit-scrollbar": { height: "0.4rem" } }}
               >
                 <chakra.div justifyContent="flex-end" pb={2} w="100%">
                   <CopyToClipboard text={codeString} onCopy={handleCopy}>
@@ -148,11 +151,7 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
                       border="none"
                       borderRadius="0.25rem"
                       icon={
-                        copied ? (
-                          <CheckIcon color={checkColor} />
-                        ) : (
-                          <CopyIcon />
-                        )
+                        copied ? <CheckIcon color={checkColor} /> : <CopyIcon />
                       }
                       aria-label="Copy code"
                       onClick={handleCopy}
