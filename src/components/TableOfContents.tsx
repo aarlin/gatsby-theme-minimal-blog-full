@@ -107,7 +107,7 @@ const TableOfContents: FC<IProps> = ({ source }) => {
               _focus={{}}
               onClick={(e) => {
                 e.preventDefault();
-                document.querySelector(`#${heading.href}`).scrollIntoView({
+                document.querySelector(`a[href="#${heading.href}"]`).scrollIntoView({
                   behavior: "smooth",
                   block: "start",
                   inline: "nearest",
