@@ -32,10 +32,8 @@ const NavigationLink = ({ name, href }) => {
         rounded="full"
         align="end"
         justifyContent="center"
-        bg={isActive ? textColorLight : textColorDark}
         color={isActive ? textColorLight : textColorDark}
         _hover={{
-          bg: isActive ? textColorLight : textColorLight,
           color: textColorLight,
         }}
       >
@@ -43,10 +41,10 @@ const NavigationLink = ({ name, href }) => {
         {isActive && (
           <Box
             height="1px"
-            width="70%"
+            width="2%"
             pos="absolute"
             top="10"
-            bgGradient="linear(to-r, blackAlpha.50, orange.500, blackAlpha.50)"
+            bgGradient="linear(to-r, blackAlpha.50, green.500, blackAlpha.50)"
           ></Box>
         )}
       </Flex>
