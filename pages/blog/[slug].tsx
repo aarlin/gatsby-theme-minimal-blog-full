@@ -9,6 +9,7 @@ import { getBlogPosts } from "@/utils/get-blog-posts";
 import imageMetadata from "@/utils/plugins/image-metadata";
 import { readBlogPost } from "@/utils/read-blog-post";
 import {
+  Box,
   Flex,
   Heading,
   HStack,
@@ -81,18 +82,15 @@ const BlogPostContent = ({ frontMatter, source }) => {
             src="/aaron.webp"
             className="rounded-full mt-0 mb-0"
           />
-          <Text ml={2} fontSize="sm" color="gray.600" fontWeight="medium">
-            <Text as="span" color="black" fontWeight="bold">
-              Aaron Lin
-            </Text>
-            <br />
+          <Box ml={2}>
+            <Text fontWeight="bold">Aaron Lin</Text>
             <Flex align="center">
               <Icon as={RxCalendar} mr={2} />
               <Text color="gray.500" fontSize="sm">
                 {frontMatter.date}
               </Text>
             </Flex>
-          </Text>
+          </Box>
         </Flex>
         <Flex align="center">
           <Icon as={RxTimer} mr={2} />

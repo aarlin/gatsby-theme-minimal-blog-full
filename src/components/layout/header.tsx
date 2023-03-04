@@ -1,11 +1,13 @@
 import {
-  Box, Container,
+  Box,
+  chakra,
+  Container,
   Flex,
   Heading,
   HStack,
   Link,
   Text,
-  useColorModeValue
+  useColorModeValue,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
 
@@ -22,29 +24,32 @@ const NavigationLink = ({ name, href }) => {
   const textColorDark = useColorModeValue("blue.700", "blue.400");
 
   return (
-    <NextLink href={href} passHref>
-      <Link borderRadius="full" p="0.5" position="relative" role="group">
-        <Flex py={1} px={2} rounded="full" align="end" justifyContent="center">
-          <Text
-            fontSize="sm"
-            color={isActive ? textColorLight : textColorDark}
-            _groupHover={{
-              color: textColorLight,
-            }}
-          >
-            {name}
-          </Text>
-          {isActive && (
-            <Box
-              height="1px"
-              width="70%"
-              pos="absolute"
-              top="10"
-              bgGradient="linear(to-r, blackAlpha.50, orange.500, blackAlpha.50)"
-            ></Box>
-          )}
-        </Flex>
-      </Link>
+    <NextLink href={href}>
+      <Flex
+        as="button"
+        py={1}
+        px={2}
+        rounded="full"
+        align="end"
+        justifyContent="center"
+        bg={isActive ? textColorLight : textColorDark}
+        color={isActive ? textColorLight : textColorDark}
+        _hover={{
+          bg: isActive ? textColorLight : textColorLight,
+          color: textColorLight,
+        }}
+      >
+        <Text fontSize="sm">{name}</Text>
+        {isActive && (
+          <Box
+            height="1px"
+            width="70%"
+            pos="absolute"
+            top="10"
+            bgGradient="linear(to-r, blackAlpha.50, orange.500, blackAlpha.50)"
+          ></Box>
+        )}
+      </Flex>
     </NextLink>
   );
 };
