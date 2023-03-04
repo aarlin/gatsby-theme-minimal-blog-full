@@ -1,5 +1,6 @@
-const copyToClipboard = (str: string) => {
+const copyToClipboard = async (str: string) => {
   const { clipboard } = window.navigator
+
   /*
    * fallback to older browsers (including Safari)
    * if clipboard API is not supported
@@ -18,13 +19,25 @@ const copyToClipboard = (str: string) => {
     sel?.removeAllRanges()
     sel?.addRange(range)
     textarea.setSelectionRange(0, textarea.value.length)
-    document.execCommand(`copy`)
-    document.body.removeChild(textarea)
 
-    return Promise.resolve(true)
+    try {
+      await navigator.clipboard.writeText(str)
+      return Promise.resolve(true)
+    } catch (err) {
+      console.error(`Failed to copy text: `, err)
+      return Promise.reject(err)
+    } finally {
+      document.body.removeChild(textarea)
+    }
   }
 
-  return clipboard.writeText(str)
+  try {
+    await navigator.clipboard.writeText(str)
+    return Promise.resolve(true)
+  } catch (err) {
+    console.error(`Failed to copy text: `, err)
+    return Promise.reject(err)
+  }
 }
 
 export default copyToClipboard

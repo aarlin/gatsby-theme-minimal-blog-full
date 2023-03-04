@@ -107,10 +107,14 @@ const TableOfContents: FC<IProps> = ({ source }) => {
               _focus={{}}
               onClick={(e) => {
                 e.preventDefault();
-                document.querySelector(`a[href="#${heading.href}"]`).scrollIntoView({
+                const headingAnchor = document.querySelector(`a[href="#${heading.href}"]`)
+                const topOffset = -90; // Add a buffer of 10 pixels
+                const elementPosition = headingAnchor.getBoundingClientRect().top;
+                const offsetPosition = elementPosition - topOffset;
+
+                window.scrollTo({
+                  top: offsetPosition,
                   behavior: "smooth",
-                  block: "start",
-                  inline: "nearest",
                 });
               }}
               fontWeight={heading.href === activeId ? "bold" : "normal"}
