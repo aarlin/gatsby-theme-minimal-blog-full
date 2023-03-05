@@ -194,9 +194,9 @@ Finally, you should the requests populate on HTTP HttpToolkit
 
 ## Shortened Steps After Installation
 
-Open LDPlayer9 and start the app you want to monitor
+Open LDPlayer9 
 
-![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/20.png)
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/3.png)
 
 Open up a terminal and change directory into the cloned repository
 
@@ -253,3 +253,16 @@ Monitor traffic
 ![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/19.png)
 
 
+## Troublshooting
+
+If Frida was suddenly stopped but the address is already in use
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/21.png)
+
+Run the following commands
+
+```bash
+adb shell "ps -e | grep frida-server | awk '{print $2}' | xargs kill -9 && exit"
+```
+
+This starts of shell, kills the PID tied to frida-server and then exits out of shell

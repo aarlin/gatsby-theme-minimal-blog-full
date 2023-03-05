@@ -2,7 +2,7 @@ import BlogTags from "@/components/blog/BlogTags";
 import MDXComponents from "@/components/markdown/MdxComponents";
 import ModifiedChakraLink from "@/components/ModifiedChakraLink";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
-import SocialShare from "@/components/SocialShare";
+import ShareBlogLinks from "@/components/ShareBlogLinks";
 import TableOfContents from "@/components/TableOfContents";
 import * as blogPost from "@/types/blog-post";
 import { getBlogPosts } from "@/utils/get-blog-posts";
@@ -113,7 +113,7 @@ const BlogContentAside = ({ frontMatter, content }) => {
   return (
     <>
       <TableOfContents source={content} />
-      <SocialShare title={frontMatter.title} />
+      <ShareBlogLinks title={frontMatter.title} />
     </>
   );
 };
