@@ -1,10 +1,10 @@
+import { CheckIcon, CopyIcon } from "@chakra-ui/icons";
 import {
   Alert,
   Badge,
   Box,
   chakra,
   HTMLChakraProps,
-  Icon,
   IconButton,
   Kbd,
   Link,
@@ -15,11 +15,8 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import lightTheme from "prism-react-renderer/themes/duotoneLight";
 import darkTheme from "prism-react-renderer/themes/shadesOfPurple";
 import { useId, useState } from "react";
-import slugify from "slugify";
-// import Copy from '../copy';
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { HiCheckCircle, HiClipboard } from "react-icons/hi";
-import { CopyIcon, CheckIcon } from '@chakra-ui/icons';
+import slugify from "slugify";
 
 const ChakraHighlight = chakra(Highlight, {
   shouldForwardProp: (prop) =>
@@ -97,8 +94,8 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
   const showLineNumbers = !["shell", "text"].includes(language);
 
   return (
-    <Box position="relative" marginBottom="1rem">
-      <chakra.div justifyContent="flex-end" pb={2}>
+    <Box as="pre" position="relative" marginBottom="1rem" w="100%">
+      <chakra.div justifyContent="flex-end" pb={2} width="100%">
         <Box
           position="absolute"
           top="0"
@@ -135,24 +132,23 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
                 rounded="md"
                 p={4}
                 mx={-4}
+                width="100%"
+                whiteSpace="pre-wrap"
+                css={{ "&::-webkit-scrollbar": { height: "0.4rem" } }}
               >
                 <chakra.div justifyContent="flex-end" pb={2} w="100%">
                   <CopyToClipboard text={codeString} onCopy={handleCopy}>
                     <IconButton
                       position="absolute"
                       top="50%"
-                      right="0"
+                      right="6"
                       transform="translateY(-50%)"
                       padding="0.2rem 0.5rem"
                       backgroundColor="transparent"
                       border="none"
                       borderRadius="0.25rem"
                       icon={
-                        copied ? (
-                          <CheckIcon color={checkColor} />
-                        ) : (
-                          <CopyIcon />
-                        )
+                        copied ? <CheckIcon color={checkColor} /> : <CopyIcon />
                       }
                       aria-label="Copy code"
                       onClick={handleCopy}
@@ -243,18 +239,20 @@ const Anchor = (props) => (
   <chakra.a color="green.500" _dark={{ color: "green.300" }} {...props} />
 );
 
-function RoundedImage(props) {
-  return <Image alt={props.alt} className="rounded-lg" {...props} />;
-}
+const ShadowedImage = (props) => (
+  <Box boxShadow="lg">
+    <Image alt={props.alt} className="rounded-lg" {...props} />
+  </Box>
+);
 
 const MDXComponents = {
   Badge,
-  Image: RoundedImage,
+  Image: ShadowedImage,
   code: CodeHighlight,
-  h1: (props) => <LinkedHeading as="h1" apply="mdx.h1" {...props} />,
-  h2: (props) => <LinkedHeading as="h2" apply="mdx.h2" {...props} />,
-  h3: (props) => <LinkedHeading as="h3" apply="mdx.h3" {...props} />,
-  h4: (props) => <LinkedHeading as="h4" apply="mdx.h4" {...props} />,
+  h1: (props) => <LinkedHeading as="h1" apply="mdx.h1" my={4} {...props} />,
+  h2: (props) => <LinkedHeading as="h2" apply="mdx.h2" my={4} {...props} />,
+  h3: (props) => <LinkedHeading as="h3" apply="mdx.h3" my={4} {...props} />,
+  h4: (props) => <LinkedHeading as="h4" apply="mdx.h4" my={4} {...props} />,
   hr: (props) => <chakra.hr apply="mdx.hr" {...props} />,
   strong: (props) => <Box as="strong" fontWeight="semibold" {...props} />,
   pre: Pre,
@@ -265,7 +263,7 @@ const MDXComponents = {
   th: THead,
   td: TData,
   a: Anchor,
-  p: (props) => <chakra.p apply="mdx.p" {...props} />,
+  p: (props) => <chakra.p apply="mdx.p" mb={4} {...props} />,
   ul: (props) => (
     <chakra.ul px={{ base: 4, md: 0 }} apply="mdx.ul" {...props} />
   ),
