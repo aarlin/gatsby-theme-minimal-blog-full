@@ -6,6 +6,45 @@ import { SiLinkedin } from 'react-icons/si';
 
 import ExternalLink from '@/components/ExternalLink';
 import HeroImage from '@/components/HeroImage';
+import Link from 'next/link';
+
+const SocialLinks = () => {
+  return (
+    <Stack direction={{ base: 'column', md: 'row' }} spacing={3}>
+      <Link href='https://github.com/aarlin' passHref>
+        <Button
+          as="a"
+          variant='outline'
+          colorScheme='primary'
+          leftIcon={<Icon width="3.5" as={FaGithub} mr="-1" />}
+          transition="all 0.3s ease-in-out"
+          _hover={{
+            transform: "scale(1.1)",
+            boxShadow: "lg",
+          }}
+        >
+          GitHub
+        </Button>
+      </Link>
+      <Link href='https://www.linkedin.com/in/aarlin256/' passHref>
+        <Button
+          as="a"
+          variant='outline'
+          colorScheme='linkedin'
+          leftIcon={<Icon width="3.5" as={SiLinkedin} mr="-1" />}
+          transition="all 0.3s ease-in-out"
+          _hover={{
+            transform: "scale(1.1)",
+            boxShadow: "lg",
+          }}
+        >
+          LinkedIn
+        </Button>
+      </Link>
+    </Stack>
+  );
+};
+
 
 const Hero = () => (
   <Stack
@@ -32,16 +71,7 @@ const Hero = () => (
         {' '}
         I have interests in web development, reverse engineering, and 3D printing
       </Text>
-      <Stack direction={{ base: 'column', md: 'row' }} spacing={3}>
-        <Flex justifyContent="start" gap="3">
-          <Button variant='outline' colorScheme='primary' as="a" href='https://github.com/aarlin' leftIcon={<Icon width="3.5" as={FaGithub} mr="-1" />}>
-            GitHub
-          </Button>
-          <Button variant='outline' colorScheme='linkedin' as="a" href='https://www.linkedin.com/in/aarlin256/' leftIcon={<Icon width="3.5" as={SiLinkedin} mr="-1" />}>
-            LinkedIn
-          </Button>
-        </Flex>
-      </Stack>
+      <SocialLinks/>
     </VStack>
     <HeroImage />
   </Stack>

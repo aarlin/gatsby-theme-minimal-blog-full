@@ -202,7 +202,7 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
 const LinkedHeading = (props: HTMLChakraProps<"h2">) => {
   const slug = slugify(props.children as string, { lower: true });
   return (
-    <Link alignItems="flex-end" display="flex" href={`#${slug}`} role="group">
+    <Link alignItems="center" display="flex" href={`#${slug}`} role="group">
       <Box
         {...props}
         display="inline"
@@ -211,6 +211,7 @@ const LinkedHeading = (props: HTMLChakraProps<"h2">) => {
         _dark={{
           color: "white",
         }}
+        mr="0.5rem"
       >
         {props.children}
       </Box>
@@ -223,7 +224,6 @@ const LinkedHeading = (props: HTMLChakraProps<"h2">) => {
         _focus={{ opacity: 1, boxShadow: "outline" }}
         opacity={0}
         _groupHover={{ opacity: 1 }}
-        ml="0.375rem"
       >
         #
       </chakra.span>

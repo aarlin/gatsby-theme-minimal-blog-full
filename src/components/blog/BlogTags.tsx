@@ -1,4 +1,10 @@
-import { Badge, Stack, StackDirection, useColorModeValue } from "@chakra-ui/react";
+import {
+  Badge,
+  Heading,
+  Stack,
+  StackDirection,
+  useColorModeValue,
+} from "@chakra-ui/react";
 
 type Props = {
   direction: StackDirection;
