@@ -35,27 +35,32 @@ type Props = blogPost.BlogPost & {
   content: any;
 };
 
-const BackToBlogButton = () => {
+const BackToBlogButton = ({ frontMatter }) => {
   return (
-    <HStack>
-      <ModifiedChakraLink
-        display="flex"
-        alignItems="center"
-        href="/blog"
-        ml={{ base: 0, md: 4 }}
-        role=""
-      >
-        <Icon
-          as={RxChevronLeft}
-          ml={1}
-          _groupHover={{ ml: -3 }}
-          transitionDuration="slow"
-          transitionProperty="margin-left"
-          transitionTimingFunction="ease-out"
-        />
-        Back
-      </ModifiedChakraLink>
-    </HStack>
+    <VStack>
+      <VStack alignItems="flex-start" spacing={10}>
+        <BlogTags direction="column" tags={frontMatter.tags} />
+
+        <HStack>
+          <ModifiedChakraLink
+            display="flex"
+            alignItems="center"
+            href="/blog"
+            role=""
+          >
+            <Icon
+              as={RxChevronLeft}
+              ml={1}
+              _groupHover={{ ml: -3 }}
+              transitionDuration="slow"
+              transitionProperty="margin-left"
+              transitionTimingFunction="ease-out"
+            />
+            Back
+          </ModifiedChakraLink>
+        </HStack>
+      </VStack>
+    </VStack>
   );
 };
 
@@ -107,7 +112,6 @@ const BlogPostContent = ({ frontMatter, source }) => {
 const BlogContentAside = ({ frontMatter, content }) => {
   return (
     <>
-      <BlogTags direction="column" tags={frontMatter.tags} />
       <TableOfContents source={content} />
       <SocialShare title={frontMatter.title} />
     </>
@@ -144,7 +148,7 @@ const BlogPostPage = ({ source, frontMatter, content }) => {
             zIndex="popover"
             top={100}
           >
-            <BackToBlogButton />
+            <BackToBlogButton frontMatter={frontMatter} />
           </VStack>
           <VStack spacing={4} flex={3} align="flex-start" w="100%">
             <BlogPostContent frontMatter={frontMatter} source={source} />
@@ -159,6 +163,7 @@ const BlogPostPage = ({ source, frontMatter, content }) => {
             as="nav"
             zIndex="popover"
             top={100}
+            justifyContent="flex-end"
           >
             <BlogContentAside frontMatter={frontMatter} content={content} />
           </VStack>

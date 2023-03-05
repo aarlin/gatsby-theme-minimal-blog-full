@@ -1,4 +1,10 @@
-import { Badge, Stack, StackDirection, useColorModeValue } from "@chakra-ui/react";
+import {
+  Badge,
+  Heading,
+  Stack,
+  StackDirection,
+  useColorModeValue,
+} from "@chakra-ui/react";
 
 type Props = {
   direction: StackDirection;
@@ -6,23 +12,22 @@ type Props = {
 };
 
 const BlogTags = ({ direction, tags }: Props) => {
-  const badgeBorderColor = useColorModeValue("green.200", "green.900");
-  const badgeBackgroundColor = useColorModeValue("green.300", "green.900");
-  const badgeTextColor = useColorModeValue("green.900", "green.300");
+  const badgeBorderColor = useColorModeValue("#8ed2af", "#155b3d");
+  const badgeBackgroundColor = useColorModeValue("#f1fef7", "#051f13");
+  const badgeTextColor = useColorModeValue("#2b825b", "#33cc87");
 
   return (
-    <Stack direction={direction} flexFlow="wrap" flexDirection="column" alignItems="baseline">
+    <Stack direction={direction} flexWrap="wrap" alignItems="baseline">
       {tags.sort().map((tag, _) => (
         <Badge
-          borderRadius="4px"
+          borderRadius="5px"
           key={tag}
           bg={badgeBackgroundColor}
-          border={badgeBorderColor}
+          border={`1px solid ${badgeBorderColor}`}
           textColor={badgeTextColor}
-          variant="outline"
           textTransform="lowercase"
-          py="0.125rem"
-          px="0.625rem"
+          py="0.20rem"
+          px="0.5rem"
         >
           {tag}
         </Badge>
