@@ -48,7 +48,7 @@ const ShareBlogLinks: FC<IProps> = ({ title, url }) => {
               }}
             >
               <HStack spacing={2} alignItems="center">
-                <Box as={link.icon} />
+                <Box as={link.icon} color="white" />
               </HStack>
             </Link>
           );
