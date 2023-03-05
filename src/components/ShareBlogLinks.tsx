@@ -7,7 +7,7 @@ interface IProps {
   url?: string;
 }
 
-const SocialShare: FC<IProps> = ({ title, url }) => {
+const ShareBlogLinks: FC<IProps> = ({ title, url }) => {
   const socialLinks = [
     {
       href: `https://twitter.com/intent/tweet?text=${title}&url=${url}`,
@@ -58,4 +58,4 @@ const SocialShare: FC<IProps> = ({ title, url }) => {
   );
 };
 
-export default SocialShare;
+export default ShareBlogLinks;

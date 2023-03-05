@@ -1,50 +1,8 @@
-import {
-  Button, Flex, Heading, Icon, Stack, Text, VStack
-} from '@chakra-ui/react';
-import { FaGithub } from 'react-icons/fa';
-import { SiLinkedin } from 'react-icons/si';
+import { Heading, Stack, Text, VStack } from '@chakra-ui/react';
 
 import ExternalLink from '@/components/ExternalLink';
 import HeroImage from '@/components/HeroImage';
-import Link from 'next/link';
-
-const SocialLinks = () => {
-  return (
-    <Stack direction={{ base: 'column', md: 'row' }} spacing={3}>
-      <Link href='https://github.com/aarlin' passHref>
-        <Button
-          as="a"
-          variant='outline'
-          colorScheme='primary'
-          leftIcon={<Icon width="3.5" as={FaGithub} mr="-1" />}
-          transition="all 0.3s ease-in-out"
-          _hover={{
-            transform: "scale(1.1)",
-            boxShadow: "lg",
-          }}
-        >
-          GitHub
-        </Button>
-      </Link>
-      <Link href='https://www.linkedin.com/in/aarlin256/' passHref>
-        <Button
-          as="a"
-          variant='outline'
-          colorScheme='linkedin'
-          leftIcon={<Icon width="3.5" as={SiLinkedin} mr="-1" />}
-          transition="all 0.3s ease-in-out"
-          _hover={{
-            transform: "scale(1.1)",
-            boxShadow: "lg",
-          }}
-        >
-          LinkedIn
-        </Button>
-      </Link>
-    </Stack>
-  );
-};
-
+import SocialLinks from './SocialLinks';
 
 const Hero = () => (
   <Stack
