@@ -1,10 +1,10 @@
+import { CheckIcon, CopyIcon } from "@chakra-ui/icons";
 import {
   Alert,
   Badge,
   Box,
   chakra,
   HTMLChakraProps,
-  Icon,
   IconButton,
   Kbd,
   Link,
@@ -15,11 +15,8 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import lightTheme from "prism-react-renderer/themes/duotoneLight";
 import darkTheme from "prism-react-renderer/themes/shadesOfPurple";
 import { useId, useState } from "react";
-import slugify from "slugify";
-// import Copy from '../copy';
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { HiCheckCircle, HiClipboard } from "react-icons/hi";
-import { CopyIcon, CheckIcon } from "@chakra-ui/icons";
+import slugify from "slugify";
 
 const ChakraHighlight = chakra(Highlight, {
   shouldForwardProp: (prop) =>
@@ -144,7 +141,7 @@ const CodeHighlight = ({ children: codeString, className: language }: any) => {
                     <IconButton
                       position="absolute"
                       top="50%"
-                      right="0"
+                      right="6"
                       transform="translateY(-50%)"
                       padding="0.2rem 0.5rem"
                       backgroundColor="transparent"

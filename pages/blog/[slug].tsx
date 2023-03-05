@@ -61,7 +61,7 @@ const BackToBlogButton = () => {
 
 const BlogPostContent = ({ frontMatter, source }) => {
   return (
-    <>
+    <Box w="100%">
       <Heading as="h1" size="lg">
         {frontMatter.title}
       </Heading>
@@ -100,7 +100,7 @@ const BlogPostContent = ({ frontMatter, source }) => {
         </Flex>
       </Flex>
       <MDXRemote {...source} components={MDXComponents} />
-    </>
+    </Box>
   );
 };
 

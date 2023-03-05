@@ -24,31 +24,27 @@ const NavigationLink = ({ name, href }) => {
   const textColorDark = useColorModeValue("blue.700", "blue.400");
 
   return (
-    <NextLink href={href}>
-      <Flex
-        as="button"
-        py={1}
-        px={2}
-        rounded="full"
-        align="end"
-        justifyContent="center"
-        color={isActive ? textColorLight : textColorDark}
-        _hover={{
-          color: textColorLight,
-        }}
-      >
-        <Text fontSize="sm">{name}</Text>
-        {isActive && (
-          <Box
-            height="1px"
-            width="2%"
-            pos="absolute"
-            top="10"
-            bgGradient="linear(to-r, blackAlpha.50, green.500, blackAlpha.50)"
-          ></Box>
-        )}
-      </Flex>
-    </NextLink>
+    <Link
+      as={NextLink}
+      href={href}
+      px={2}
+      py={1}
+      rounded="full"
+      _hover={{ color: textColorLight }}
+      color={isActive ? textColorLight : textColorDark}
+    >
+      <Text fontSize="sm">{name}</Text>
+      {isActive && (
+        <Box
+          bgGradient="linear(to-r, blackAlpha.50, green.500, blackAlpha.50)"
+          bottom="-1px"
+          height="2px"
+          pos="absolute"
+          width="1.2%"
+          zIndex="1"
+        />
+      )}
+    </Link>
   );
 };
 
@@ -72,15 +68,16 @@ const Header = () => {
       opacity="0.95"
       transitionDuration="normal"
       transitionProperty="background"
+      id="navbar"
     >
       <Container
+        display="flex"
         alignItems="center"
         justifyContent="space-between"
-        display="flex"
         maxW={LAYOUT_CONTAINER_MAX_WIDTH}
         px={{ base: 4, lg: 0 }}
       >
-        <Flex alignItems="center" fontWeight="bold" columnGap="5">
+        <Flex alignItems="center" fontWeight="bold">
           <Heading size="sm">
             <Link
               as={NextLink}
@@ -94,17 +91,17 @@ const Header = () => {
             </Link>
           </Heading>
         </Flex>
-        <Flex alignItems="center" fontSize="sm" fontWeight="bold" columnGap="5">
-          {navigationLinks.map((navigationLink) => {
-            return (
+        <Flex alignItems="center" fontWeight="bold">
+          <HStack spacing={4}>
+            {navigationLinks.map((navigationLink) => (
               <NavigationLink
                 key={navigationLink.label}
                 href={navigationLink.href}
                 name={navigationLink.label}
               />
-            );
-          })}
-          <ToggleThemeButton />
+            ))}
+            <ToggleThemeButton />
+          </HStack>
         </Flex>
       </Container>
     </HStack>

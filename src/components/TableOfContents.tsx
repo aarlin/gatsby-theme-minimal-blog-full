@@ -1,12 +1,12 @@
 import { Button, Heading, VStack } from "@chakra-ui/react";
 import GithubSlugger from "github-slugger";
-import React, {
+import {
   Dispatch,
   FC,
   SetStateAction,
   useEffect,
   useRef,
-  useState,
+  useState
 } from "react";
 
 interface IProps {
@@ -16,41 +16,15 @@ interface IProps {
 const useIntersectionObserver = (
   setActiveId: Dispatch<SetStateAction<string>>
 ) => {
-  const headingElementsRef = useRef({});
+  const headingElementsRef = useRef(new Map<string, Element>());
 
   useEffect(() => {
     const callback = (headings: IntersectionObserverEntry[]) => {
-      headingElementsRef.current = headings.reduce(
-        (
-          map: { [x: string]: any },
-          headingElement: { target: { id: string | number } }
-        ) => {
-          map[headingElement.target.id] = headingElement;
-
-          return map;
-        },
-        headingElementsRef.current
-      );
-
-      const visibleHeadings = [];
-
-      Object.keys(headingElementsRef.current).forEach((key) => {
-        const headingElement = headingElementsRef.current[key];
-        if (headingElement.isIntersecting) visibleHeadings.push(headingElement);
+      headings.forEach((heading) => {
+        if (heading.isIntersecting) {
+          setActiveId(heading.target.id);
+        }
       });
-
-      const getIndexFromId = (id: string) =>
-        headingElements.findIndex((heading) => heading.id === id);
-
-      if (visibleHeadings.length === 1) {
-        setActiveId(visibleHeadings[0].target.id);
-      } else if (visibleHeadings.length > 1) {
-        const sortedVisibleHeadings = visibleHeadings.sort(
-          (a, b) => getIndexFromId(b.target.id) - getIndexFromId(a.target.id)
-        );
-
-        setActiveId(sortedVisibleHeadings[0].target.id);
-      }
     };
 
     const observer = new IntersectionObserver(callback, {
@@ -61,10 +35,15 @@ const useIntersectionObserver = (
       document.querySelectorAll(".article h2, .article h3")
     );
 
-    headingElements.forEach((element) => observer.observe(element));
+    headingElements.forEach((element) => {
+      observer.observe(element);
+      headingElementsRef.current.set(element.id, element);
+    });
 
     return () => observer.disconnect();
   }, [setActiveId]);
+
+  return headingElementsRef;
 };
 
 const TableOfContents: FC<IProps> = ({ source }) => {
@@ -85,8 +64,7 @@ const TableOfContents: FC<IProps> = ({ source }) => {
   });
 
   const [activeId, setActiveId] = useState<string>();
-
-  useIntersectionObserver(setActiveId);
+  const headingElementsRef = useIntersectionObserver(setActiveId);
 
   return (
     <VStack alignItems="left">
@@ -107,16 +85,18 @@ const TableOfContents: FC<IProps> = ({ source }) => {
               _focus={{}}
               onClick={(e) => {
                 e.preventDefault();
-                const headingAnchor = document.querySelector(`a[href="#${heading.href}"]`)
-                const topOffset = -90; // Add a buffer of 10 pixels
+                const headingAnchor = document.querySelector(`a[href="#${heading.href}"]`);
+                const navbar = document.querySelector("#navbar") as HTMLElement;
+                const topOffset = navbar ? -navbar.offsetHeight : -90; // Add a buffer of 10 pixels
                 const elementPosition = headingAnchor.getBoundingClientRect().top;
-                const offsetPosition = elementPosition - topOffset;
-
+                const offsetPosition = elementPosition + window.pageYOffset + topOffset;
+              
                 window.scrollTo({
                   top: offsetPosition,
                   behavior: "smooth",
                 });
               }}
+              
               fontWeight={heading.href === activeId ? "bold" : "normal"}
             >
               {heading.text}
