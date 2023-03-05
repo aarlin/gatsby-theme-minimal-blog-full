@@ -1,5 +1,5 @@
 <h1 align="center">
-  aarlin.netlify.com
+  aarlin.netlify.app
 </h1>
 
 <p align="center">
@@ -39,11 +39,11 @@
 ## Running Locally
 
 ```bash
-git clone https://github.com/aarlin/aarlin.netlify.com.git
+git clone https://github.com/aarlin/aarlin.netlify.app.git
 ```
 
 ```bash
-cd aarlin.netlify.com
+cd aarlin.netlify.app
 ```
 
 ```bash
