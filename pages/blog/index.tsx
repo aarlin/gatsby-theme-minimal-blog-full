@@ -49,7 +49,7 @@ const Blog = ({ posts }: Props) => {
           <Flex>
             <Text>Blog</Text>
             <ExternalLink color="text.300" ml={2} href="/rss.xml">
-              <RiRssFill size={14} /> {/* 16 just doesnt look right */}
+              <RiRssFill size={14} />
             </ExternalLink>
           </Flex>
         </Heading>

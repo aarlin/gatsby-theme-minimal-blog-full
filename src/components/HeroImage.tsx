@@ -16,7 +16,6 @@ const HeroImage = () => {
           />
         </Box>
       </AspectRatio>
-      {/* <StatusIndicator /> */}
     </Flex>
   );
 };

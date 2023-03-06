@@ -20,8 +20,7 @@ const NavigationLink = ({ name, href }) => {
   const router = useRouter();
   const isActive = `/${router.pathname.split("/")[1]}` === href;
 
-  const textColorLight = useColorModeValue("green.600", "green.500");
-  const textColorDark = useColorModeValue("blue.700", "blue.400");
+  const textColor = useColorModeValue("green.600", "blue.700");
 
   return (
     <Link
@@ -30,17 +29,18 @@ const NavigationLink = ({ name, href }) => {
       px={2}
       py={1}
       rounded="full"
-      _hover={{ color: textColorLight }}
-      color={isActive ? textColorLight : textColorDark}
+      _hover={{ color: textColor }}
     >
-      <Text fontSize="sm">{name}</Text>
+      <Text fontSize="sm" color={isActive ? textColor : ''}>
+        {name}
+      </Text>
       {isActive && (
         <Box
           bgGradient="linear(to-r, blackAlpha.50, green.500, blackAlpha.50)"
           bottom="-1px"
           height="2px"
           pos="absolute"
-          width="1.2%"
+          width="30px"
           zIndex="1"
         />
       )}

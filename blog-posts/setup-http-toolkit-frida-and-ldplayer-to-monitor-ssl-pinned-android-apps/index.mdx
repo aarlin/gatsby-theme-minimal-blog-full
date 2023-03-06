@@ -253,16 +253,15 @@ Monitor traffic
 ![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/19.png)
 
 
-## Troublshooting
+## Troubleshooting
 
-If Frida was suddenly stopped but the address is already in use
+If Frida was suddenly stopped but the address is already in use when trying to start the server again
 
 ![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/21.png)
 
-Run the following commands
+Run the following command. This starts the shell inside the Android emulator, kills the PID tied to frida-server and then exits out
 
 ```bash
 adb shell "ps -e | grep frida-server | awk '{print $2}' | xargs kill -9 && exit"
 ```
 
-This starts of shell, kills the PID tied to frida-server and then exits out of shell
