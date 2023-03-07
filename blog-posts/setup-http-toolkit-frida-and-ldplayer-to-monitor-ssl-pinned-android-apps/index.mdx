@@ -265,3 +265,18 @@ Run the following command. This starts the shell inside the Android emulator, ki
 adb shell "ps -e | grep frida-server | awk '{print $2}' | xargs kill -9 && exit"
 ```
 
+If you're getting this error
+
+```
+Failed to spawn: need Gadget to attach on jailed Android; its default location is: C:\Users\Aaron\AppData\Local\Microsoft\Windows\INetCache\frida\gadget-android-arm64.so
+```
+
+You haven't started the frida server
+
+```bash
+adb root
+```
+
+```bash
+adb shell "/data/local/tmp/frida-server &"
+```
