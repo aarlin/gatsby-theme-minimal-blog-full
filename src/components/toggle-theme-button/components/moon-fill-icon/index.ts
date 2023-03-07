@@ -1,1 +1,1 @@
-export * from './moon-fill-icon'
+export * from "./moon-fill-icon";

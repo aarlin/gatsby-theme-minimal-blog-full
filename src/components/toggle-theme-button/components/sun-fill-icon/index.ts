@@ -1,1 +1,1 @@
-export * from './sun-fill-icon'
+export * from "./sun-fill-icon";

@@ -1,7 +1,7 @@
 const config = {
-    cssVarPrefix: 'abraham',
-    initialColorMode: 'light',
-    useSystemColorMode: true,
-}
+	cssVarPrefix: "abraham",
+	initialColorMode: "light",
+	useSystemColorMode: true,
+};
 
-export default config
+export default config;
