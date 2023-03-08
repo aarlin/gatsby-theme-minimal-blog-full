@@ -17,7 +17,7 @@ const BlogTags = ({ direction, tags }: Props) => {
 	const badgeTextColor = useColorModeValue("#2b825b", "#33cc87");
 
 	return (
-		<Stack direction={direction} flexWrap="wrap" alignItems="baseline">
+		<Stack direction={direction} flexWrap="wrap" alignContent="flex-start" alignItems="baseline">
 			{tags.sort().map((tag, _) => (
 				<Badge
 					borderRadius="5px"
@@ -26,8 +26,9 @@ const BlogTags = ({ direction, tags }: Props) => {
 					border={`1px solid ${badgeBorderColor}`}
 					textColor={badgeTextColor}
 					textTransform="lowercase"
-					py="0.20rem"
+					py="0.2rem"
 					px="0.5rem"
+					mb="0.5rem"
 				>
 					{tag}
 				</Badge>

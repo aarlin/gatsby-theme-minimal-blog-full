@@ -5,7 +5,7 @@ import NextLink from "next/link";
 
 const SocialLinks = () => {
 	return (
-		<Stack direction={{ base: "column", md: "row" }} spacing={3}>
+		<Stack direction={{ base: "row", md: "row" }} spacing={3}>
 			<Link as={NextLink} href="https://github.com/aarlin" passHref>
 				<Button
 					variant="outline"
