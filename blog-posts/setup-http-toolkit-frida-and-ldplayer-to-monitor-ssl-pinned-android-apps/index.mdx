@@ -198,6 +198,14 @@ Open LDPlayer9
 
 ![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/3.png)
 
+Open HTTP Toolkit
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/15.png)
+
+Click `Android device via ADB`
+
+![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/16.png)
+
 Open up a terminal and change directory into the cloned repository
 
 ```bash
@@ -240,29 +248,35 @@ frida -U -l ./frida-script.js -f com.p1.mobile.putong
 
 ![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/14.png)
 
-Open HTTP Toolkit
-
-![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/15.png)
-
-Click `Android device via ADB`
-
-![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/16.png)
-
 Monitor traffic
 
 ![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/19.png)
 
 
-## Troublshooting
+## Troubleshooting
 
-If Frida was suddenly stopped but the address is already in use
+If Frida was suddenly stopped but the address is already in use when trying to start the server again
 
 ![](/assets/images/blog-posts/setup-http-toolkit-frida-and-ldplayer-to-monitor-ssl-pinned-android-apps/21.png)
 
-Run the following commands
+Run the following command. This starts the shell inside the Android emulator, kills the PID tied to frida-server and then exits out
 
 ```bash
 adb shell "ps -e | grep frida-server | awk '{print $2}' | xargs kill -9 && exit"
 ```
 
-This starts of shell, kills the PID tied to frida-server and then exits out of shell
+If you're getting this error
+
+```
+Failed to spawn: need Gadget to attach on jailed Android; its default location is: C:\Users\Aaron\AppData\Local\Microsoft\Windows\INetCache\frida\gadget-android-arm64.so
+```
+
+You haven't started the frida server
+
+```bash
+adb root
+```
+
+```bash
+adb shell "/data/local/tmp/frida-server &"
+```
