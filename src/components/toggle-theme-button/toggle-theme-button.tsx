@@ -20,6 +20,7 @@ export function ToggleThemeButton() {
 				color: "green.500",
 			}}
 			onClick={() => toggleColorMode()}
+			aria-label={colorMode === "dark" ? "Switch to light mode" : "Switch to dark mode"}
 		>
 			{colorMode === "dark" ? <SunFillIcon /> : <MoonFillIcon />}
 		</Box>
