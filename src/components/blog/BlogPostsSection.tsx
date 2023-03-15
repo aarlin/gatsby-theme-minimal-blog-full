@@ -29,6 +29,7 @@ const BlogPostsSection = ({ posts }: Props) => {
 						ml={{ base: 0, md: 4 }}
 						role="group"
 						colorScheme={"green"}
+						aria-label="See all blog posts"
 					>
 						See all
 						<Icon

@@ -13,6 +13,7 @@ const HeroImage = () => {
 						width={224}
 						height={224}
 						borderRadius='10px'
+						loading='eager'
 					/>
 				</Box>
 			</AspectRatio>

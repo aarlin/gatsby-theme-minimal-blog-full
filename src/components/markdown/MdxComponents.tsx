@@ -3,11 +3,12 @@ import {
 	Alert,
 	Badge,
 	Box,
-	chakra,
+	Flex,
 	HTMLChakraProps,
 	IconButton,
 	Kbd,
 	Link,
+	chakra,
 	useColorModeValue,
 } from "@chakra-ui/react";
 import NextImage from "next/image";
@@ -23,7 +24,7 @@ const ChakraHighlight = chakra(Highlight, {
 		["Prism", "theme", "code", "language", "children"].includes(prop),
 });
 
-const Pre = (props) => <chakra.div my="2em" borderRadius="sm" {...props} />;
+const Pre = (props) => <chakra.div my="2em" marginLeft="1em" borderRadius="sm" {...props} />;
 
 const Table = (props) => (
 	<chakra.div overflowX="auto">
